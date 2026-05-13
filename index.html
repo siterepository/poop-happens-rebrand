@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Poop Happens — Four Takes On A Rebrand</title>
+<meta name="description" content="Four distinct redesigns of poophappensfranklin.com — pick the one that fits the brand. Editorial, Brutalist, Cartoon, and Concierge takes." />
+<link rel="icon" href="assets/favicon-1-300x300.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400;1,9..144,700&family=JetBrains+Mono:wght@400;500;700&family=Hanken+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#0c0a0e;
+  --bg-2:#15121a;
+  --ink:#f5f0e6;
+  --ink-2:#cfc6b6;
+  --muted:#827a6e;
+  --accent:#c5a059;
+  --line:#f5f0e618;
+  --card:#1a1620;
+
+  --c01-1:#8b4a2f;--c01-2:#b08949;--c01-3:#6d7d5e;--c01-4:#f4ede1;
+  --c02-1:#0a0a0a;--c02-2:#ffd60a;--c02-3:#d62828;--c02-4:#f5f4ef;
+  --c03-1:#ff5da2;--c03-2:#4cc9f0;--c03-3:#ffd23f;--c03-4:#7bc950;
+  --c04-1:#0e1a2b;--c04-2:#c5a059;--c04-3:#f0e9d9;--c04-4:#1a1015;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  background:var(--bg);color:var(--ink);
+  font-family:"Hanken Grotesk",-apple-system,sans-serif;font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body{
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%,#c5a05922 0%,transparent 50%),
+    radial-gradient(ellipse 60% 40% at 0% 80%,#ff5da218 0%,transparent 50%),
+    radial-gradient(ellipse 60% 40% at 100% 30%,#4cc9f018 0%,transparent 50%);
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* GRAIN OVERLAY */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.08;mix-blend-mode:overlay}
+.grain::before{content:"";position:absolute;inset:-50%;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='2.8' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+
+/* TOP */
+.top{padding:22px 0;border-bottom:1px solid var(--line)}
+.top-row{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.top-brand{display:flex;align-items:center;gap:14px}
+.top-brand img{height:42px;filter:brightness(1.2)}
+.top-brand b{font-family:"Fraunces",serif;font-style:italic;font-weight:500;font-size:22px;letter-spacing:.01em;color:var(--ink)}
+.top-brand b small{display:block;font-family:"Hanken Grotesk",sans-serif;font-style:normal;font-weight:500;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-top:2px}
+.top-meta{display:flex;gap:24px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.top-meta b{color:var(--ink)}
+
+/* HERO */
+.hero{padding:88px 0 64px;display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:end;position:relative}
+.hero::before{
+  content:"04";position:absolute;right:-20px;top:-40px;
+  font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:560px;line-height:.8;
+  color:#c5a05908;pointer-events:none;letter-spacing:-.06em;z-index:0;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:28px;animation:fade .8s .05s ease both;
+}
+.hero-eyebrow::before{content:"";width:42px;height:1px;background:var(--accent)}
+.hero h1{
+  font-family:"Fraunces",serif;font-weight:300;
+  font-size:clamp(56px,8.4vw,132px);line-height:.92;letter-spacing:-.035em;
+  font-variation-settings:"opsz" 144,"SOFT" 50;
+  animation:fade 1s .15s ease both;color:var(--ink);
+}
+.hero h1 em{font-style:italic;color:var(--accent);font-variation-settings:"opsz" 144,"SOFT" 100}
+.hero p{
+  margin-top:28px;max-width:54ch;font-size:18px;line-height:1.6;color:var(--ink-2);
+  animation:fade 1s .25s ease both;
+}
+.hero p b{color:var(--ink);font-weight:500}
+
+.hero-side{position:relative;animation:fade 1s .35s ease both}
+.hero-meta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.hero-meta{padding:18px 20px;background:var(--bg-2)}
+.hero-meta small{display:block;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.hero-meta b{font-family:"Fraunces",serif;font-weight:400;font-size:24px;color:var(--ink);line-height:1;letter-spacing:-.01em}
+.hero-meta p{font-family:"Hanken Grotesk",sans-serif;font-size:13px;color:var(--ink-2);margin-top:8px;line-height:1.4}
+
+@keyframes fade{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+
+/* CARDS */
+.takes{padding:60px 0 80px}
+.takes-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:48px;flex-wrap:wrap;gap:18px}
+.takes-head h2{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(34px,4.5vw,60px);line-height:1;letter-spacing:-.02em}
+.takes-head h2 em{font-style:italic;color:var(--accent)}
+.takes-head p{max-width:42ch;color:var(--ink-2);font-size:15px}
+
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:36px}
+
+.card{
+  position:relative;background:var(--card);
+  border:1px solid var(--line);overflow:hidden;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease, border-color .45s ease;
+  animation:cardin 1s ease both;
+}
+.card:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 30px 60px -20px rgba(0,0,0,.5),0 0 0 1px var(--accent)}
+.card:nth-child(1){animation-delay:.5s}
+.card:nth-child(2){animation-delay:.62s}
+.card:nth-child(3){animation-delay:.74s}
+.card:nth-child(4){animation-delay:.86s}
+@keyframes cardin{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+
+.card-num{
+  position:absolute;top:24px;left:28px;z-index:3;
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink);
+  background:rgba(12,10,14,.7);padding:6px 12px;backdrop-filter:blur(8px);
+}
+.card-tag{
+  position:absolute;top:24px;right:28px;z-index:3;
+  font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--bg);
+  background:var(--accent);padding:6px 12px;
+}
+
+.preview-frame{
+  position:relative;height:440px;overflow:hidden;background:var(--bg);border-bottom:1px solid var(--line);
+}
+.preview-frame iframe{
+  border:0;width:285%;height:1500px;
+  transform:scale(.35);transform-origin:0 0;
+  pointer-events:none;
+}
+.preview-frame::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 60%,rgba(12,10,14,.85));
+  pointer-events:none;
+}
+
+.card-body{padding:32px 32px 28px;position:relative}
+.card-title{
+  font-family:"Fraunces",serif;font-weight:300;font-size:38px;line-height:1;letter-spacing:-.02em;margin-bottom:8px;color:var(--ink);
+}
+.card-title em{font-style:italic;color:var(--accent);font-weight:400}
+.card-sub{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.card-vibe{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:18px;line-height:1.4;color:var(--ink-2);margin-bottom:22px;max-width:42ch}
+
+.card-bullets{list-style:none;margin-bottom:24px;border-top:1px solid var(--line);padding-top:18px}
+.card-bullets li{display:flex;gap:14px;padding:8px 0;font-size:14px;line-height:1.5;color:var(--ink-2);border-bottom:1px solid var(--line)}
+.card-bullets li:last-child{border-bottom:none}
+.card-bullets li::before{content:attr(data-glyph);color:var(--accent);font-family:"Fraunces",serif;font-style:italic;font-size:18px;line-height:1.3;min-width:20px}
+.card-bullets li b{color:var(--ink);font-weight:500}
+
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:18px;border-top:1px solid var(--line)}
+.card-swatches{display:flex;gap:6px}
+.swatch{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.15)}
+.card-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--ink);padding:12px 18px;border:1px solid var(--ink);
+  transition:background .25s, color .25s, gap .25s;
+}
+.card-cta:hover{background:var(--ink);color:var(--bg);gap:14px}
+
+/* CARD COLOR PERSONALITIES */
+.card.c01 .card-num,.card.c01 .card-tag{background:var(--c01-1);color:var(--c01-4)}
+.card.c01:hover{border-color:var(--c01-1);box-shadow:0 30px 60px -20px rgba(0,0,0,.5),0 0 0 1px var(--c01-1)}
+.card.c01 .card-title em,.card.c01 .card-bullets li::before{color:var(--c01-2)}
+
+.card.c02 .card-num{background:var(--c02-1);color:var(--c02-4);border:1px solid var(--c02-2)}
+.card.c02 .card-tag{background:var(--c02-2);color:var(--c02-1);font-family:"JetBrains Mono",monospace;font-weight:700}
+.card.c02:hover{border-color:var(--c02-2);box-shadow:0 30px 60px -20px rgba(0,0,0,.5),0 0 0 1px var(--c02-2)}
+.card.c02 .card-title em,.card.c02 .card-bullets li::before{color:var(--c02-2)}
+
+.card.c03 .card-num{background:var(--c03-1);color:#fff}
+.card.c03 .card-tag{background:var(--c03-3);color:var(--bg)}
+.card.c03:hover{border-color:var(--c03-1);box-shadow:0 30px 60px -20px rgba(0,0,0,.5),0 0 0 1px var(--c03-1)}
+.card.c03 .card-title em,.card.c03 .card-bullets li::before{color:var(--c03-1)}
+
+.card.c04 .card-num{background:var(--c04-1);color:var(--c04-3);border:1px solid var(--c04-2)}
+.card.c04 .card-tag{background:var(--c04-2);color:var(--c04-1)}
+.card.c04:hover{border-color:var(--c04-2);box-shadow:0 30px 60px -20px rgba(0,0,0,.5),0 0 0 1px var(--c04-2)}
+.card.c04 .card-title em,.card.c04 .card-bullets li::before{color:var(--c04-2)}
+
+/* RANKED PICKS */
+.picks{padding:80px 0 60px;border-top:1px solid var(--line)}
+.picks-head{display:grid;grid-template-columns:1fr 2fr;gap:48px;margin-bottom:48px;align-items:end}
+.picks-head h2{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(36px,4.5vw,64px);line-height:1;letter-spacing:-.02em}
+.picks-head h2 em{font-style:italic;color:var(--accent)}
+.picks-head p{font-size:15px;color:var(--ink-2)}
+
+.pick-list{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--line)}
+.pick{display:grid;grid-template-columns:80px 1fr 220px 200px;gap:32px;align-items:center;padding:24px 28px;border-bottom:1px solid var(--line);transition:background .25s}
+.pick:last-child{border-bottom:none}
+.pick:hover{background:var(--bg-2)}
+.pick-rank{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:48px;color:var(--accent);line-height:1}
+.pick-title{font-family:"Fraunces",serif;font-weight:400;font-size:22px;color:var(--ink);line-height:1.2;margin-bottom:4px}
+.pick-title em{font-style:italic;color:var(--accent)}
+.pick-rat{font-size:13px;color:var(--ink-2);line-height:1.5;max-width:50ch}
+.pick-best{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.pick-best b{color:var(--ink);display:block;margin-top:4px}
+.pick-link{display:inline-flex;align-items:center;gap:8px;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:4px;transition:gap .25s,color .25s}
+.pick-link:hover{gap:12px;color:var(--ink);border-bottom-color:var(--ink)}
+
+/* CONTEXT FOOTER */
+.context{padding:80px 0;border-top:1px solid var(--line);background:var(--bg-2)}
+.context-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:64px}
+.context h3{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:22px;color:var(--accent);margin-bottom:16px;letter-spacing:.01em}
+.context p,.context li{font-size:14px;color:var(--ink-2);line-height:1.7}
+.context ul{list-style:none}
+.context li{padding:4px 0;display:flex;gap:10px}
+.context li::before{content:"✦";color:var(--accent)}
+
+footer{padding:48px 0 32px;border-top:1px solid var(--line)}
+.foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.foot-row b{color:var(--ink)}
+
+@media (max-width:1080px){
+  .cards{grid-template-columns:1fr}
+  .preview-frame{height:400px}
+  .preview-frame iframe{width:285%}
+  .hero{grid-template-columns:1fr;gap:40px}
+  .picks-head{grid-template-columns:1fr;gap:18px}
+  .pick{grid-template-columns:50px 1fr;gap:18px}
+  .pick-best,.pick-link{grid-column:2}
+  .context-grid{grid-template-columns:1fr;gap:32px}
+}
+@media (max-width:680px){
+  .wrap{padding:0 22px}
+  .top-row{flex-direction:column;align-items:flex-start}
+  .top-meta{flex-wrap:wrap}
+  .hero{padding:48px 0}
+  .takes-head{flex-direction:column;align-items:flex-start}
+  .preview-frame{height:320px}
+  .card-body{padding:24px}
+  .card-title{font-size:30px}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a href="#" class="top-brand">
+      <img src="assets/logo.png" alt="Poop Happens" />
+      <b>Poop Happens<small>Four Takes On A Rebrand</small></b>
+    </a>
+    <div class="top-meta">
+      <span>Client · <b>poophappensfranklin.com</b></span>
+      <span>Studio · <b>The Yard, Franklin TN</b></span>
+      <span>Status · <b style="color:#7bc950">▸ Live preview</b></span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="display:contents">
+    <div class="wrap">
+      <div class="hero-eyebrow">Pet-waste removal · Franklin, TN · since 2019</div>
+      <h1>Four <em>distinct</em> remakes<br/>of one local business.</h1>
+      <p>The original — a friendly, template-built WordPress page at <b>poophappensfranklin.com</b> — does the job. These four don't. Each is a fully working, deploy-ready landing for the same Franklin pet-waste service: same phone, same owner (Ryan), same <b>50% off your first clean</b>, same satisfaction guarantee. Different personalities. Click into any one and book through to the payment step — every form runs.</p>
+    </div>
+    <aside class="hero-side wrap">
+      <div class="hero-meta-grid">
+        <div class="hero-meta"><small>Pages built</small><b>04 + showcase</b><p>Vanilla HTML &amp; CSS. No build step. No framework.</p></div>
+        <div class="hero-meta"><small>Live forms</small><b>4-step onboarding</b><p>Address → household → schedule → card.</p></div>
+        <div class="hero-meta"><small>Real assets</small><b>Owner · truck · logo</b><p>Harvested from the live site. No placeholders.</p></div>
+        <div class="hero-meta"><small>Lead price</small><b>$19.99 / visit</b><p>Half off the first call, regardless of plan.</p></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="takes">
+  <div class="wrap">
+    <div class="takes-head">
+      <h2>Pick a <em>flavor</em>.</h2>
+      <p>Click any card to open the full mockup in a new tab. Every flow is wired — forms validate, plans recalculate, and the payment step renders an order receipt.</p>
+    </div>
+
+    <div class="cards">
+
+      <article class="card c01">
+        <span class="card-num">01 / EDITORIAL</span>
+        <span class="card-tag">For weddings &amp; HOAs</span>
+        <div class="preview-frame">
+          <iframe src="01-sunday-yard/index.html" loading="lazy" title="The Sunday Yard"></iframe>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">The <em>Sunday Yard</em></h3>
+          <div class="card-sub">EDITORIAL · MAGAZINE · FRAUNCES + LORA</div>
+          <p class="card-vibe">Reads like a Sunday paper — drop caps, masthead rules, italic deck. The yard, as a quiet, dignified ritual rather than a service to ignore.</p>
+          <ul class="card-bullets">
+            <li data-glyph="§"><b>Magazine framing</b> — issue number, masthead nav, "Dispatches" testimonials styled like letters to the editor.</li>
+            <li data-glyph="§"><b>Earthy palette</b> — terracotta, sage, antique cream, soft black. No fluorescent anything.</li>
+            <li data-glyph="§"><b>Reserve flow</b> — email + ZIP gate then a 4-step onboarding ending in a half-rate Stripe checkout.</li>
+            <li data-glyph="§"><b>Best for</b> a referral-driven brand that wants to feel slow, considered, and household-name in Westhaven and Cool Springs.</li>
+          </ul>
+          <div class="card-foot">
+            <div class="card-swatches">
+              <span class="swatch" style="background:var(--c01-1)"></span>
+              <span class="swatch" style="background:var(--c01-2)"></span>
+              <span class="swatch" style="background:var(--c01-3)"></span>
+              <span class="swatch" style="background:var(--c01-4)"></span>
+            </div>
+            <a class="card-cta" href="01-sunday-yard/index.html" target="_blank">View live →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card c02">
+        <span class="card-num">02 / BRUTALIST</span>
+        <span class="card-tag">High-intent conversion</span>
+        <div class="preview-frame">
+          <iframe src="02-zero-tolerance/index.html" loading="lazy" title="Zero Tolerance"></iframe>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Zero <em>Shit Tolerance</em></h3>
+          <div class="card-sub">BRUTALIST · UTILITY · ARCHIVO BLACK + JETBRAINS MONO</div>
+          <p class="card-vibe">Hazard-yellow, status-bar live, monospaced everything. Reads like a logistics dashboard. The yard, as an SLA you are not waiting around for.</p>
+          <ul class="card-bullets">
+            <li data-glyph="//"><b>Live quote calculator</b> — toggle dogs/frequency/yard, see your number recalculate instantly before booking.</li>
+            <li data-glyph="//"><b>Operational tone</b> — route IDs, uptime %, rain policy, gate-secure photos. Reads like a service contract.</li>
+            <li data-glyph="//"><b>4-step terminal booking</b> — full Stripe-style card form, "PAY $10 · CONFIRM," receipt panel on success.</li>
+            <li data-glyph="//"><b>Best for</b> SEO/PPC traffic that wants to skim, price, and book in a single scroll.</li>
+          </ul>
+          <div class="card-foot">
+            <div class="card-swatches">
+              <span class="swatch" style="background:var(--c02-1)"></span>
+              <span class="swatch" style="background:var(--c02-2)"></span>
+              <span class="swatch" style="background:var(--c02-3)"></span>
+              <span class="swatch" style="background:var(--c02-4)"></span>
+            </div>
+            <a class="card-cta" href="02-zero-tolerance/index.html" target="_blank">View live →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card c03">
+        <span class="card-num">03 / CARTOON</span>
+        <span class="card-tag">Best for word of mouth</span>
+        <div class="preview-frame">
+          <iframe src="03-happy-yard-co/index.html" loading="lazy" title="Happy Yard Co"></iframe>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Happy <em>Yard Co.</em></h3>
+          <div class="card-sub">MAXIMALIST · CARTOON · BAGEL FAT ONE + SNIGLET</div>
+          <p class="card-vibe">Stickers, blobs, confetti, polka. The friendliest possible read on a job everyone wishes someone else would do. Sticky-note pricing, speech-bubble reviews.</p>
+          <ul class="card-bullets">
+            <li data-glyph="✿"><b>Hot-pink + sun-yellow + sky + grass</b> — 4-color saturated palette, wobble animations, drop-shadow buttons.</li>
+            <li data-glyph="✿"><b>Meet Ryan</b> — rotated polaroid frame around the founder photo, badge stats, full FAQ accordion.</li>
+            <li data-glyph="✿"><b>"Pay 🎉 &amp; book"</b> — playful 4-step onboarding with dog-name field for the photo log.</li>
+            <li data-glyph="✿"><b>Best for</b> social, Instagram referrals, neighborhood Facebook groups — a brand people share at brunch.</li>
+          </ul>
+          <div class="card-foot">
+            <div class="card-swatches">
+              <span class="swatch" style="background:var(--c03-1)"></span>
+              <span class="swatch" style="background:var(--c03-2)"></span>
+              <span class="swatch" style="background:var(--c03-3)"></span>
+              <span class="swatch" style="background:var(--c03-4)"></span>
+            </div>
+            <a class="card-cta" href="03-happy-yard-co/index.html" target="_blank">View live →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card c04">
+        <span class="card-num">04 / CONCIERGE</span>
+        <span class="card-tag">High-AOV / estates</span>
+        <div class="preview-frame">
+          <iframe src="04-estate-concierge/index.html" loading="lazy" title="Estate Concierge"></iframe>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Estate <em>Concierge</em></h3>
+          <div class="card-sub">LUXURY · BODONI MODA + HANKEN GROTESK</div>
+          <p class="card-vibe">Navy, antique cream, brushed gold. Roman numerals on the plans, a calendar booking with timed slots, italic Bodoni headlines. The yard, as a standing — not an errand.</p>
+          <ul class="card-bullets">
+            <li data-glyph="✦"><b>Hairline gold rules &amp; numbered tiers</b> — I, II, III plans presented as memberships, not packages.</li>
+            <li data-glyph="✦"><b>Interactive concierge calendar</b> — pick a date, pick an hour, the summary updates live before payment.</li>
+            <li data-glyph="✦"><b>Founder portrait section</b> — sepia portrait of Ryan, signed note, "Seal of the House" guarantee strip.</li>
+            <li data-glyph="✦"><b>Best for</b> Leiper's Fork estates, gated HOAs, commercial property managers willing to pay for a quieter brand.</li>
+          </ul>
+          <div class="card-foot">
+            <div class="card-swatches">
+              <span class="swatch" style="background:var(--c04-1)"></span>
+              <span class="swatch" style="background:var(--c04-2)"></span>
+              <span class="swatch" style="background:var(--c04-3)"></span>
+              <span class="swatch" style="background:var(--c04-4)"></span>
+            </div>
+            <a class="card-cta" href="04-estate-concierge/index.html" target="_blank">View live →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="picks">
+  <div class="wrap">
+    <div class="picks-head">
+      <h2>The <em>ranked</em> picks.</h2>
+      <p>One honest read on which take wins which scenario. The right answer depends on where the next dollar of marketing spend is going.</p>
+    </div>
+
+    <div class="pick-list">
+      <div class="pick">
+        <div class="pick-rank">i.</div>
+        <div>
+          <div class="pick-title">For booking velocity → <em>Zero Shit Tolerance</em></div>
+          <p class="pick-rat">Live quote calculator + 4-step Stripe booking in one continuous scroll. The brutalist tone signals "you will not be sold to" — perfect for paid-search and comparison-shopping traffic.</p>
+        </div>
+        <div class="pick-best">Best for<b>Google Ads / SEO</b></div>
+        <a class="pick-link" href="02-zero-tolerance/index.html" target="_blank">Open →</a>
+      </div>
+
+      <div class="pick">
+        <div class="pick-rank">ii.</div>
+        <div>
+          <div class="pick-title">For word-of-mouth in family neighborhoods → <em>Happy Yard Co.</em></div>
+          <p class="pick-rat">The friendliest interpretation of a hard-to-talk-about service. Bright, sharable, mascot-adjacent. Reviews are bubble-speech, founder is a polaroid. People will text screenshots of this.</p>
+        </div>
+        <div class="pick-best">Best for<b>Instagram / Facebook</b></div>
+        <a class="pick-link" href="03-happy-yard-co/index.html" target="_blank">Open →</a>
+      </div>
+
+      <div class="pick">
+        <div class="pick-rank">iii.</div>
+        <div>
+          <div class="pick-title">For higher AOV &amp; HOAs → <em>Estate Concierge</em></div>
+          <p class="pick-rat">Plans framed as memberships, a calendar that lets the user reserve a specific hour, a founder note signed in italic Bodoni. Reads "premium" without being smug. The Leiper's Fork market.</p>
+        </div>
+        <div class="pick-best">Best for<b>Property mgmt / referrals</b></div>
+        <a class="pick-link" href="04-estate-concierge/index.html" target="_blank">Open →</a>
+      </div>
+
+      <div class="pick">
+        <div class="pick-rank">iv.</div>
+        <div>
+          <div class="pick-title">For a brand that wants to read like a household name → <em>The Sunday Yard</em></div>
+          <p class="pick-rat">A magazine. Drop caps. Editorial rules. The yard reframed as a Sunday-ritual standing. Slowest to convert on first visit; strongest to retain on year-over-year membership lifetime.</p>
+        </div>
+        <div class="pick-best">Best for<b>Brand / retention</b></div>
+        <a class="pick-link" href="01-sunday-yard/index.html" target="_blank">Open →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="context">
+  <div class="wrap context-grid">
+    <div>
+      <h3>What's in every mockup</h3>
+      <ul>
+        <li>Real logo, owner photograph, and service truck — harvested from the live site.</li>
+        <li>Real owner name (Ryan) and the live phone number (918) 381-6095.</li>
+        <li>Real testimonials from Anthony K., Simon A., and Shane S.</li>
+        <li>4-step onboarding form with address, household, schedule, payment.</li>
+        <li>Live order summary that recalculates with every selection.</li>
+        <li>Working Stripe-styled card form ending in a confirmation receipt.</li>
+        <li>50% off first-clean offer, applied automatically at checkout.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>What's different about each</h3>
+      <ul>
+        <li>Typography pair — Fraunces+Lora, Archivo Black+JetBrains Mono, Bagel Fat One+Sniglet, Bodoni Moda+Hanken Grotesk.</li>
+        <li>Palette — warm-earth, mono+hazard, saturated cartoon, navy-cream-gold.</li>
+        <li>Lead-gen pacing — reserve, calculator, playful signup, calendar concierge.</li>
+        <li>Voice — editorial, terminal, friendly, ceremonial.</li>
+        <li>Trust signals — letters / specs / bubbles / testimony cards.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Quick facts about the business</h3>
+      <ul>
+        <li>Founded 2019 in Franklin, TN by Ryan, the operator.</li>
+        <li>Weekly visits from $19.99 — bi-weekly and one-time also offered.</li>
+        <li>Serves Franklin, Williamson County, southern Davidson.</li>
+        <li>Properties: residential homes, HOA communities, apartments, dog parks.</li>
+        <li>No contracts. 100% satisfaction guarantee. Runs year-round.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© <b>Poop Happens 2026</b> · Four-take rebrand showcase</span>
+    <span>Phone <b>(918) 381-6095</b> · <b>hello@poophappensfranklin.com</b></span>
+    <span>Built · <b>Vanilla HTML &amp; CSS</b> · No build step</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('click',e=>{
+    if(e.target.closest('a'))return;
+    const link=card.querySelector('.card-cta');
+    if(link)window.open(link.href,'_blank');
+  });
+});
+</script>
+</body>
+</html>

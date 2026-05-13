@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Poop Happens — Happy Yards For Franklin Dogs!</title>
+<meta name="description" content="The friendliest pet-waste cleanup in Franklin, TN. Weekly visits start at $19.99. 50% off your first clean. Book and pay in 60 seconds." />
+<link rel="icon" href="../assets/favicon-1-300x300.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Sniglet:wght@400;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --pink:#ff5da2;
+  --sky:#4cc9f0;
+  --sun:#ffd23f;
+  --grass:#7bc950;
+  --cream:#fff8e7;
+  --ink:#211a35;
+  --plum:#5a3e8b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  background:var(--cream);color:var(--ink);font-family:"Sniglet",ui-rounded,sans-serif;font-size:17px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+body{
+  background-image:
+    radial-gradient(circle at 12% 8%,#ffd23f44 0,transparent 18%),
+    radial-gradient(circle at 88% 14%,#4cc9f044 0,transparent 16%),
+    radial-gradient(circle at 6% 70%,#ff5da233 0,transparent 22%),
+    radial-gradient(circle at 92% 88%,#7bc95044 0,transparent 22%);
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+
+/* CONFETTI BACKGROUND DOTS */
+.confetti{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.confetti span{
+  position:absolute;width:14px;height:14px;border-radius:50%;
+  animation:fall 12s linear infinite;opacity:.55;
+}
+.confetti span:nth-child(odd){border-radius:0;transform:rotate(30deg)}
+@keyframes fall{
+  0%{transform:translateY(-30vh) rotate(0deg);opacity:0}
+  10%{opacity:.55}
+  100%{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+
+/* TOP BAR */
+.topbar{background:var(--ink);color:var(--cream);padding:8px 0;font-family:"Sniglet",sans-serif;font-weight:800;font-size:13px;letter-spacing:.04em}
+.topbar-row{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;text-align:center}
+.topbar span{display:inline-flex;align-items:center;gap:8px}
+.topbar a{background:var(--sun);color:var(--ink);padding:2px 10px;border-radius:20px}
+
+/* NAV */
+.nav{
+  background:var(--cream);padding:18px 0;position:sticky;top:0;z-index:30;
+  border-bottom:4px dotted var(--ink);
+}
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-family:"Bagel Fat One",cursive;font-size:32px;color:var(--ink);text-decoration:none;line-height:1}
+.brand img{height:54px;width:auto;animation:wiggle 4s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.brand span small{display:block;font-family:"Sniglet",sans-serif;font-weight:800;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);margin-top:2px}
+.nav-links{display:flex;gap:8px;flex-wrap:wrap}
+.nav-links a{
+  padding:8px 16px;border-radius:30px;font-family:"Sniglet",sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.06em;
+  background:transparent;border:3px solid transparent;transition:all .2s;cursor:pointer;
+}
+.nav-links a:hover{background:var(--sun);border-color:var(--ink)}
+.cta{
+  background:var(--pink);color:var(--cream);padding:14px 22px;
+  border-radius:30px;font-family:"Sniglet",sans-serif;font-weight:800;font-size:13px;
+  text-transform:uppercase;letter-spacing:.08em;
+  border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);
+  transition:transform .15s ease,box-shadow .15s ease;cursor:pointer;
+}
+.cta:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.cta:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+
+/* HERO */
+.hero{position:relative;padding:60px 0 80px}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;position:relative}
+.hero-sticker{
+  position:absolute;background:var(--sun);color:var(--ink);
+  padding:14px 22px;border-radius:50%;font-family:"Bagel Fat One",cursive;
+  border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
+  transform:rotate(-12deg);font-size:18px;line-height:1;text-align:center;
+  z-index:5;animation:wobble 3s ease-in-out infinite;
+}
+.hero-sticker.left{top:22px;right:14%;background:var(--pink);color:var(--cream)}
+.hero-sticker.right{bottom:-30px;left:42%;background:var(--sky);transform:rotate(8deg)}
+.hero-sticker small{display:block;font-family:"Sniglet",sans-serif;font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+@keyframes wobble{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(-6deg)}}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;background:var(--grass);color:var(--cream);
+  padding:8px 18px;border-radius:30px;font-family:"Sniglet",sans-serif;font-weight:800;
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);
+  margin-bottom:22px;animation:bouncein .8s .1s ease both;
+}
+.h1{
+  font-family:"Bagel Fat One",cursive;
+  font-size:clamp(60px,11vw,160px);line-height:.88;letter-spacing:-.01em;
+  color:var(--ink);text-shadow:6px 6px 0 var(--pink),12px 12px 0 var(--sun);
+  animation:bouncein 1s .2s ease both;
+}
+.h1 .blue{color:var(--sky);display:inline-block;transform:rotate(-3deg)}
+.h1 .pinkbits{color:var(--pink);display:inline-block;transform:rotate(2deg)}
+.deck{
+  font-size:21px;font-weight:400;line-height:1.45;margin-top:24px;max-width:46ch;
+  animation:bouncein 1s .3s ease both;
+}
+.deck b{background:var(--sun);padding:0 6px;border-radius:8px}
+@keyframes bouncein{from{opacity:0;transform:translateY(40px) scale(.92)}to{opacity:1;transform:none}}
+
+.hero-ctas{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;animation:bouncein 1s .4s ease both}
+.btn-pink{
+  background:var(--pink);color:var(--cream);padding:18px 28px;border-radius:40px;
+  font-family:"Sniglet",sans-serif;font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;
+  border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);transition:transform .15s,box-shadow .15s;display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+}
+.btn-pink:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+.btn-sky{background:var(--sky);color:var(--ink);padding:18px 28px;border-radius:40px;font-family:"Sniglet",sans-serif;font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);transition:transform .15s,box-shadow .15s;display:inline-flex;align-items:center;gap:10px;cursor:pointer}
+.btn-sky:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+
+/* HERO PHOTO BLOB */
+.hero-photo-wrap{position:relative;animation:bouncein 1.2s .35s ease both}
+.hero-blob{
+  position:relative;aspect-ratio:1/1;
+  background:var(--sun);
+  border-radius:62% 38% 55% 45% / 50% 60% 40% 50%;
+  border:4px solid var(--ink);
+  box-shadow:10px 10px 0 var(--ink);
+  overflow:hidden;animation:blobmorph 14s ease-in-out infinite;
+}
+@keyframes blobmorph{
+  0%,100%{border-radius:62% 38% 55% 45% / 50% 60% 40% 50%}
+  33%{border-radius:42% 58% 64% 36% / 58% 48% 52% 42%}
+  66%{border-radius:54% 46% 38% 62% / 44% 55% 45% 56%}
+}
+.hero-blob img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;filter:saturate(1.1)}
+.hero-paws{position:absolute;font-size:32px;color:var(--pink);pointer-events:none;animation:wobble 3s ease-in-out infinite}
+.hero-paws.p1{top:-10px;left:-10px;font-size:48px;color:var(--grass)}
+.hero-paws.p2{bottom:8px;right:-14px;font-size:42px;color:var(--sky);animation-delay:.5s}
+
+/* MARQUEE */
+.marquee{background:var(--pink);color:var(--cream);padding:18px 0;border-top:4px dotted var(--ink);border-bottom:4px dotted var(--ink);overflow:hidden;font-family:"Bagel Fat One",cursive;font-size:30px;letter-spacing:.02em}
+.marquee-track{display:flex;gap:48px;white-space:nowrap;animation:slide 22s linear infinite}
+.marquee-track span{display:inline-flex;align-items:center;gap:18px}
+.marquee-track span::after{content:"★";color:var(--sun)}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SERVICES */
+.section{padding:80px 0;position:relative}
+.sec-head{text-align:center;margin-bottom:48px}
+.sec-eyebrow{
+  display:inline-block;background:var(--sky);color:var(--ink);
+  padding:6px 16px;border-radius:20px;font-family:"Sniglet",sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.12em;
+  border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);margin-bottom:18px;
+}
+.sec-h2{font-family:"Bagel Fat One",cursive;font-size:clamp(40px,7vw,82px);line-height:.95;color:var(--ink);letter-spacing:-.01em}
+.sec-h2 em{font-style:normal;color:var(--pink);position:relative;display:inline-block}
+.sec-h2 em::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:8px;background:var(--sun);z-index:-1;border-radius:8px}
+.sec-deck{font-size:18px;max-width:55ch;margin:14px auto 0;color:var(--plum)}
+
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.plan{
+  background:var(--cream);border:4px solid var(--ink);border-radius:32px;
+  padding:30px 26px;box-shadow:8px 8px 0 var(--ink);
+  position:relative;transition:transform .25s ease;
+}
+.plan:hover{transform:translateY(-6px) rotate(-1deg)}
+.plan.featured{background:var(--sky);transform:rotate(-1deg)}
+.plan.featured:hover{transform:translateY(-6px) rotate(0deg)}
+.plan-badge{
+  position:absolute;top:-16px;left:24px;background:var(--sun);color:var(--ink);
+  padding:6px 14px;border-radius:20px;border:3px solid var(--ink);font-family:"Sniglet",sans-serif;font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+}
+.plan h3{font-family:"Bagel Fat One",cursive;font-size:42px;line-height:1;margin-bottom:6px;color:var(--ink)}
+.plan h3 em{font-style:normal;color:var(--pink)}
+.plan-price{font-family:"Bagel Fat One",cursive;font-size:54px;color:var(--ink);margin:14px 0 4px;line-height:1}
+.plan-price small{font-family:"Sniglet",sans-serif;font-weight:800;font-size:14px;color:var(--plum);letter-spacing:.04em;display:block;margin-top:6px}
+.plan ul{list-style:none;margin:18px 0 22px;padding:0}
+.plan li{display:flex;gap:12px;padding:6px 0;font-size:15px;font-weight:400}
+.plan li::before{content:"✿";color:var(--pink);font-size:18px;line-height:1.2}
+.plan.featured li::before{color:var(--sun)}
+.plan-pay{
+  display:block;text-align:center;background:var(--ink);color:var(--cream);
+  padding:14px 18px;border-radius:24px;font-family:"Sniglet",sans-serif;font-weight:800;font-size:14px;
+  letter-spacing:.08em;text-transform:uppercase;border:3px solid var(--ink);
+  transition:background .2s, color .2s;cursor:pointer;
+}
+.plan-pay:hover{background:var(--pink);color:var(--cream)}
+.plan.featured .plan-pay{background:var(--pink)}
+.plan.featured .plan-pay:hover{background:var(--ink)}
+
+/* TYPES OF PROPERTIES */
+.types{background:var(--ink);color:var(--cream);padding:80px 0;border-top:6px dotted var(--cream);border-bottom:6px dotted var(--cream)}
+.types .sec-eyebrow{background:var(--sun);color:var(--ink)}
+.types .sec-h2{color:var(--cream)}
+.types .sec-h2 em{color:var(--sun)}
+.types .sec-h2 em::after{background:var(--pink)}
+.types-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px}
+.type-card{
+  background:var(--cream);color:var(--ink);padding:24px 20px;border-radius:24px;
+  border:4px solid var(--cream);box-shadow:6px 6px 0 var(--pink);
+  text-align:center;transition:transform .2s ease;
+}
+.type-card:hover{transform:translateY(-4px)}
+.type-card .icon{font-family:"Bagel Fat One",cursive;font-size:64px;line-height:1;margin-bottom:10px}
+.type-card .ic-house{color:var(--grass)}
+.type-card .ic-hoa{color:var(--pink)}
+.type-card .ic-apt{color:var(--sky)}
+.type-card .ic-park{color:var(--sun)}
+.type-card h4{font-family:"Bagel Fat One",cursive;font-size:24px;letter-spacing:-.01em;margin-bottom:6px}
+.type-card p{font-size:14px;color:var(--plum)}
+
+/* MEET RYAN */
+.meet{padding:80px 0}
+.meet-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+.meet-photo{
+  aspect-ratio:1/1;background:var(--grass);
+  border-radius:40px;border:4px solid var(--ink);box-shadow:10px 10px 0 var(--ink);
+  overflow:hidden;position:relative;transform:rotate(-2deg);
+}
+.meet-photo img{width:100%;height:100%;object-fit:cover}
+.meet-photo::after{
+  content:"HI! I'M RYAN 👋";position:absolute;bottom:14px;left:14px;
+  background:var(--cream);color:var(--ink);padding:8px 14px;border-radius:24px;
+  font-family:"Bagel Fat One",cursive;font-size:18px;border:3px solid var(--ink);
+}
+.meet-content h2{font-family:"Bagel Fat One",cursive;font-size:clamp(42px,6vw,72px);line-height:.95;letter-spacing:-.01em;margin-bottom:18px}
+.meet-content h2 em{font-style:normal;color:var(--pink)}
+.meet-content p{font-size:17px;margin-bottom:14px;color:var(--ink)}
+.meet-stats{display:flex;gap:18px;margin-top:28px;flex-wrap:wrap}
+.stat{
+  background:var(--sun);padding:16px 20px;border-radius:24px;
+  border:4px solid var(--ink);box-shadow:5px 5px 0 var(--ink);min-width:120px;
+}
+.stat b{display:block;font-family:"Bagel Fat One",cursive;font-size:38px;line-height:1;color:var(--ink)}
+.stat span{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--plum);margin-top:4px}
+.stat.pink{background:var(--pink);color:var(--cream)}
+.stat.pink b{color:var(--cream)}
+.stat.pink span{color:var(--cream)}
+.stat.sky{background:var(--sky)}
+.stat.grass{background:var(--grass);color:var(--cream)}
+.stat.grass b{color:var(--cream)}
+.stat.grass span{color:var(--cream)}
+
+/* REVIEWS */
+.reviews{background:var(--sun);padding:80px 0;border-top:6px dotted var(--ink);border-bottom:6px dotted var(--ink);position:relative;overflow:hidden}
+.reviews .sec-h2 em::after{background:var(--pink)}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.bubble{
+  background:var(--cream);padding:28px 26px;border-radius:32px;
+  border:4px solid var(--ink);box-shadow:8px 8px 0 var(--ink);position:relative;
+}
+.bubble::before{
+  content:"";position:absolute;left:36px;bottom:-24px;
+  width:32px;height:32px;background:var(--cream);
+  border-right:4px solid var(--ink);border-bottom:4px solid var(--ink);
+  transform:rotate(45deg);
+}
+.bubble.b2{background:var(--pink);color:var(--cream);transform:rotate(2deg)}
+.bubble.b2::before{background:var(--pink)}
+.bubble.b3{background:var(--sky);transform:rotate(-2deg)}
+.bubble.b3::before{background:var(--sky)}
+.bubble .stars{color:var(--pink);font-size:18px;letter-spacing:2px;margin-bottom:10px}
+.bubble.b2 .stars{color:var(--sun)}
+.bubble.b3 .stars{color:var(--pink)}
+.bubble p{font-size:16px;line-height:1.5;margin-bottom:18px}
+.bubble .author{font-family:"Bagel Fat One",cursive;font-size:22px;letter-spacing:-.01em}
+.bubble .author small{display:block;font-family:"Sniglet",sans-serif;font-weight:400;font-size:13px;text-transform:none;letter-spacing:0;opacity:.7;margin-top:2px}
+
+/* ONBOARDING */
+.onboard{padding:80px 0;background:linear-gradient(180deg,var(--cream) 0%,var(--sky)44 60%, var(--cream) 100%)}
+.onboard .sec-h2 em::after{background:var(--grass)}
+.book-card{
+  background:var(--cream);border:4px solid var(--ink);border-radius:36px;
+  box-shadow:12px 12px 0 var(--ink);overflow:hidden;
+  display:grid;grid-template-columns:1.3fr 1fr;margin-top:36px;
+}
+.book-left{padding:36px 36px 32px;border-right:4px dashed var(--ink)}
+.steps{display:flex;gap:6px;margin-bottom:24px}
+.step-dot{
+  flex:1;padding:10px 4px;text-align:center;background:var(--cream);
+  border:3px solid var(--ink);border-radius:20px;font-family:"Sniglet",sans-serif;font-weight:800;
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--plum);
+}
+.step-dot.active{background:var(--pink);color:var(--cream)}
+.step-dot.done{background:var(--grass);color:var(--cream)}
+.book-panel{display:none}
+.book-panel.show{display:block;animation:bouncein .4s ease both}
+.book-panel h3{font-family:"Bagel Fat One",cursive;font-size:32px;line-height:1;margin-bottom:6px;color:var(--ink)}
+.book-panel h3 em{font-style:normal;color:var(--pink)}
+.book-panel .lead{font-size:15px;color:var(--plum);margin-bottom:22px}
+.bk-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.bk-field label{font-family:"Sniglet",sans-serif;font-weight:800;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.bk-field input,.bk-field select{
+  background:var(--cream);border:3px solid var(--ink);border-radius:14px;
+  padding:14px 16px;font-family:"Sniglet",sans-serif;font-size:16px;color:var(--ink);outline:none;
+  transition:box-shadow .15s ease;
+}
+.bk-field input:focus,.bk-field select:focus{box-shadow:4px 4px 0 var(--pink)}
+.bk-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.choice-row label{cursor:pointer}
+.choice-row label input{display:none}
+.choice-row label span{
+  display:block;text-align:center;padding:14px 8px;border:3px solid var(--ink);border-radius:16px;
+  background:var(--cream);font-family:"Bagel Fat One",cursive;font-size:22px;color:var(--ink);
+  transition:background .15s, color .15s;
+}
+.choice-row label small{display:block;font-family:"Sniglet",sans-serif;font-weight:800;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--plum);margin-top:2px}
+.choice-row label:has(input:checked) span{background:var(--pink);color:var(--cream)}
+.choice-row label:has(input:checked) small{color:var(--cream)}
+.choice-row.three{grid-template-columns:repeat(3,1fr)}
+.bk-actions{margin-top:24px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.bk-back{
+  background:var(--cream);color:var(--ink);border:3px solid var(--ink);
+  padding:14px 22px;border-radius:24px;font-family:"Sniglet",sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;cursor:pointer;
+  transition:transform .15s,box-shadow .15s;box-shadow:4px 4px 0 var(--ink);
+}
+.bk-back:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.bk-next{
+  background:var(--pink);color:var(--cream);border:3px solid var(--ink);padding:14px 22px;
+  border-radius:24px;font-family:"Sniglet",sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;cursor:pointer;
+  box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s;
+}
+.bk-next:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+
+.book-right{
+  padding:36px;background:var(--ink);color:var(--cream);position:relative;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.book-right::before{
+  content:"♥";position:absolute;top:14px;right:18px;color:var(--pink);font-size:34px;
+}
+.summary-title{font-family:"Bagel Fat One",cursive;font-size:24px;margin-bottom:18px;color:var(--sun)}
+.sm-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:2px dotted #fff8e733;font-size:14px}
+.sm-row b{font-family:"Sniglet",sans-serif;font-weight:800;color:var(--cream)}
+.sm-row span{color:#fff8e7aa}
+.sm-disc b{color:var(--grass)}
+.sm-total{margin-top:22px;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;border-top:3px solid var(--sun)}
+.sm-total span{font-family:"Bagel Fat One",cursive;font-size:18px;color:var(--cream)}
+.sm-total b{font-family:"Bagel Fat One",cursive;font-size:54px;color:var(--sun);letter-spacing:-.02em}
+.sm-fine{margin-top:14px;font-size:12px;line-height:1.5;color:#fff8e7aa}
+.sm-badge{
+  margin-top:14px;display:inline-flex;align-items:center;gap:6px;background:var(--grass);color:var(--ink);
+  padding:6px 14px;border-radius:20px;font-family:"Sniglet",sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.08em;width:fit-content;
+}
+
+/* CARD */
+.cardbox{margin-top:6px;padding:18px;background:var(--cream);border:3px dashed var(--pink);border-radius:18px}
+.cardbox .pay-head{display:flex;justify-content:space-between;font-family:"Sniglet",sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--pink);margin-bottom:12px}
+.cardbox .pay-total{margin-top:18px;padding-top:14px;border-top:3px dashed var(--pink);display:flex;justify-content:space-between;align-items:baseline}
+.cardbox .pay-total span{font-family:"Sniglet",sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+.cardbox .pay-total b{font-family:"Bagel Fat One",cursive;font-size:40px;color:var(--pink)}
+
+.thanks{display:none;background:var(--grass);color:var(--cream);padding:42px;border-radius:36px;border:4px solid var(--ink);box-shadow:12px 12px 0 var(--ink);margin-top:36px;text-align:center}
+.thanks.show{display:block;animation:bouncein .5s ease both}
+.thanks h3{font-family:"Bagel Fat One",cursive;font-size:54px;line-height:1;margin-bottom:14px;color:var(--cream);text-shadow:4px 4px 0 var(--ink)}
+.thanks p{font-size:16px;max-width:50ch;margin:0 auto 10px}
+.thanks .conf{display:inline-block;margin-top:18px;background:var(--ink);color:var(--sun);padding:10px 18px;border-radius:22px;font-family:"Bagel Fat One",cursive;font-size:14px;letter-spacing:.06em}
+
+/* FAQ */
+.faq{padding:80px 0}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
+details{
+  background:var(--cream);border:4px solid var(--ink);border-radius:24px;padding:18px 22px;box-shadow:6px 6px 0 var(--ink);
+}
+details[open]{background:var(--sun)}
+summary{font-family:"Bagel Fat One",cursive;font-size:22px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:"Bagel Fat One",cursive;font-size:30px;line-height:1;color:var(--pink);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:12px;font-size:15px}
+
+/* FOOTER */
+footer{background:var(--ink);color:var(--cream);padding:60px 0 28px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:32px}
+.foot-brand{display:flex;align-items:center;gap:14px;font-family:"Bagel Fat One",cursive;font-size:30px;margin-bottom:14px}
+.foot-brand img{height:48px;width:auto}
+.foot-grid h5{font-family:"Bagel Fat One",cursive;font-size:18px;color:var(--sun);margin-bottom:10px}
+.foot-grid p,.foot-grid a{font-size:14px;color:#fff8e7cc;display:block;margin-bottom:4px}
+.foot-base{border-top:2px dotted #fff8e744;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:"Sniglet",sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#fff8e7aa}
+
+@media (max-width:880px){
+  .nav-links{display:none}
+  .hero-inner{grid-template-columns:1fr;gap:30px}
+  .hero-sticker{display:none}
+  .plans,.reviews-grid,.types-grid,.faq-grid{grid-template-columns:1fr}
+  .book-card{grid-template-columns:1fr}
+  .book-left{border-right:none;border-bottom:4px dashed var(--ink)}
+  .meet-grid{grid-template-columns:1fr}
+  .bk-row{grid-template-columns:1fr}
+  .choice-row{grid-template-columns:repeat(2,1fr)}
+  .choice-row.three{grid-template-columns:repeat(3,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="confetti" aria-hidden="true">
+  <span style="left:5%;background:var(--pink);animation-delay:0s"></span>
+  <span style="left:14%;background:var(--sun);animation-delay:2s"></span>
+  <span style="left:24%;background:var(--sky);animation-delay:4s"></span>
+  <span style="left:34%;background:var(--grass);animation-delay:1.5s"></span>
+  <span style="left:46%;background:var(--pink);animation-delay:5s"></span>
+  <span style="left:58%;background:var(--sun);animation-delay:3s"></span>
+  <span style="left:70%;background:var(--sky);animation-delay:6.5s"></span>
+  <span style="left:82%;background:var(--grass);animation-delay:7s"></span>
+  <span style="left:92%;background:var(--pink);animation-delay:8s"></span>
+</div>
+
+<div class="topbar">
+  <div class="topbar-row">
+    <span>📍 Franklin, TN &amp; Williamson Co.</span>
+    <span>📞 Call <a href="tel:9183816095">(918) 381-6095</a></span>
+    <span>🐾 Open 24 Hours</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap nav-row">
+    <a href="#" class="brand"><img src="../assets/logo.png" alt="Poop Happens" /><span>Poop Happens<small>Happy Yard Co.</small></span></a>
+    <div class="nav-links">
+      <a href="#plans">Plans</a>
+      <a href="#meet">Meet Ryan</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#book" class="cta">Book &amp; Pay →</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-sticker left">50%<br/>OFF!<small>1st clean</small></div>
+    <div>
+      <span class="eyebrow">★ Franklin's friendliest yard service</span>
+      <h1 class="h1">Happy <span class="blue">yards.</span><br/>Happy <span class="pinkbits">dogs.</span><br/>Happy you.</h1>
+      <p class="deck">Weekly visits start at just <b>$19.99</b>. We scoop, double-bag, and haul it all off — same day every week, rain or shine. No contracts. 100% satisfaction guarantee. Easy peasy.</p>
+      <div class="hero-ctas">
+        <a href="#book" class="btn-pink">🐶 Book &amp; Pay — 50% Off</a>
+        <a href="#plans" class="btn-sky">See the Plans →</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <span class="hero-paws p1">🐾</span>
+      <div class="hero-blob"><img src="../assets/owner-with-dog.png" alt="Ryan with a happy client dog" /></div>
+      <span class="hero-paws p2">🐾</span>
+      <div class="hero-sticker right">2,500+<br/>scoops<small>this month!</small></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>NO CONTRACTS</span><span>50% OFF FIRST CLEAN</span><span>SAME DAY WEEKLY</span><span>RAIN OR SHINE</span><span>FRANKLIN BORN</span><span>SATISFACTION GUARANTEED</span>
+    <span>NO CONTRACTS</span><span>50% OFF FIRST CLEAN</span><span>SAME DAY WEEKLY</span><span>RAIN OR SHINE</span><span>FRANKLIN BORN</span><span>SATISFACTION GUARANTEED</span>
+  </div>
+</div>
+
+<section class="section" id="plans">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">Pick your plan</span>
+      <h2 class="sec-h2">Three <em>simple</em> plans.<br/>One clean yard.</h2>
+      <p class="sec-deck">All plans include full-yard scooping, double-bagged disposal off-site, gate-secure photo, and our satisfaction guarantee. No contracts, ever.</p>
+    </div>
+    <div class="plans">
+      <article class="plan">
+        <span class="plan-badge">★ One-Time</span>
+        <h3>Spring <em>Cleanup</em></h3>
+        <p style="color:var(--plum);font-size:14px">For yards that got away from you.</p>
+        <div class="plan-price">$89<small>One-time · within 48 hrs</small></div>
+        <ul>
+          <li>Same-week scheduling</li>
+          <li>Before &amp; after photos</li>
+          <li>Up to ½ acre included</li>
+          <li>No contract, no pressure</li>
+        </ul>
+        <a href="#book" data-plan="onetime" class="plan-pay">Book Now — $44.50 today →</a>
+      </article>
+      <article class="plan featured">
+        <span class="plan-badge">★ Most popular</span>
+        <h3>Weekly <em>Visits</em></h3>
+        <p style="color:var(--plum);font-size:14px">The happiest yard you'll have.</p>
+        <div class="plan-price">$19.99<small>Per visit · same day weekly</small></div>
+        <ul>
+          <li>Full yard, edge-to-fence</li>
+          <li>Skip a week, no charge</li>
+          <li>Gate-secure photo each visit</li>
+          <li>Satisfaction guaranteed</li>
+        </ul>
+        <a href="#book" data-plan="weekly" class="plan-pay">Book Now — $9.99 today →</a>
+      </article>
+      <article class="plan">
+        <span class="plan-badge">★ Light load</span>
+        <h3>Bi-Weekly <em>Visits</em></h3>
+        <p style="color:var(--plum);font-size:14px">For the quieter household.</p>
+        <div class="plan-price">$29.99<small>Per visit · every other week</small></div>
+        <ul>
+          <li>Locked weekday</li>
+          <li>Bonus rinse on visits 2 &amp; 4</li>
+          <li>Perimeter sweep</li>
+          <li>Convert to weekly anytime</li>
+        </ul>
+        <a href="#book" data-plan="biweekly" class="plan-pay">Book Now — $14.99 today →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="types">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">Who we clean for</span>
+      <h2 class="sec-h2">From <em>backyards</em> to dog parks.</h2>
+    </div>
+    <div class="types-grid">
+      <div class="type-card">
+        <div class="icon ic-house">🏡</div>
+        <h4>Homes</h4>
+        <p>Backyards, side yards, patios. Any size.</p>
+      </div>
+      <div class="type-card">
+        <div class="icon ic-hoa">🏘️</div>
+        <h4>HOAs</h4>
+        <p>Common dog runs &amp; lawns. Bulk pricing.</p>
+      </div>
+      <div class="type-card">
+        <div class="icon ic-apt">🏢</div>
+        <h4>Apartments</h4>
+        <p>Pet-relief stations, on-site dog parks.</p>
+      </div>
+      <div class="type-card">
+        <div class="icon ic-park">🌳</div>
+        <h4>Dog Parks</h4>
+        <p>Municipal &amp; private. Scheduled sweeps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="wrap meet-grid">
+    <div class="meet-photo"><img src="../assets/owner-with-dog.png" alt="Ryan, owner of Poop Happens" /></div>
+    <div class="meet-content">
+      <h2>Meet <em>Ryan</em> — your scooper-in-chief.</h2>
+      <p>Locally owned and operated. Seven years of professional cleaning experience and a strong work ethic. Ryan started Poop Happens in 2019 with a single truck and a hand-drawn route across Franklin.</p>
+      <p>The mission is simple: keep yards clean, fresh, and safe with reliable dog waste removal. One happy yard at a time.</p>
+      <div class="meet-stats">
+        <div class="stat"><b>2019</b><span>Founded</span></div>
+        <div class="stat pink"><b>1,400+</b><span>Happy yards</span></div>
+        <div class="stat sky"><b>7 yrs</b><span>Experience</span></div>
+        <div class="stat grass"><b>100%</b><span>Guarantee</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">Real reviews</span>
+      <h2 class="sec-h2">Franklin folks are <em>obsessed</em>.</h2>
+    </div>
+    <div class="reviews-grid">
+      <article class="bubble">
+        <div class="stars">★★★★★</div>
+        <p>Quick response time and very professional service. The pricing is great, and the owner truly cares about quality service and building relationships with the customer. Already suggested to other friends to use this company's service!</p>
+        <div class="author">Anthony K.<small>Westhaven</small></div>
+      </article>
+      <article class="bubble b2">
+        <div class="stars">★★★★★</div>
+        <p>What a great service! Ryan is a stand-up guy and is very professional. It's very easy to schedule, and he is very consistent as well. I would recommend this to anyone — especially those who have a gag reflex toward dog poop!</p>
+        <div class="author">Simon A.<small>Cool Springs</small></div>
+      </article>
+      <article class="bubble b3">
+        <div class="stars">★★★★★</div>
+        <p>Friendly and professional service. Showed up on time and did a great job. Would recommend to a friend.</p>
+        <div class="author">Shane S.<small>Berry Farms</small></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="onboard" id="book">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">60-second booking</span>
+      <h2 class="sec-h2">Book &amp; pay in <em>four</em> tiny steps.</h2>
+      <p class="sec-deck">Tell us about your yard, lock in a weekday, drop a card on file. We'll be there before you can say "where's the leash."</p>
+    </div>
+
+    <div class="book-card">
+      <div class="book-left">
+        <div class="steps" id="stepBar">
+          <div class="step-dot active" data-step="1">1. About you</div>
+          <div class="step-dot" data-step="2">2. The yard</div>
+          <div class="step-dot" data-step="3">3. Schedule</div>
+          <div class="step-dot" data-step="4">4. Pay 🎉</div>
+        </div>
+
+        <form id="bookForm" novalidate>
+          <div class="book-panel show" data-panel="1">
+            <h3>Hi friend! <em>Who's this?</em></h3>
+            <p class="lead">Just the basics so Ryan knows where to bring the truck.</p>
+            <div class="bk-field">
+              <label>Your name</label>
+              <input id="bName" required placeholder="First &amp; Last" />
+            </div>
+            <div class="bk-row">
+              <div class="bk-field"><label>Email</label><input id="bEmail" type="email" required placeholder="you@email.com" /></div>
+              <div class="bk-field"><label>Phone</label><input id="bPhone" type="tel" required placeholder="(615) 555-0100" /></div>
+            </div>
+            <div class="bk-field"><label>Street address</label><input id="bAddr" required placeholder="1234 Boyd Mill Ave" /></div>
+            <div class="bk-row">
+              <div class="bk-field"><label>City</label><input id="bCity" required value="Franklin" /></div>
+              <div class="bk-field"><label>ZIP</label><input id="bZip" required maxlength="5" pattern="[0-9]{5}" placeholder="37064" /></div>
+            </div>
+            <div class="bk-actions">
+              <span></span>
+              <button type="button" class="bk-next" data-go="2">Continue 🐾</button>
+            </div>
+          </div>
+
+          <div class="book-panel" data-panel="2">
+            <h3>Tell us about the <em>yard!</em></h3>
+            <p class="lead">More dogs &amp; bigger yards add a little to the rate. That's it.</p>
+            <div class="bk-field">
+              <label>How many dogs?</label>
+              <div class="choice-row">
+                <label><input type="radio" name="dogs" value="1" checked /><span>1<small>· $0</small></span></label>
+                <label><input type="radio" name="dogs" value="2" /><span>2<small>· +$5</small></span></label>
+                <label><input type="radio" name="dogs" value="3" /><span>3<small>· +$10</small></span></label>
+                <label><input type="radio" name="dogs" value="4" /><span>4+<small>· +$15</small></span></label>
+              </div>
+            </div>
+            <div class="bk-field">
+              <label>Yard size?</label>
+              <div class="choice-row">
+                <label><input type="radio" name="yard" value="small" checked /><span>S<small>&lt;¼ acre</small></span></label>
+                <label><input type="radio" name="yard" value="medium" /><span>M<small>¼–½</small></span></label>
+                <label><input type="radio" name="yard" value="large" /><span>L<small>½–1</small></span></label>
+                <label><input type="radio" name="yard" value="xl" /><span>XL<small>1+ acre</small></span></label>
+              </div>
+            </div>
+            <div class="bk-field"><label>Dog's name(s) — for the photo log</label><input id="bDogName" placeholder="Biscuit, Bourbon, Maple…" /></div>
+            <div class="bk-actions">
+              <button type="button" class="bk-back" data-go="1">← Back</button>
+              <button type="button" class="bk-next" data-go="3">Continue 🦴</button>
+            </div>
+          </div>
+
+          <div class="book-panel" data-panel="3">
+            <h3>When should we <em>swing by?</em></h3>
+            <p class="lead">Pick how often + which weekday. We never miss our day.</p>
+            <div class="bk-field">
+              <label>How often?</label>
+              <div class="choice-row three">
+                <label><input type="radio" name="freq" value="weekly" checked /><span>Weekly<small>from $19.99</small></span></label>
+                <label><input type="radio" name="freq" value="biweekly" /><span>Bi-Weekly<small>from $29.99</small></span></label>
+                <label><input type="radio" name="freq" value="onetime" /><span>One-time<small>from $89</small></span></label>
+              </div>
+            </div>
+            <div class="bk-row">
+              <div class="bk-field"><label>Preferred weekday</label><select id="bDay"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select></div>
+              <div class="bk-field"><label>First visit</label><select id="bFirst"><option>This week</option><option>Next week</option><option>In two weeks</option></select></div>
+            </div>
+            <div class="bk-field"><label>Anything to know? (gate code, fence notes)</label><input id="bNotes" placeholder="Side gate sticks. Dog is friendly!" /></div>
+            <div class="bk-actions">
+              <button type="button" class="bk-back" data-go="2">← Back</button>
+              <button type="button" class="bk-next" data-go="4">Continue 🎉</button>
+            </div>
+          </div>
+
+          <div class="book-panel" data-panel="4">
+            <h3>Last step! <em>Drop a card.</em></h3>
+            <p class="lead">Half-off the first clean is charged today. Regular rate after each visit. Pause any time.</p>
+            <div class="cardbox">
+              <div class="pay-head"><span>💳 Card on file</span><span>🔒 Secured by Stripe</span></div>
+              <div class="bk-field"><label>Card number</label><input id="bCard" placeholder="4242 4242 4242 4242" /></div>
+              <div class="bk-row">
+                <div class="bk-field"><label>MM / YY</label><input id="bExp" placeholder="04 / 28" /></div>
+                <div class="bk-field"><label>CVC</label><input id="bCvc" placeholder="123" /></div>
+              </div>
+              <div class="bk-field"><label>Billing ZIP</label><input id="bZipCard" maxlength="5" placeholder="37064" /></div>
+              <div class="pay-total"><span>Charged today (50% off)</span><b id="payNow">$10.00</b></div>
+            </div>
+            <div class="bk-actions">
+              <button type="button" class="bk-back" data-go="3">← Back</button>
+              <button type="submit" class="bk-next">🎉 Pay <span id="payAmtBtn">$10.00</span> &amp; book →</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <aside class="book-right">
+        <h4 class="summary-title">★ Your order</h4>
+        <div class="sm-row"><span>Plan</span><b id="bsPlan">Weekly</b></div>
+        <div class="sm-row"><span>Dogs</span><b id="bsDogs">1</b></div>
+        <div class="sm-row"><span>Yard</span><b id="bsYard">&lt;¼ acre</b></div>
+        <div class="sm-row"><span>Day</span><b id="bsDay">Monday</b></div>
+        <div class="sm-row"><span>Base rate</span><b id="bsBase">$19.99</b></div>
+        <div class="sm-row"><span>Add-ons</span><b id="bsAdj">+$0.00</b></div>
+        <div class="sm-row sm-disc"><span>First clean 50% off</span><b id="bsDisc">−$10.00</b></div>
+        <div class="sm-total"><span>Today</span><b id="bsTotal">$10.00</b></div>
+        <span class="sm-badge">🔒 Stripe · 256-bit secure</span>
+        <p class="sm-fine">After your first half-price visit, we charge your card the day after each visit at the regular rate. Skip a week any time — no charge.</p>
+      </aside>
+    </div>
+
+    <div class="thanks" id="thanks">
+      <h3>🎉 You're in! Yard is on the route.</h3>
+      <p>We just emailed the visit window. Your card was charged for the half-price first clean only. Ryan will text the morning of your first visit.</p>
+      <p>Need anything? Reply to the email, or call <a href="tel:9183816095" style="color:var(--sun)">(918) 381-6095</a>.</p>
+      <div class="conf">★ Confirmation # PH-<span id="thConf">000000</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">Common questions</span>
+      <h2 class="sec-h2">Things folks <em>ask</em>.</h2>
+    </div>
+    <div class="faq-grid">
+      <details open>
+        <summary>What does the service include?</summary>
+        <p>A thorough scooping of your yard, patio, or outdoor space — all visible waste, double-bagged and disposed of off-site. Weekly, bi-weekly, one-time. Whatever you need.</p>
+      </details>
+      <details>
+        <summary>How much does it cost?</summary>
+        <p>Weekly visits start at $19.99. Pricing scales gently with number of dogs and yard size. Use the booking flow above for a live price.</p>
+      </details>
+      <details>
+        <summary>Do you service my area?</summary>
+        <p>We cover Franklin, TN and most of Williamson County, plus southern Davidson. If you're nearby and not sure, drop a ZIP in the booking flow — we'll confirm before charging anything.</p>
+      </details>
+      <details>
+        <summary>What about winter or bad weather?</summary>
+        <p>We run year-round in light rain or snow. For severe weather we reschedule at no extra charge.</p>
+      </details>
+      <details>
+        <summary>HOAs and apartments?</summary>
+        <p>Yes — we offer bulk pricing and property-specific plans for HOAs, apartments, and commercial properties. Reach out for a custom quote.</p>
+      </details>
+      <details>
+        <summary>How often should I schedule?</summary>
+        <p>Most one- or two-dog households go weekly. Larger packs sometimes choose twice-weekly. Quieter yards do fine on bi-weekly.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><img src="../assets/logo-white-1.png" alt="Poop Happens" />Poop Happens</div>
+        <p>Locally owned and operated since 2019. Bringing happy yards to dogs (and humans) all across Franklin.</p>
+      </div>
+      <div>
+        <h5>Service area</h5>
+        <p>Franklin, TN</p>
+        <p>Williamson County</p>
+        <p>South Davidson</p>
+      </div>
+      <div>
+        <h5>Say hi</h5>
+        <p><a href="tel:9183816095">(918) 381-6095</a></p>
+        <p><a href="mailto:hello@poophappensfranklin.com">hello@poophappensfranklin.com</a></p>
+        <p>Open 24 hrs for messages</p>
+      </div>
+      <div>
+        <h5>The promise</h5>
+        <p>No contracts</p>
+        <p>100% satisfaction</p>
+        <p>Rain or shine</p>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© Poop Happens 2026 · Set in Bagel Fat One + Sniglet</span>
+      <span>When poop happens, we handle it!</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const state={dogs:1,yard:'small',freq:'weekly'};
+const baseByFreq={weekly:19.99,biweekly:29.99,onetime:89};
+const dogAdd={1:0,2:5,3:10,4:15};
+const yardAdd={small:0,medium:8,large:15,xl:28};
+const yardLabel={small:'<¼ acre',medium:'¼–½ acre',large:'½–1 acre',xl:'1+ acre'};
+const freqLabel={weekly:'Weekly',biweekly:'Bi-Weekly',onetime:'One-time'};
+const freqUnit={weekly:' / wk',biweekly:' / 2 wk',onetime:' one-time'};
+
+const form=document.getElementById('bookForm');
+const panels=form.querySelectorAll('.book-panel');
+const dots=document.querySelectorAll('#stepBar .step-dot');
+
+function go(n){
+  panels.forEach(p=>p.classList.remove('show'));
+  form.querySelector(`[data-panel="${n}"]`).classList.add('show');
+  dots.forEach(d=>{const s=Number(d.dataset.step);d.classList.toggle('active',s===n);d.classList.toggle('done',s<n)});
+  document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+form.querySelectorAll('[data-go]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const target=Number(b.dataset.go);
+    const cur=form.querySelector('.book-panel.show');
+    if(target>Number(cur.dataset.panel)){
+      const inputs=cur.querySelectorAll('input[required]');
+      let ok=true;
+      inputs.forEach(i=>{if(!i.value){ok=false;i.style.borderColor='var(--pink)'}});
+      if(!ok)return;
+    }
+    go(target);
+  });
+});
+
+form.addEventListener('change',e=>{
+  const t=e.target;
+  if(t.name==='dogs')state.dogs=Number(t.value);
+  if(t.name==='yard')state.yard=t.value;
+  if(t.name==='freq')state.freq=t.value;
+  recalc();
+});
+
+document.getElementById('bDay').addEventListener('change',e=>{document.getElementById('bsDay').textContent=e.target.value});
+
+function recalc(){
+  const base=baseByFreq[state.freq];
+  const adj=dogAdd[state.dogs]+yardAdd[state.yard];
+  const reg=+(base+adj).toFixed(2);
+  const today=+(reg/2).toFixed(2);
+  document.getElementById('bsPlan').textContent=freqLabel[state.freq];
+  document.getElementById('bsDogs').textContent=state.dogs+(state.dogs==4?'+':'');
+  document.getElementById('bsYard').textContent=yardLabel[state.yard];
+  document.getElementById('bsBase').textContent='$'+base.toFixed(2)+freqUnit[state.freq];
+  document.getElementById('bsAdj').textContent='+$'+adj.toFixed(2);
+  document.getElementById('bsDisc').textContent='−$'+today.toFixed(2);
+  document.getElementById('bsTotal').textContent='$'+today.toFixed(2);
+  document.getElementById('payNow').textContent='$'+today.toFixed(2);
+  document.getElementById('payAmtBtn').textContent='$'+today.toFixed(2);
+}
+recalc();
+
+document.querySelectorAll('[data-plan]').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const v=a.dataset.plan;
+    state.freq=v;
+    const radio=form.querySelector(`input[name="freq"][value="${v}"]`);
+    if(radio)radio.checked=true;
+    recalc();
+  });
+});
+
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  document.querySelector('.book-card').style.display='none';
+  document.getElementById('stepBar').style.display='none';
+  const t=document.getElementById('thanks');
+  t.classList.add('show');
+  document.getElementById('thConf').textContent=String(Math.floor(100000+Math.random()*900000));
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const h=a.getAttribute('href');
+    if(h&&h.length>1){e.preventDefault();document.querySelector(h)?.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>

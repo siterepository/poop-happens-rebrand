@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Poop Happens — Dog Poop Removal · Franklin, TN</title>
+<meta name="description" content="Weekly pet-waste removal, Franklin TN. Live quote calculator, instant booking, card on file. From $19.99/visit. 50% off first clean. No contracts." />
+<link rel="icon" href="../assets/favicon-1-300x300.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#0a0a0a;--bg-2:#111;--fg:#f5f4ef;
+  --hazard:#ffd60a;--blood:#d62828;--concrete:#6c6c6c;
+  --line:#f5f4ef22;--good:#22c55e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--fg);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 2px, #ffffff04 2px 3px),
+    repeating-linear-gradient(90deg, transparent 0 80px, #ffffff04 80px 81px);
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+
+/* STATUS BAR */
+.status{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--fg);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.status-row{display:flex;justify-content:space-between;align-items:stretch;height:34px}
+.status-cell{padding:0 16px;display:flex;align-items:center;border-right:1px solid var(--line);gap:8px;white-space:nowrap}
+.status-cell:last-child{border-right:none}
+.blink{width:8px;height:8px;background:var(--hazard);border-radius:50%;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{background:transparent}}
+
+/* NAV */
+.navrow{border-bottom:1px solid var(--fg);background:var(--bg)}
+.navrow-inner{display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;padding:14px 24px}
+.logo{display:flex;align-items:center;gap:14px;font-family:"Archivo Black",sans-serif;font-weight:900;font-size:22px;letter-spacing:-.02em;text-transform:uppercase;background:var(--fg);color:var(--bg);padding:6px 14px;position:relative;border:2px solid var(--fg)}
+.logo img{height:36px;width:auto;filter:invert(1)}
+.logo::before{content:"R";position:absolute;top:-7px;right:-7px;width:14px;height:14px;background:var(--hazard);color:var(--bg);font-size:9px;display:flex;align-items:center;justify-content:center}
+.nav{display:flex;gap:24px;justify-content:center;font-size:12px;letter-spacing:.08em;text-transform:uppercase;flex-wrap:wrap}
+.nav a{padding:8px 0;border-bottom:2px solid transparent;transition:border-color .15s,color .15s;cursor:pointer}
+.nav a:hover{border-bottom-color:var(--hazard);color:var(--hazard)}
+.callbtn{display:inline-flex;align-items:center;gap:8px;background:var(--hazard);color:var(--bg);padding:10px 18px;font-family:"Archivo Black",sans-serif;font-size:13px;letter-spacing:.04em;text-transform:uppercase;border:2px solid var(--hazard);transition:background .15s, color .15s;cursor:pointer}
+.callbtn:hover{background:var(--bg);color:var(--hazard)}
+
+/* HERO */
+.hero{border-bottom:1px solid var(--fg);padding:40px 24px 56px;position:relative;overflow:hidden;display:grid;grid-template-columns:1.3fr .8fr;gap:48px;align-items:center}
+.hero-left{position:relative}
+.hero-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;animation:in .6s .05s ease both}
+.tag{border:1px solid var(--fg);padding:4px 10px;font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+.tag.hazard{background:var(--hazard);color:var(--bg);border-color:var(--hazard);font-family:"Archivo Black",sans-serif}
+.tag.blood{background:var(--blood);color:var(--fg);border-color:var(--blood);font-family:"Archivo Black",sans-serif}
+.h1{font-family:"Archivo Black",sans-serif;font-size:clamp(54px,12vw,180px);line-height:.88;letter-spacing:-.03em;text-transform:uppercase;animation:in .8s .1s ease both}
+.h1 .strike{position:relative;display:inline-block;color:var(--hazard)}
+.h1 .strike::after{content:"";position:absolute;left:-4%;right:-4%;top:50%;height:.12em;background:var(--bg);transform:translateY(-50%) rotate(-3deg)}
+.h1 .blockword{display:inline-block;background:var(--fg);color:var(--bg);padding:0 .12em;transform:skew(-4deg)}
+.sub-deck{font-size:17px;line-height:1.5;max-width:48ch;font-weight:500;margin-top:28px;animation:in 1s .2s ease both}
+.sub-deck b{background:var(--hazard);color:var(--bg);padding:0 4px;font-family:"Archivo Black",sans-serif}
+.hero-ctas{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;animation:in 1s .3s ease both}
+.btn-pri{background:var(--hazard);color:var(--bg);border:2px solid var(--hazard);padding:16px 24px;font-family:"Archivo Black",sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .15s, color .15s}
+.btn-pri:hover{background:var(--bg);color:var(--hazard)}
+.btn-sec{background:transparent;color:var(--fg);border:2px solid var(--fg);padding:16px 24px;font-family:"Archivo Black",sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .15s, color .15s}
+.btn-sec:hover{background:var(--fg);color:var(--bg)}
+
+.hero-right{position:relative;animation:in 1s .4s ease both}
+.hero-photo{
+  border:2px solid var(--fg);aspect-ratio:1/1;overflow:hidden;position:relative;
+  background:linear-gradient(135deg,#222 0%,#000 100%);
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.2) brightness(.9)}
+.hero-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.85));z-index:1}
+.hero-photo-meta{position:absolute;bottom:14px;left:14px;right:14px;z-index:2;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--hazard)}
+.hero-photo-meta b{font-family:"Archivo Black",sans-serif}
+.hero-corner{position:absolute;top:-8px;left:-8px;background:var(--blood);color:var(--fg);font-family:"Archivo Black",sans-serif;font-size:12px;padding:6px 10px;letter-spacing:.04em;text-transform:uppercase;z-index:3;transform:rotate(-3deg)}
+
+/* SCROLLER */
+.scroller{overflow:hidden;border-top:1px solid var(--fg);border-bottom:1px solid var(--fg);background:var(--hazard);color:var(--bg)}
+.scroller-track{display:flex;gap:48px;padding:14px 0;white-space:nowrap;font-family:"Archivo Black",sans-serif;font-size:18px;letter-spacing:.05em;text-transform:uppercase;animation:scroll 28s linear infinite}
+.scroller-track span{display:inline-flex;align-items:center;gap:14px}
+.scroller-track span::after{content:"◆";color:var(--blood)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* TRUCK STRIP */
+.truck{padding:60px 24px;border-bottom:1px solid var(--fg);display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;background:#0d0d0d}
+.truck-photo{border:2px solid var(--fg);padding:20px;background:#000;position:relative}
+.truck-photo img{width:100%;filter:contrast(1.1)}
+.truck-photo::before{content:"// FLEET-01";position:absolute;top:-1px;left:-1px;background:var(--fg);color:var(--bg);padding:4px 10px;font-size:10px;letter-spacing:.18em}
+.truck-content h3{font-family:"Archivo Black",sans-serif;font-size:clamp(28px,4vw,52px);line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:16px}
+.truck-content h3 em{font-style:normal;color:var(--hazard);background:#000;padding:0 4px}
+.truck-content p{font-size:14px;line-height:1.6;margin-bottom:14px;color:#dcdcdc}
+.truck-content .specs{margin-top:18px;border-top:1px solid var(--line)}
+.truck-content .specs div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+.truck-content .specs div b{color:var(--hazard)}
+
+/* SECTIONS */
+.sec-head{display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:end;margin-bottom:36px;padding-bottom:14px;border-bottom:1px solid var(--fg)}
+.sec-num{font-family:"Archivo Black",sans-serif;font-size:48px;line-height:.9;color:var(--hazard)}
+.sec-title{font-family:"Archivo Black",sans-serif;font-size:clamp(28px,4vw,52px);text-transform:uppercase;letter-spacing:-.01em;line-height:.95}
+.sec-meta{font-size:11px;letter-spacing:.15em;text-transform:uppercase;text-align:right;color:var(--concrete)}
+
+/* SERVICES */
+.services{padding:60px 24px;border-bottom:1px solid var(--fg)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--fg)}
+.svc{padding:28px 24px;border-right:1px solid var(--fg);display:flex;flex-direction:column;gap:14px;background:var(--bg);transition:background .2s, color .2s;position:relative}
+.svc:last-child{border-right:none}
+.svc:hover{background:var(--hazard);color:var(--bg)}
+.svc:hover .svc-line{border-color:var(--bg)}
+.svc-tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--hazard)}
+.svc:hover .svc-tag{color:var(--blood)}
+.svc-name{font-family:"Archivo Black",sans-serif;font-size:32px;line-height:1;text-transform:uppercase;letter-spacing:-.02em}
+.svc-price{font-size:14px;font-weight:500;letter-spacing:.05em}
+.svc-price b{font-family:"Archivo Black",sans-serif;font-size:22px;letter-spacing:0;margin-right:6px}
+.svc-line{height:1px;background:var(--fg);width:100%;opacity:.5}
+.svc ul{list-style:none;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.svc li{padding-left:18px;position:relative}
+.svc li::before{content:"//";position:absolute;left:0;font-weight:700;color:var(--hazard)}
+.svc:hover li::before{color:var(--blood)}
+.svc-pay{margin-top:8px;background:transparent;border:2px solid currentColor;padding:10px;font-family:"Archivo Black",sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;text-align:center;color:inherit;transition:background .15s, color .15s;display:block}
+.svc-pay:hover{background:var(--bg);color:var(--hazard)}
+.svc:hover .svc-pay:hover{background:var(--bg);color:var(--hazard)}
+
+/* QUOTE + BOOK */
+.calc{padding:72px 24px;border-bottom:1px solid var(--fg);background:#0d0d0d}
+.calc-shell{border:2px solid var(--fg);display:grid;grid-template-columns:1.1fr 1fr;position:relative;background:var(--bg)}
+.calc-shell::before{content:"PH://QUOTE.LIVE — V2.4";position:absolute;top:-1px;left:-1px;background:var(--fg);color:var(--bg);padding:6px 14px;font-size:11px;letter-spacing:.15em;z-index:2}
+.calc-shell::after{content:"● ● ●";position:absolute;top:6px;right:14px;color:var(--hazard);font-size:12px;letter-spacing:.4em;z-index:2}
+.calc-form{padding:50px 28px 28px;display:flex;flex-direction:column;gap:18px;border-right:1px solid var(--fg)}
+.calc-row{display:flex;flex-direction:column;gap:8px}
+.calc-row label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--concrete)}
+.calc-options{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.calc-opt{background:transparent;border:1px solid var(--fg);color:var(--fg);padding:14px 8px;font-family:"JetBrains Mono",monospace;font-size:13px;cursor:pointer;text-align:center;transition:background .15s,color .15s}
+.calc-opt:hover{background:var(--fg);color:var(--bg)}
+.calc-opt.active{background:var(--hazard);color:var(--bg);border-color:var(--hazard);font-weight:700}
+.calc-options.frequency,.calc-options.yard{grid-template-columns:repeat(3,1fr)}
+.calc-input{background:#000;border:1px solid var(--fg);color:var(--fg);padding:14px;font-family:"JetBrains Mono",monospace;font-size:14px;outline:none;width:100%}
+.calc-input:focus{border-color:var(--hazard)}
+
+.calc-output{padding:50px 28px 28px;display:flex;flex-direction:column;justify-content:space-between;background:#000}
+.calc-head{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--concrete);margin-bottom:8px}
+.calc-figure{font-family:"Archivo Black",sans-serif;font-size:clamp(56px,8vw,112px);line-height:.95;letter-spacing:-.04em;color:var(--hazard)}
+.calc-figure small{font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.1em;color:var(--fg);display:block;margin-top:8px;font-weight:500;text-transform:uppercase}
+.calc-spec{font-size:12px;line-height:1.7;border-top:1px dashed var(--line);padding-top:14px;margin-top:14px}
+.calc-spec span{display:flex;justify-content:space-between;padding:2px 0}
+.calc-spec span b{color:var(--hazard);font-weight:500}
+.calc-spec span.disc b{color:var(--good)}
+.calc-submit{margin-top:16px;background:var(--hazard);color:var(--bg);border:2px solid var(--hazard);padding:18px;font-family:"Archivo Black",sans-serif;font-size:14px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;width:100%;transition:background .15s,color .15s}
+.calc-submit:hover{background:var(--bg);color:var(--hazard)}
+
+/* ONBOARDING — full pay flow */
+.onboard{padding:72px 24px;border-bottom:1px solid var(--fg);background:#0a0a0a}
+.steps{display:flex;border:2px solid var(--fg);margin-bottom:24px}
+.step-pill{flex:1;padding:14px 8px;text-align:center;font-family:"Archivo Black",sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-right:1px solid var(--fg);color:var(--concrete);background:#000}
+.step-pill:last-child{border-right:none}
+.step-pill.active{background:var(--hazard);color:var(--bg)}
+.step-pill.done{background:var(--fg);color:var(--bg)}
+
+.book-shell{display:grid;grid-template-columns:1.3fr .9fr;gap:0;border:2px solid var(--fg);background:#000}
+.book-form{padding:36px 28px;border-right:1px solid var(--fg)}
+.book-form .panel{display:none}
+.book-form .panel.show{display:block;animation:in .35s ease both}
+.book-form h3{font-family:"Archivo Black",sans-serif;font-size:28px;line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:6px}
+.book-form .lead{font-size:13px;color:var(--concrete);margin-bottom:24px;letter-spacing:.04em}
+.bk-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.bk-field label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--hazard)}
+.bk-field input,.bk-field select{background:#000;border:1px solid var(--fg);color:var(--fg);padding:12px 14px;font-family:"JetBrains Mono",monospace;font-size:14px;outline:none}
+.bk-field input:focus,.bk-field select:focus{border-color:var(--hazard)}
+.bk-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bk-actions{margin-top:24px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.bk-back{background:transparent;color:var(--fg);border:2px solid var(--fg);padding:14px 22px;font-family:"Archivo Black",sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.bk-back:hover{background:var(--fg);color:var(--bg)}
+.bk-next{background:var(--hazard);color:var(--bg);border:2px solid var(--hazard);padding:14px 22px;font-family:"Archivo Black",sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.bk-next:hover{background:var(--bg);color:var(--hazard)}
+
+.card-block{border:1px solid var(--hazard);padding:18px;background:rgba(255,214,10,.04);margin-top:6px}
+.card-block .pay-head{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--hazard);margin-bottom:14px;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+.pay-amount{margin-top:18px;padding-top:18px;border-top:1px dashed var(--hazard);display:flex;justify-content:space-between;align-items:baseline}
+.pay-amount .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg)}
+.pay-amount .num{font-family:"Archivo Black",sans-serif;font-size:36px;color:var(--hazard);letter-spacing:-.02em}
+
+/* SIDE SUMMARY */
+.book-summary{padding:36px 28px;background:#0f0f0f;display:flex;flex-direction:column;gap:6px}
+.book-summary h4{font-family:"Archivo Black",sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--hazard);margin-bottom:16px}
+.bs-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--line);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.bs-row b{color:var(--fg);font-family:"Archivo Black",sans-serif;letter-spacing:.05em}
+.bs-row span{color:var(--concrete)}
+.bs-total{margin-top:18px;padding-top:18px;border-top:2px solid var(--hazard);display:flex;justify-content:space-between;align-items:baseline}
+.bs-total span{font-family:"Archivo Black",sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg)}
+.bs-total b{font-family:"Archivo Black",sans-serif;font-size:42px;color:var(--hazard);letter-spacing:-.02em}
+.bs-fine{font-size:11px;color:var(--concrete);margin-top:14px;line-height:1.5}
+.bs-badge{margin-top:14px;display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--good);padding:6px 10px;border:1px solid var(--good);width:fit-content}
+
+.thanks-block{display:none;padding:48px;border:2px solid var(--good);background:rgba(34,197,94,.05)}
+.thanks-block.show{display:block;animation:in .5s ease both}
+.thanks-block h3{font-family:"Archivo Black",sans-serif;font-size:38px;text-transform:uppercase;line-height:1;letter-spacing:-.02em;color:var(--good);margin-bottom:14px}
+.thanks-block p{font-size:13px;line-height:1.6;margin-bottom:8px;color:var(--fg)}
+.thanks-block .conf{margin-top:18px;padding:10px 14px;background:#000;border:1px dashed var(--good);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.15em;color:var(--good);text-transform:uppercase;display:inline-block}
+
+/* LOG TESTIMONIALS */
+.log{padding:60px 24px;border-bottom:1px solid var(--fg)}
+.log-list{display:flex;flex-direction:column;border:1px solid var(--fg);background:#000}
+.log-row{display:grid;grid-template-columns:120px 90px 1fr 140px;gap:24px;padding:18px 22px;border-bottom:1px solid var(--line);font-size:13px;line-height:1.5;align-items:start}
+.log-row:last-child{border-bottom:none}
+.log-row:hover{background:#161616}
+.log-time{color:var(--concrete);font-size:11px;letter-spacing:.05em}
+.log-tag{font-family:"Archivo Black",sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--hazard)}
+.log-body{color:var(--fg)}
+.log-by{text-align:right;color:var(--concrete);font-size:11px;letter-spacing:.05em}
+
+/* COVERAGE */
+.coverage{padding:60px 24px;border-bottom:1px solid var(--fg)}
+.cov-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--fg)}
+.cov-cell{aspect-ratio:1.4/1;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px;display:flex;flex-direction:column;justify-content:space-between;font-size:11px;letter-spacing:.08em;text-transform:uppercase;position:relative}
+.cov-cell.on{background:var(--hazard);color:var(--bg)}
+.cov-cell.on::before{content:"";position:absolute;top:8px;right:8px;width:8px;height:8px;background:var(--bg);border-radius:50%}
+.cov-cell.soon{background:#1a1a1a;color:var(--fg)}
+.cov-cell.soon::before{content:"";position:absolute;top:8px;right:8px;width:8px;height:8px;background:var(--concrete);border-radius:50%}
+.cov-cell.off{background:transparent;color:var(--concrete)}
+.cov-cell strong{font-family:"Archivo Black",sans-serif;font-size:14px;letter-spacing:-.01em;text-transform:uppercase}
+.cov-cell em{font-style:normal;font-size:10px;font-weight:500}
+
+/* FOOTER */
+footer{padding:48px 24px 28px;border-top:1px solid var(--fg);background:#000}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:32px}
+.foot-mark{display:flex;align-items:center;gap:12px;background:var(--fg);color:var(--bg);padding:8px 12px;width:fit-content;margin-bottom:12px}
+.foot-mark img{height:32px;filter:invert(1)}
+.foot-mark b{font-family:"Archivo Black",sans-serif;font-size:18px;letter-spacing:-.02em;text-transform:uppercase}
+.foot-grid h5{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--hazard);margin-bottom:10px;font-family:"Archivo Black",sans-serif}
+.foot-grid p,.foot-grid a{font-size:13px;line-height:1.6;display:block;color:var(--fg);margin-bottom:2px}
+.foot-base{border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--concrete)}
+
+@media (max-width:880px){
+  .status-row{flex-wrap:wrap;height:auto}
+  .status-cell{border-right:none;border-bottom:1px solid var(--line);width:100%}
+  .navrow-inner{grid-template-columns:1fr;gap:14px;text-align:center}
+  .nav{justify-content:flex-start}
+  .hero{grid-template-columns:1fr;gap:30px}
+  .svc-grid{grid-template-columns:1fr;border-right:1px solid var(--fg)}
+  .svc{border-right:none;border-bottom:1px solid var(--fg)}
+  .svc:last-child{border-bottom:none}
+  .calc-shell,.book-shell{grid-template-columns:1fr}
+  .calc-form,.book-form{border-right:none;border-bottom:1px solid var(--fg)}
+  .truck{grid-template-columns:1fr}
+  .log-row{grid-template-columns:1fr;gap:6px}
+  .log-by{text-align:left}
+  .cov-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .sec-head{grid-template-columns:1fr;gap:12px}
+  .sec-meta{text-align:left}
+  .bk-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="status">
+  <div class="status-row">
+    <div class="status-cell"><span class="blink"></span>SYSTEM ONLINE</div>
+    <div class="status-cell">RTE 03 · FRANKLIN · 37064</div>
+    <div class="status-cell">5 TRUCKS · 1,412 YARDS</div>
+    <div class="status-cell">CALL <a href="tel:9183816095" style="color:var(--hazard);margin-left:4px">918.381.6095</a></div>
+  </div>
+</div>
+
+<header class="navrow">
+  <div class="navrow-inner">
+    <a href="#" class="logo"><img src="../assets/logo.png" alt="Poop Happens" />POOP/HAPPENS</a>
+    <nav class="nav">
+      <a href="#service">/SERVICE</a>
+      <a href="#calc">/QUOTE</a>
+      <a href="#book">/BOOK</a>
+      <a href="#log">/REVIEWS</a>
+      <a href="#coverage">/COVERAGE</a>
+    </nav>
+    <a href="#book" class="callbtn">▶ BOOK &amp; PAY</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tags">
+      <span class="tag">EST. 2019</span>
+      <span class="tag">FRANKLIN, TN</span>
+      <span class="tag hazard">NO CONTRACTS</span>
+      <span class="tag">5 ROUTES</span>
+      <span class="tag blood">50% OFF FIRST CLEAN</span>
+    </div>
+    <h1 class="h1"><span class="blockword">ZERO</span> SHIT<br/><span class="strike">TOLERANCE.</span></h1>
+    <p class="sub-deck">Weekly pet waste removal for Franklin and the rest of Williamson County. Same day every week, full yard in under twenty minutes, hauled out with us. <b>$19.99/visit.</b> No contracts. No subscription you have to call to cancel.</p>
+    <div class="hero-ctas">
+      <a href="#book" class="btn-pri">▶ BOOK NOW — 50% OFF</a>
+      <a href="#calc" class="btn-sec">RUN A LIVE QUOTE</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-corner">RYAN · OPERATOR</div>
+    <div class="hero-photo">
+      <img src="../assets/owner-with-dog.png" alt="Ryan, owner of Poop Happens" />
+      <div class="hero-photo-meta"><b>FRA-03</b><span>05.13.26 · 09:42</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="scroller">
+  <div class="scroller-track">
+    <span>NO CONTRACTS</span><span>50% OFF FIRST CLEAN</span><span>FRANKLIN BORN</span><span>5 ROUTES</span><span>MON · TUE · WED · THU · FRI</span><span>RAIN OR SHINE</span><span>$19.99 / VISIT</span>
+    <span>NO CONTRACTS</span><span>50% OFF FIRST CLEAN</span><span>FRANKLIN BORN</span><span>5 ROUTES</span><span>MON · TUE · WED · THU · FRI</span><span>RAIN OR SHINE</span><span>$19.99 / VISIT</span>
+  </div>
+</div>
+
+<section class="truck">
+  <div class="truck-photo"><img src="../assets/truck-1.png" alt="The Poop Happens service truck" /></div>
+  <div class="truck-content">
+    <h3>ONE TRUCK. ONE <em>ROUTE</em>. SAME DAY EVERY WEEK.</h3>
+    <p>Locally owned and operated since 2019. Two-person technician crew per truck, seven years of cleaning experience between them. Route never moves, never re-shuffles, never bumps you for a more important household.</p>
+    <div class="specs">
+      <div><span>SERVICE DAYS</span><b>MON—FRI</b></div>
+      <div><span>AVG TIME ON SITE</span><b>17 MIN</b></div>
+      <div><span>WEATHER POLICY</span><b>RUNS YEAR-ROUND</b></div>
+      <div><span>UPTIME 2025</span><b>99.6%</b></div>
+      <div><span>CONTRACTS</span><b>NONE · EVER</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="service">
+  <div class="sec-head">
+    <div class="sec-num">/01</div>
+    <h2 class="sec-title">THREE PLANS. ONE JOB. DONE.</h2>
+    <div class="sec-meta">UPDATED 05.13.2026</div>
+  </div>
+  <div class="svc-grid">
+    <article class="svc">
+      <span class="svc-tag">/STANDARD</span>
+      <div class="svc-name">WEEKLY</div>
+      <div class="svc-price"><b>$19.99</b>/visit · same day weekly</div>
+      <div class="svc-line"></div>
+      <ul>
+        <li>Full yard, edge to fence</li>
+        <li>Sealed bag, hauled out</li>
+        <li>Gate-secure photo</li>
+        <li>Skip a week, no charge</li>
+      </ul>
+      <a class="svc-pay" href="#book" data-plan="weekly">▶ BOOK · $9.99 TODAY</a>
+    </article>
+    <article class="svc">
+      <span class="svc-tag">/LIGHT</span>
+      <div class="svc-name">BI-WEEKLY</div>
+      <div class="svc-price"><b>$29.99</b>/visit · every other week</div>
+      <div class="svc-line"></div>
+      <ul>
+        <li>Every other weekday, locked</li>
+        <li>Bonus rinse on visits 2 &amp; 4</li>
+        <li>Perimeter sweep</li>
+        <li>Skip a week, no charge</li>
+      </ul>
+      <a class="svc-pay" href="#book" data-plan="biweekly">▶ BOOK · $14.99 TODAY</a>
+    </article>
+    <article class="svc">
+      <span class="svc-tag">/ONE-OFF</span>
+      <div class="svc-name">SPRING CLEAN</div>
+      <div class="svc-price"><b>$89+</b>/visit · within 48 hrs</div>
+      <div class="svc-line"></div>
+      <ul>
+        <li>Same-week scheduling</li>
+        <li>Before/after photos</li>
+        <li>Up to ½ acre included</li>
+        <li>Convert to weekly anytime</li>
+      </ul>
+      <a class="svc-pay" href="#book" data-plan="onetime">▶ BOOK · $44.50 TODAY</a>
+    </article>
+  </div>
+</section>
+
+<section class="calc" id="calc">
+  <div class="sec-head">
+    <div class="sec-num">/02</div>
+    <h2 class="sec-title">LIVE QUOTE. INSTANT.</h2>
+    <div class="sec-meta">RECALCULATES INSTANTLY</div>
+  </div>
+  <div class="calc-shell">
+    <form class="calc-form" id="calcForm">
+      <div class="calc-row">
+        <label>// DOGS</label>
+        <div class="calc-options" id="dogsOpt">
+          <button type="button" class="calc-opt active" data-val="1">1</button>
+          <button type="button" class="calc-opt" data-val="2">2</button>
+          <button type="button" class="calc-opt" data-val="3">3</button>
+          <button type="button" class="calc-opt" data-val="4">4+</button>
+        </div>
+      </div>
+      <div class="calc-row">
+        <label>// FREQUENCY</label>
+        <div class="calc-options frequency" id="freqOpt">
+          <button type="button" class="calc-opt active" data-val="weekly">WEEKLY</button>
+          <button type="button" class="calc-opt" data-val="biweekly">BI-WEEKLY</button>
+          <button type="button" class="calc-opt" data-val="onetime">ONE-TIME</button>
+        </div>
+      </div>
+      <div class="calc-row">
+        <label>// YARD SIZE</label>
+        <div class="calc-options yard" id="yardOpt">
+          <button type="button" class="calc-opt active" data-val="small">&lt;¼ ACRE</button>
+          <button type="button" class="calc-opt" data-val="medium">¼ — ½</button>
+          <button type="button" class="calc-opt" data-val="large">½+ ACRE</button>
+        </div>
+      </div>
+    </form>
+    <div class="calc-output">
+      <div>
+        <div class="calc-head">// YOUR QUOTE · LIVE</div>
+        <div class="calc-figure"><span id="quoteFig">$19.99</span><small id="quoteUnit">PER WEEKLY VISIT</small></div>
+        <div class="calc-spec">
+          <span>BASE RATE <b id="specBase">$19.99</b></span>
+          <span>DOG MULTIPLIER <b id="specDog">×1.00</b></span>
+          <span>YARD MULTIPLIER <b id="specYard">×1.00</b></span>
+          <span class="disc">FIRST VISIT (50% OFF) <b id="specFirst">$10.00</b></span>
+        </div>
+      </div>
+      <a href="#book" class="calc-submit">▶ TAKE IT TO BOOKING</a>
+    </div>
+  </div>
+</section>
+
+<section class="onboard" id="book">
+  <div class="sec-head">
+    <div class="sec-num">/03</div>
+    <h2 class="sec-title">BOOK &amp; PAY. 60 SECONDS.</h2>
+    <div class="sec-meta">PCI · SECURED VIA STRIPE</div>
+  </div>
+  <div class="steps" id="stepBar">
+    <div class="step-pill active" data-step="1">01 · ADDRESS</div>
+    <div class="step-pill" data-step="2">02 · HOUSEHOLD</div>
+    <div class="step-pill" data-step="3">03 · SCHEDULE</div>
+    <div class="step-pill" data-step="4">04 · PAY</div>
+  </div>
+  <div class="book-shell" id="bookShell">
+    <form class="book-form" id="bookForm" novalidate>
+
+      <div class="panel show" data-panel="1">
+        <h3>// ADDRESS</h3>
+        <p class="lead">SERVICE LOCATION + CONTACT. WE VERIFY ZONE BEFORE CHARGING.</p>
+        <div class="bk-field">
+          <label>FULL NAME</label>
+          <input id="bName" type="text" required placeholder="FIRST LAST" />
+        </div>
+        <div class="bk-row">
+          <div class="bk-field">
+            <label>EMAIL</label>
+            <input id="bEmail" type="email" required placeholder="you@example.com" />
+          </div>
+          <div class="bk-field">
+            <label>PHONE</label>
+            <input id="bPhone" type="tel" required placeholder="(615) 555-0100" />
+          </div>
+        </div>
+        <div class="bk-field">
+          <label>STREET ADDRESS</label>
+          <input id="bAddr" type="text" required placeholder="1234 BOYD MILL AVE" />
+        </div>
+        <div class="bk-row">
+          <div class="bk-field">
+            <label>CITY</label>
+            <input id="bCity" type="text" required value="FRANKLIN" />
+          </div>
+          <div class="bk-field">
+            <label>ZIP</label>
+            <input id="bZip" type="text" required maxlength="5" pattern="[0-9]{5}" placeholder="37064" />
+          </div>
+        </div>
+        <div class="bk-actions">
+          <span></span>
+          <button type="button" class="bk-next" data-go="2">CONTINUE ▶</button>
+        </div>
+      </div>
+
+      <div class="panel" data-panel="2">
+        <h3>// HOUSEHOLD</h3>
+        <p class="lead">DOG COUNT + YARD SIZE. ADJUSTS YOUR RATE.</p>
+        <div class="bk-field">
+          <label>DOGS</label>
+          <div class="calc-options" id="bDogs">
+            <button type="button" class="calc-opt active" data-val="1">1</button>
+            <button type="button" class="calc-opt" data-val="2">2</button>
+            <button type="button" class="calc-opt" data-val="3">3</button>
+            <button type="button" class="calc-opt" data-val="4">4+</button>
+          </div>
+        </div>
+        <div class="bk-field">
+          <label>YARD SIZE</label>
+          <div class="calc-options yard" id="bYard">
+            <button type="button" class="calc-opt active" data-val="small">&lt;¼ ACRE</button>
+            <button type="button" class="calc-opt" data-val="medium">¼ — ½</button>
+            <button type="button" class="calc-opt" data-val="large">½ — 1</button>
+          </div>
+        </div>
+        <div class="bk-field">
+          <label>DOG NAME(S) — OPTIONAL</label>
+          <input id="bDogName" type="text" placeholder="BISCUIT, BOURBON, MAPLE" />
+        </div>
+        <div class="bk-actions">
+          <button type="button" class="bk-back" data-go="1">◀ BACK</button>
+          <button type="button" class="bk-next" data-go="3">CONTINUE ▶</button>
+        </div>
+      </div>
+
+      <div class="panel" data-panel="3">
+        <h3>// SCHEDULE</h3>
+        <p class="lead">PICK FREQUENCY + WEEKDAY. WE LOCK IT FOR LIFE OF SERVICE.</p>
+        <div class="bk-field">
+          <label>FREQUENCY</label>
+          <div class="calc-options frequency" id="bFreq">
+            <button type="button" class="calc-opt active" data-val="weekly">WEEKLY</button>
+            <button type="button" class="calc-opt" data-val="biweekly">BI-WEEKLY</button>
+            <button type="button" class="calc-opt" data-val="onetime">ONE-TIME</button>
+          </div>
+        </div>
+        <div class="bk-row">
+          <div class="bk-field">
+            <label>WEEKDAY</label>
+            <select id="bDay">
+              <option>MONDAY</option><option>TUESDAY</option><option>WEDNESDAY</option><option>THURSDAY</option><option>FRIDAY</option>
+            </select>
+          </div>
+          <div class="bk-field">
+            <label>FIRST VISIT</label>
+            <select id="bFirst">
+              <option>THIS WEEK</option><option>NEXT WEEK</option><option>IN TWO WEEKS</option>
+            </select>
+          </div>
+        </div>
+        <div class="bk-field">
+          <label>GATE / NOTES</label>
+          <input id="bNotes" type="text" placeholder="SIDE GATE STICKS. DOG IS FRIENDLY." />
+        </div>
+        <div class="bk-actions">
+          <button type="button" class="bk-back" data-go="2">◀ BACK</button>
+          <button type="button" class="bk-next" data-go="4">CONTINUE ▶</button>
+        </div>
+      </div>
+
+      <div class="panel" data-panel="4">
+        <h3>// PAY</h3>
+        <p class="lead">CARD ON FILE. CHARGED DAY AFTER EACH VISIT. PAUSE ANYTIME.</p>
+        <div class="card-block">
+          <div class="pay-head">
+            <span>CARD DETAILS</span>
+            <span>● SECURED · STRIPE</span>
+          </div>
+          <div class="bk-field">
+            <label>CARD NUMBER</label>
+            <input id="bCard" type="text" placeholder="4242 4242 4242 4242" />
+          </div>
+          <div class="bk-row">
+            <div class="bk-field">
+              <label>EXPIRY</label>
+              <input id="bExp" type="text" placeholder="MM / YY" />
+            </div>
+            <div class="bk-field">
+              <label>CVC</label>
+              <input id="bCvc" type="text" placeholder="123" />
+            </div>
+          </div>
+          <div class="bk-field">
+            <label>BILLING ZIP</label>
+            <input id="bZipCard" type="text" placeholder="37064" maxlength="5" />
+          </div>
+          <div class="pay-amount">
+            <span class="label">CHARGED TODAY · 50% OFF</span>
+            <span class="num" id="payNow">$10.00</span>
+          </div>
+        </div>
+        <div class="bk-actions">
+          <button type="button" class="bk-back" data-go="3">◀ BACK</button>
+          <button type="submit" class="bk-next">▶ PAY <span id="payAmtBtn">$10.00</span> · CONFIRM</button>
+        </div>
+      </div>
+
+    </form>
+    <aside class="book-summary">
+      <h4>// ORDER SUMMARY</h4>
+      <div class="bs-row"><span>PLAN</span><b id="bsPlan">WEEKLY</b></div>
+      <div class="bs-row"><span>DOGS</span><b id="bsDogs">1</b></div>
+      <div class="bs-row"><span>YARD</span><b id="bsYard">&lt;¼ ACRE</b></div>
+      <div class="bs-row"><span>WEEKDAY</span><b id="bsDay">MONDAY</b></div>
+      <div class="bs-row"><span>BASE</span><b id="bsBase">$19.99</b></div>
+      <div class="bs-row"><span>+ ADD-ONS</span><b id="bsAdj">+$0.00</b></div>
+      <div class="bs-row"><span>FIRST CLEAN (50% OFF)</span><b id="bsDisc" style="color:var(--good)">−$10.00</b></div>
+      <div class="bs-total">
+        <span>DUE TODAY</span>
+        <b id="bsTotal">$10.00</b>
+      </div>
+      <span class="bs-badge">● PCI · STRIPE · 256-BIT TLS</span>
+      <p class="bs-fine">CARD CHARGED ONCE TODAY AT HALF RATE. AFTER FIRST VISIT, REGULAR RATE CHARGES DAY-AFTER EACH VISIT. SKIP A WEEK ANY TIME — REPLY "SKIP".</p>
+    </aside>
+  </div>
+
+  <div class="thanks-block" id="thanksBlock">
+    <h3>▶ BOOKED. ROUTE FRA-03 ASSIGNED.</h3>
+    <p>YOUR HALF-PRICE FIRST VISIT IS SCHEDULED FOR THE WEEKDAY YOU SELECTED. WE'LL EMAIL THE EXACT WINDOW WITHIN THE HOUR.</p>
+    <p>YOUR CARD WAS CHARGED <b id="thChg">$10.00</b>. NEXT CHARGE WILL OCCUR THE DAY AFTER YOUR NEXT VISIT, AT THE REGULAR RATE. PAUSE OR CANCEL ANY TIME — REPLY TO THE EMAIL OR CALL 918.381.6095.</p>
+    <div class="conf">CONFIRMATION # PH-<span id="thConf">000000</span> · 50% DISCOUNT APPLIED</div>
+  </div>
+</section>
+
+<section class="log" id="log">
+  <div class="sec-head">
+    <div class="sec-num">/04</div>
+    <h2 class="sec-title">FIELD LOG. REAL CLIENTS.</h2>
+    <div class="sec-meta">VERIFIED 90-DAY</div>
+  </div>
+  <div class="log-list">
+    <div class="log-row">
+      <div class="log-time">05.09 / 09:42</div>
+      <div class="log-tag">★★★★★</div>
+      <div class="log-body">Quick response. Professional. Pricing is great. The owner truly cares about quality service and building relationships with the customer. Already passed his name to other friends.</div>
+      <div class="log-by">ANTHONY K.<br/>Westhaven</div>
+    </div>
+    <div class="log-row">
+      <div class="log-time">05.06 / 14:17</div>
+      <div class="log-tag">★★★★★</div>
+      <div class="log-body">Ryan is a stand-up guy and very professional. Easy to schedule and consistent. Would recommend to anyone — especially anyone with a gag reflex for dog poop.</div>
+      <div class="log-by">SIMON A.<br/>Cool Springs</div>
+    </div>
+    <div class="log-row">
+      <div class="log-time">04.30 / 11:04</div>
+      <div class="log-tag">★★★★★</div>
+      <div class="log-body">Friendly and professional service. Showed up on time and did a great job. Would recommend.</div>
+      <div class="log-by">SHANE S.<br/>Berry Farms</div>
+    </div>
+    <div class="log-row">
+      <div class="log-time">04.22 / 08:51</div>
+      <div class="log-tag">★★★★★ · HOA</div>
+      <div class="log-body">Hired for the common dog area, 42 units. Added a Tuesday morning sweep. Resident complaints before: weekly. Resident complaints since: zero.</div>
+      <div class="log-by">BERRY FARMS HOA<br/>Property Mgmt.</div>
+    </div>
+  </div>
+</section>
+
+<section class="coverage" id="coverage">
+  <div class="sec-head">
+    <div class="sec-num">/05</div>
+    <h2 class="sec-title">COVERAGE GRID.</h2>
+    <div class="sec-meta">12 ZONES · 5 ROUTES</div>
+  </div>
+  <div class="cov-grid">
+    <div class="cov-cell on"><strong>WESTHAVEN</strong><em>MON · ACTIVE</em></div>
+    <div class="cov-cell on"><strong>COOL SPRINGS</strong><em>TUE · ACTIVE</em></div>
+    <div class="cov-cell on"><strong>FIELDSTONE</strong><em>MON · ACTIVE</em></div>
+    <div class="cov-cell on"><strong>BERRY FARMS</strong><em>FRI · ACTIVE</em></div>
+    <div class="cov-cell on"><strong>CAROTHERS</strong><em>TUE · ACTIVE</em></div>
+    <div class="cov-cell on"><strong>BOYD MILL</strong><em>MON · ACTIVE</em></div>
+    <div class="cov-cell on"><strong>MCKAY'S MILL</strong><em>WED · ACTIVE</em></div>
+    <div class="cov-cell on"><strong>LEIPER'S FORK</strong><em>FRI · ACTIVE</em></div>
+    <div class="cov-cell soon"><strong>THOMPSON'S ST</strong><em>FRI · 1 SLOT</em></div>
+    <div class="cov-cell soon"><strong>SPRING HILL N</strong><em>THU · WAITLIST</em></div>
+    <div class="cov-cell soon"><strong>NOLENSVILLE</strong><em>THU · WAITLIST</em></div>
+    <div class="cov-cell off"><strong>OUTSIDE 25 MI</strong><em>NOT COVERED</em></div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-mark"><img src="../assets/logo.png" alt="logo" /><b>POOP/HAPPENS</b></div>
+      <p style="font-size:13px;color:#dcdcdc">Pet waste removal. Franklin, TN. Built for households who want it done, not discussed.</p>
+    </div>
+    <div>
+      <h5>// ROUTE</h5>
+      <p>Franklin, TN 37064</p>
+      <p>WILLIAMSON CO + SOUTH DAVIDSON</p>
+      <p>MON–SAT</p>
+    </div>
+    <div>
+      <h5>// CONTACT</h5>
+      <p><a href="tel:9183816095">(918) 381-6095</a></p>
+      <p><a href="mailto:hello@poophappensfranklin.com">hello@poophappensfranklin.com</a></p>
+      <p>OPEN 24 HRS FOR MSGS</p>
+    </div>
+    <div>
+      <h5>// FACTS</h5>
+      <p>EST. 2019 · 1,412 YARDS</p>
+      <p>NO CONTRACTS · EVER</p>
+      <p>100% SATISFACTION OR MONEY BACK</p>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>© POOP HAPPENS 2026 · SET IN ARCHIVO BLACK + JETBRAINS MONO</span>
+    <span>WHEN POOP HAPPENS, WE HANDLE IT.</span>
+  </div>
+</footer>
+
+<script>
+const state={dogs:1,freq:"weekly",yard:"small"};
+const baseByFreq={weekly:19.99,biweekly:29.99,onetime:89};
+const dogMult=n=>n==1?1:n==2?1.35:n==3?1.7:2.1;
+const yardMult={small:1,medium:1.25,large:1.5};
+const yardLabelEN={small:"<¼ ACRE",medium:"¼ — ½",large:"½ — 1"};
+const freqUnit={weekly:"PER WEEKLY VISIT",biweekly:"PER BI-WEEKLY VISIT",onetime:"ONE-TIME CLEANOUT"};
+const freqLabel={weekly:"WEEKLY",biweekly:"BI-WEEKLY",onetime:"ONE-TIME"};
+
+function setOptGroup(rootId,key){
+  document.querySelectorAll(`#${rootId} .calc-opt`).forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll(`#${rootId} .calc-opt`).forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      state[key]=isNaN(b.dataset.val)?b.dataset.val:Number(b.dataset.val);
+      recalc();
+    });
+  });
+}
+['dogsOpt','freqOpt','yardOpt','bDogs','bFreq','bYard'].forEach(id=>{
+  const map={dogsOpt:'dogs',freqOpt:'freq',yardOpt:'yard',bDogs:'dogs',bFreq:'freq',bYard:'yard'};
+  if(document.getElementById(id))setOptGroup(id,map[id]);
+});
+
+document.getElementById('bDay').addEventListener('change',e=>{
+  document.getElementById('bsDay').textContent=e.target.value;
+});
+
+function recalc(){
+  const base=baseByFreq[state.freq];
+  const dm=dogMult(state.dogs);
+  const ym=yardMult[state.yard];
+  const reg=+(base*dm*ym).toFixed(2);
+  const today=+(reg/2).toFixed(2);
+  const adj=+(reg-base).toFixed(2);
+  document.getElementById('quoteFig').textContent='$'+reg.toFixed(2);
+  document.getElementById('quoteUnit').textContent=freqUnit[state.freq];
+  document.getElementById('specBase').textContent='$'+base.toFixed(2);
+  document.getElementById('specDog').textContent='×'+dm.toFixed(2);
+  document.getElementById('specYard').textContent='×'+ym.toFixed(2);
+  document.getElementById('specFirst').textContent='$'+today.toFixed(2);
+  document.getElementById('bsPlan').textContent=freqLabel[state.freq];
+  document.getElementById('bsDogs').textContent=state.dogs+(state.dogs==4?'+':'');
+  document.getElementById('bsYard').textContent=yardLabelEN[state.yard];
+  document.getElementById('bsBase').textContent='$'+base.toFixed(2);
+  document.getElementById('bsAdj').textContent='+$'+adj.toFixed(2);
+  document.getElementById('bsDisc').textContent='−$'+today.toFixed(2);
+  document.getElementById('bsTotal').textContent='$'+today.toFixed(2);
+  document.getElementById('payNow').textContent='$'+today.toFixed(2);
+  document.getElementById('payAmtBtn').textContent='$'+today.toFixed(2);
+}
+recalc();
+
+// step nav
+const panels=document.querySelectorAll('#bookForm .panel');
+const pills=document.querySelectorAll('#stepBar .step-pill');
+function goStep(n){
+  panels.forEach(p=>p.classList.remove('show'));
+  document.querySelector(`#bookForm [data-panel="${n}"]`).classList.add('show');
+  pills.forEach(p=>{const s=Number(p.dataset.step);p.classList.toggle('active',s===n);p.classList.toggle('done',s<n)});
+  document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.querySelectorAll('#bookForm [data-go]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const target=Number(b.dataset.go);
+    const cur=document.querySelector('#bookForm .panel.show');
+    if(target>Number(cur.dataset.panel)){
+      const inputs=cur.querySelectorAll('input[required]');
+      let ok=true;
+      inputs.forEach(i=>{if(!i.value){ok=false;i.style.borderColor='var(--blood)'}});
+      if(!ok)return;
+    }
+    goStep(target);
+  });
+});
+
+document.querySelectorAll('[data-plan]').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const v=a.dataset.plan;
+    const map={weekly:'weekly',biweekly:'biweekly',onetime:'onetime'};
+    state.freq=map[v];
+    document.querySelectorAll('#freqOpt .calc-opt,#bFreq .calc-opt').forEach(b=>{
+      b.classList.toggle('active',b.dataset.val===map[v]);
+    });
+    recalc();
+  });
+});
+
+document.getElementById('bookForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('bookShell').style.display='none';
+  document.getElementById('stepBar').style.display='none';
+  const t=document.getElementById('thanksBlock');
+  t.classList.add('show');
+  document.getElementById('thConf').textContent=String(Math.floor(100000+Math.random()*900000));
+  document.getElementById('thChg').textContent=document.getElementById('bsTotal').textContent;
+});
+
+document.querySelectorAll('.nav a,.callbtn,.hero-ctas a,.svc-pay,.calc-submit').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const h=a.getAttribute('href');
+    if(h&&h.startsWith('#')){e.preventDefault();document.querySelector(h)?.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>
