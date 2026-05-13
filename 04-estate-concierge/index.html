@@ -4,366 +4,401 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Poop Happens — The Estate Concierge · Franklin, TN</title>
-<meta name="description" content="A private, white-glove pet-waste concierge for the estates and gated residences of Williamson County. Memberships from $19.99 a visit." />
+<meta name="description" content="A private, white-glove pet-waste concierge for the estates and gated residences of Williamson County. Memberships from $19.99 per visit." />
 <link rel="icon" href="../assets/favicon-1-300x300.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,700;1,6..96,900&family=Hanken+Grotesk:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
 :root{
-  --navy:#0e1a2b;
-  --navy-deep:#070d18;
-  --cream:#f0e9d9;
-  --cream-2:#e6dec7;
+  --navy:#0c1a2d;
+  --navy-2:#0a1626;
+  --navy-deep:#06101c;
+  --cream:#f0e8d6;
+  --cream-2:#e6dcc4;
+  --cream-3:#d8cbac;
   --gold:#c5a059;
+  --gold-light:#d8b977;
   --gold-deep:#9c7c40;
-  --plum:#1a1015;
+  --plum:#1f1218;
   --line:#c5a05922;
+  --line-2:#c5a05944;
+  --ink:#0c1a2d;
+  --ink-2:#3e4d63;
 }
 *{box-sizing:border-box;margin:0;padding:0}
+::selection{background:var(--gold);color:var(--navy)}
+html{scroll-behavior:smooth}
 html,body{
   background:var(--cream);color:var(--navy);
-  font-family:"Hanken Grotesk",-apple-system,sans-serif;font-weight:400;
-  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  font-family:"Hanken Grotesk",-apple-system,sans-serif;font-weight:300;
+  font-size:16px;line-height:1.7;letter-spacing:.005em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
 body{
   background-image:
-    radial-gradient(circle at 50% 0%,#c5a05912 0%,transparent 38%),
-    radial-gradient(circle at 0% 100%,#0e1a2b0a 0%,transparent 30%);
+    radial-gradient(ellipse 70% 50% at 50% -5%,#c5a05918 0%,transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 100%,#0c1a2d0a 0%,transparent 60%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/></svg>");
 }
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 button{font-family:inherit;cursor:pointer}
 
-.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+/* SCROLL PROGRESS */
+.progress{position:fixed;top:0;left:0;height:1px;background:var(--gold);width:0;z-index:300;transition:width .12s linear}
+
+.wrap{max-width:1340px;margin:0 auto;padding:0 56px;position:relative}
+@media (max-width:760px){.wrap{padding:0 24px}}
+
+/* CUSTOM CURSOR ON LUXURY ELEMENTS */
+.luxe-cursor{position:fixed;width:40px;height:40px;border:1px solid var(--gold);border-radius:50%;pointer-events:none;z-index:500;transform:translate(-50%,-50%);transition:transform .25s ease, opacity .25s ease, width .35s ease, height .35s ease;opacity:0;mix-blend-mode:difference}
+.luxe-cursor.active{opacity:1}
+.luxe-cursor.over{width:64px;height:64px;border-color:var(--gold-light)}
 
 /* TOP STRIP */
-.topstrip{background:var(--navy);color:var(--cream);padding:10px 0;font-size:11px;letter-spacing:.32em;text-transform:uppercase}
+.topstrip{background:var(--navy);color:var(--cream);padding:11px 0;font-family:"Hanken Grotesk",sans-serif;font-weight:300;font-size:11px;letter-spacing:.34em;text-transform:uppercase}
 .topstrip-row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-.topstrip a{color:var(--gold)}
+.topstrip a{color:var(--gold);transition:color .25s}
+.topstrip a:hover{color:var(--cream)}
+.topstrip .sep{margin:0 12px;color:#c5a05988}
 
-/* MASTHEAD */
-.mast{padding:28px 0 20px;border-bottom:1px solid var(--gold);position:relative}
+/* MAST */
+.mast{padding:30px 0 22px;border-bottom:1px solid var(--gold);position:sticky;top:0;z-index:50;background:var(--cream);transition:padding .35s ease, background .35s ease;backdrop-filter:saturate(140%)}
+.mast.scrolled{padding:16px 0;background:rgba(240,232,214,.96)}
 .mast::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--gold);opacity:.4}
-.mast-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px}
-.mast-nav{display:flex;gap:32px;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.32em;text-transform:uppercase}
-.mast-nav a{position:relative;padding-bottom:6px;cursor:pointer;transition:color .25s}
-.mast-nav a:hover{color:var(--gold)}
-.mast-nav a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;background:var(--gold);transition:left .3s ease, right .3s ease}
+.mast-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:36px}
+
+/* MONOGRAM SVG */
+.monogram{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1;gap:6px}
+.monogram-mark{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:13px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold-deep);padding-left:.5em;display:flex;align-items:center;gap:14px}
+.monogram-mark::before,.monogram-mark::after{content:"";display:block;width:18px;height:1px;background:var(--gold-deep)}
+.monogram-svg{position:relative}
+.monogram-svg svg{display:block;margin:0 auto}
+.monogram-svg circle{fill:none;stroke:var(--gold);stroke-width:.5;opacity:.45}
+.monogram-word{font-family:"Bodoni Moda",serif;font-weight:500;font-size:40px;letter-spacing:-.005em;color:var(--navy);font-variation-settings:"opsz" 96;line-height:1}
+.monogram-est{font-family:"Hanken Grotesk",sans-serif;font-weight:400;font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-deep);margin-top:4px}
+
+.mast-nav{display:flex;gap:40px;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-2)}
+.mast-nav a{position:relative;padding-bottom:6px;transition:color .3s}
+.mast-nav a:hover{color:var(--navy)}
+.mast-nav a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;background:var(--gold);transition:left .35s ease, right .35s ease}
 .mast-nav a:hover::after{left:0;right:0}
-.brand{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1}
-.brand-mark{
-  font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;
-  font-size:14px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;padding-left:.5em;
-}
-.brand-word{font-family:"Bodoni Moda",serif;font-weight:500;font-size:38px;letter-spacing:.04em;color:var(--navy);font-variation-settings:"opsz" 96}
-.brand-est{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-deep);margin-top:6px;padding-left:.4em}
-.mast-right{display:flex;align-items:center;justify-content:flex-end;gap:18px}
-.mast-cta{
-  padding:14px 26px;background:transparent;color:var(--navy);border:1px solid var(--navy);
-  font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.32em;text-transform:uppercase;
-  transition:background .25s, color .25s;
-}
-.mast-cta:hover{background:var(--navy);color:var(--cream)}
+.mast-right{display:flex;align-items:center;justify-content:flex-end;gap:22px}
+.phone-line{font-family:"Bodoni Moda",serif;font-style:italic;font-size:17px;color:var(--gold-deep);padding-right:22px;border-right:1px solid var(--gold-deep);transition:color .25s}
+.phone-line:hover{color:var(--navy)}
+.mast-cta{padding:14px 30px;background:transparent;color:var(--navy);border:1px solid var(--navy);font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.36em;text-transform:uppercase;transition:all .35s ease;position:relative;overflow:hidden}
+.mast-cta::before{content:"";position:absolute;inset:0;background:var(--navy);transform:scaleX(0);transform-origin:right;transition:transform .45s ease;z-index:0}
+.mast-cta:hover::before{transform:scaleX(1);transform-origin:left}
+.mast-cta span{position:relative;z-index:1;transition:color .3s ease}
+.mast-cta:hover span{color:var(--cream)}
 
-/* ROYAL OFFER BAND */
-.offerband{
-  background:var(--cream-2);border-bottom:1px solid var(--gold);padding:14px 0;
-  font-family:"Bodoni Moda",serif;font-style:italic;font-size:15px;text-align:center;color:var(--navy);letter-spacing:.02em;
-}
-.offerband b{font-family:"Hanken Grotesk",sans-serif;font-weight:600;font-style:normal;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-deep);margin:0 12px;padding:3px 10px;border:1px solid var(--gold-deep)}
+/* OFFER BAND */
+.offerband{background:var(--cream-2);border-bottom:1px solid var(--gold);padding:14px 0;font-family:"Bodoni Moda",serif;font-style:italic;font-size:15px;text-align:center;color:var(--navy);letter-spacing:.01em}
+.offerband b{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-style:normal;font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-deep);margin:0 14px;padding:4px 12px;border:1px solid var(--gold-deep)}
 
-/* HERO */
-.hero{padding:96px 0 88px;position:relative}
-.hero-grid{display:grid;grid-template-columns:1fr .9fr;gap:80px;align-items:center}
+/* HERO — cinematic */
+.hero{padding:120px 0 100px;position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
+  width:1px;height:80px;background:linear-gradient(180deg,var(--gold),transparent);
+}
+.hero::after{
+  content:"✦";position:absolute;left:50%;top:88px;transform:translateX(-50%);
+  font-family:"Bodoni Moda",serif;font-size:14px;color:var(--gold);
+}
+.hero-grid{display:grid;grid-template-columns:1fr .92fr;gap:88px;align-items:center;position:relative}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:16px;
-  font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;
-  letter-spacing:.4em;text-transform:uppercase;color:var(--gold-deep);
-  margin-bottom:34px;animation:fade .8s .05s ease both;
+  font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.46em;text-transform:uppercase;color:var(--gold-deep);
+  margin-bottom:42px;animation:fade .9s .1s ease both;
 }
-.hero-eyebrow::before,.hero-eyebrow::after{content:"";display:block;width:34px;height:1px;background:var(--gold-deep)}
+.hero-eyebrow::before,.hero-eyebrow::after{content:"";display:block;width:42px;height:1px;background:var(--gold-deep)}
 .h1{
-  font-family:"Bodoni Moda",serif;font-weight:400;
-  font-size:clamp(56px,8.5vw,128px);line-height:.92;letter-spacing:-.02em;
-  color:var(--navy);font-variation-settings:"opsz" 96;
-  animation:fade 1s .15s ease both;
+  font-family:"Bodoni Moda",serif;font-weight:300;
+  font-size:clamp(60px,9.2vw,150px);line-height:.92;letter-spacing:-.025em;color:var(--navy);
+  font-variation-settings:"opsz" 96;
 }
-.h1 em{font-style:italic;font-weight:400;color:var(--gold-deep)}
-.h1 .rule{display:block;width:100px;height:1px;background:var(--gold);margin:36px 0 28px}
-.deck{
-  font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;
-  font-size:clamp(18px,2vw,24px);line-height:1.45;max-width:44ch;color:var(--navy);
-  animation:fade 1s .3s ease both;
-}
-.hero-actions{margin-top:42px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;animation:fade 1s .45s ease both}
-.btn-gold{
-  background:var(--navy);color:var(--cream);padding:18px 32px;
-  font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.35em;text-transform:uppercase;
-  border:1px solid var(--navy);transition:background .3s, color .3s;
-}
-.btn-gold:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
-.btn-line{
-  background:transparent;color:var(--navy);padding:18px 32px;border:1px solid var(--navy);
-  font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.35em;text-transform:uppercase;
-  transition:background .3s, color .3s;
-}
-.btn-line:hover{background:var(--navy);color:var(--cream)}
-.phone-line{font-family:"Bodoni Moda",serif;font-style:italic;font-size:18px;color:var(--gold-deep);padding:6px 14px;border-left:1px solid var(--gold-deep)}
+.h1 .line{display:block;overflow:hidden;padding-bottom:.04em}
+.h1 .line span{display:inline-block;animation:rise 1.2s cubic-bezier(.2,.8,.2,1) both}
+.h1 .line:nth-child(1) span{animation-delay:.2s}
+.h1 .line:nth-child(2) span{animation-delay:.32s}
+.h1 .line:nth-child(3) span{animation-delay:.44s}
+.h1 em{font-style:italic;color:var(--gold-deep);font-weight:400}
+.h1-rule{display:block;width:120px;height:1px;background:var(--gold);margin:48px 0 32px;animation:rule 1s .9s ease both;transform-origin:left}
+@keyframes rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
-/* HERO PHOTO */
+.deck{
+  font-family:"Bodoni Moda",serif;font-style:italic;font-weight:300;
+  font-size:clamp(19px,1.9vw,24px);line-height:1.5;max-width:44ch;color:var(--ink-2);
+  animation:fade 1s .55s ease both;
+}
+.deck b{color:var(--navy);font-weight:500;font-style:normal;font-family:"Hanken Grotesk",sans-serif;background:linear-gradient(180deg,transparent 60%,#c5a05933 60%);padding:0 3px}
+
+.hero-actions{margin-top:52px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;animation:fade 1s .8s ease both}
+.btn-gold{background:var(--navy);color:var(--cream);padding:20px 38px;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.38em;text-transform:uppercase;border:1px solid var(--navy);transition:all .4s ease;position:relative;overflow:hidden}
+.btn-gold::before{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .5s ease;z-index:0}
+.btn-gold:hover::before{transform:scaleX(1);transform-origin:left}
+.btn-gold span{position:relative;z-index:1;transition:color .35s ease}
+.btn-gold:hover span{color:var(--navy)}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-line{background:transparent;color:var(--navy);padding:20px 38px;border:1px solid var(--navy);font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.38em;text-transform:uppercase;transition:all .35s ease}
+.btn-line:hover{background:var(--navy);color:var(--cream);transform:translateY(-2px)}
+
+/* HERO PORTRAIT — heritage frame */
 .hero-aside{position:relative;animation:fade 1.1s .4s ease both}
 .hero-portrait{
-  aspect-ratio:3/4;
+  position:relative;aspect-ratio:4/5;
   background:linear-gradient(165deg,var(--navy) 0%,var(--navy-deep) 100%);
-  position:relative;overflow:hidden;
-  border:1px solid var(--gold);
+  overflow:hidden;
 }
-.hero-portrait::before{
-  content:"";position:absolute;inset:8px;border:1px solid var(--gold);opacity:.4;pointer-events:none;z-index:2;
-}
-.hero-portrait img{width:100%;height:100%;object-fit:cover;filter:sepia(.18) saturate(1.05) brightness(.92)}
-.hero-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(7,13,24,.85));z-index:1}
-.hero-cap{
-  position:absolute;bottom:32px;left:32px;right:32px;z-index:3;color:var(--cream);
-}
-.hero-cap b{display:block;font-family:"Bodoni Moda",serif;font-style:italic;font-weight:500;font-size:22px;color:var(--gold);letter-spacing:.02em;margin-bottom:4px}
-.hero-cap span{font-family:"Hanken Grotesk",sans-serif;font-weight:300;font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+.hero-portrait::before{content:"";position:absolute;inset:14px;border:1px solid var(--gold);opacity:.45;pointer-events:none;z-index:3}
+.hero-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(6,16,28,.92));z-index:2}
+.hero-portrait img{width:100%;height:100%;object-fit:cover;filter:sepia(.22) saturate(.95) brightness(.88) contrast(1.06);transition:transform 12s ease}
+.hero-portrait:hover img{transform:scale(1.06)}
+.hero-corner{position:absolute;width:24px;height:24px;border-color:var(--gold);z-index:4}
+.hero-corner.tl{top:14px;left:14px;border-top:1px solid var(--gold);border-left:1px solid var(--gold)}
+.hero-corner.tr{top:14px;right:14px;border-top:1px solid var(--gold);border-right:1px solid var(--gold)}
+.hero-corner.bl{bottom:14px;left:14px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold)}
+.hero-corner.br{bottom:14px;right:14px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold)}
+.hero-cap{position:absolute;bottom:36px;left:36px;right:36px;z-index:4;color:var(--cream)}
+.hero-cap b{display:block;font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:26px;color:var(--gold-light);letter-spacing:.01em;margin-bottom:8px}
+.hero-cap span{font-family:"Hanken Grotesk",sans-serif;font-weight:300;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#f0e8d6cc}
 
 .hero-numbers{
-  position:absolute;top:-32px;right:-24px;background:var(--cream);border:1px solid var(--gold);
-  padding:18px 22px;text-align:right;z-index:5;
+  position:absolute;top:-28px;left:-28px;background:var(--cream);border:1px solid var(--gold);
+  padding:24px 32px;z-index:5;
+  box-shadow:0 30px 60px -30px rgba(12,26,45,.4);
 }
-.hero-numbers b{display:block;font-family:"Bodoni Moda",serif;font-weight:400;font-size:42px;color:var(--navy);line-height:1;letter-spacing:-.02em}
-.hero-numbers span{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-deep);margin-top:6px;display:block}
+.hero-numbers b{display:block;font-family:"Bodoni Moda",serif;font-weight:300;font-size:48px;color:var(--navy);line-height:1;letter-spacing:-.025em}
+.hero-numbers span{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-deep);margin-top:8px;display:block}
 
 @keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes rise{from{transform:translateY(110%)}to{transform:translateY(0)}}
 
 /* MARQUEE */
-.marquee{
-  background:var(--navy);color:var(--cream);padding:14px 0;
-  border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);
-  font-family:"Bodoni Moda",serif;font-style:italic;font-size:15px;letter-spacing:.05em;overflow:hidden;
-}
-.marquee-track{display:flex;gap:48px;white-space:nowrap;animation:slide 36s linear infinite}
-.marquee-track span{display:inline-flex;align-items:center;gap:18px}
-.marquee-track span::after{content:"✦";color:var(--gold)}
+.marquee{background:var(--navy);color:var(--cream);padding:18px 0;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);font-family:"Bodoni Moda",serif;font-style:italic;font-size:16px;letter-spacing:.04em;overflow:hidden}
+.marquee-track{display:flex;gap:56px;white-space:nowrap;animation:slide 40s linear infinite}
+.marquee-track span{display:inline-flex;align-items:center;gap:22px}
+.marquee-track span::after{content:"✦";color:var(--gold);font-size:14px}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* CREDENTIALS */
-.creds{padding:88px 0;border-bottom:1px solid var(--gold)}
+.creds{padding:120px 0;border-bottom:1px solid var(--gold)}
 .creds-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px}
-.cred{padding:14px 0;border-top:1px solid var(--gold)}
-.cred b{display:block;font-family:"Bodoni Moda",serif;font-weight:400;font-size:56px;color:var(--navy);line-height:1;letter-spacing:-.02em;margin:8px 0}
-.cred small{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold-deep);display:block}
-.cred p{font-family:"Bodoni Moda",serif;font-style:italic;font-size:14px;color:var(--navy);margin-top:8px;line-height:1.4}
+.cred{padding:24px 0;border-top:1px solid var(--gold);position:relative}
+.cred::before{content:"";position:absolute;top:-1px;left:0;width:40px;height:1px;background:var(--navy)}
+.cred small{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-deep);display:block;margin-bottom:14px}
+.cred b{display:block;font-family:"Bodoni Moda",serif;font-weight:300;font-size:64px;color:var(--navy);line-height:1;letter-spacing:-.025em;font-variation-settings:"opsz" 96}
+.cred p{font-family:"Bodoni Moda",serif;font-style:italic;font-size:14px;color:var(--ink-2);margin-top:14px;line-height:1.5;max-width:30ch}
 
-/* SERVICES — Roman numbered */
-.services{padding:120px 0;border-bottom:1px solid var(--gold);position:relative}
-.section-eyebrow{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-deep);text-align:center;margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:18px}
-.section-eyebrow::before,.section-eyebrow::after{content:"";display:block;width:60px;height:1px;background:var(--gold-deep)}
-.section-title{font-family:"Bodoni Moda",serif;font-weight:400;font-size:clamp(40px,5.5vw,76px);line-height:.98;letter-spacing:-.015em;text-align:center;font-variation-settings:"opsz" 96;color:var(--navy)}
+/* SECTIONS */
+.section{padding:140px 0;border-bottom:1px solid var(--gold);position:relative}
+.section-eyebrow{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.46em;text-transform:uppercase;color:var(--gold-deep);text-align:center;margin-bottom:28px;display:flex;align-items:center;justify-content:center;gap:18px}
+.section-eyebrow::before,.section-eyebrow::after{content:"";display:block;width:64px;height:1px;background:var(--gold-deep)}
+.section-title{font-family:"Bodoni Moda",serif;font-weight:300;font-size:clamp(44px,6vw,86px);line-height:.98;letter-spacing:-.02em;text-align:center;color:var(--navy);font-variation-settings:"opsz" 96}
 .section-title em{font-style:italic;color:var(--gold-deep);font-weight:400}
-.section-deck{font-family:"Bodoni Moda",serif;font-style:italic;font-size:18px;color:var(--navy);text-align:center;max-width:58ch;margin:18px auto 0;line-height:1.5}
+.section-deck{font-family:"Bodoni Moda",serif;font-style:italic;font-size:19px;color:var(--ink-2);text-align:center;max-width:60ch;margin:24px auto 0;line-height:1.55}
 
-.tiers{margin-top:68px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--gold)}
-.tier{padding:48px 36px;border-right:1px solid var(--gold);position:relative;background:var(--cream);transition:background .35s}
-.tier:last-child{border-right:none}
+/* TIERS */
+.tiers{margin-top:80px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gold);border:1px solid var(--gold)}
+.tier{padding:56px 42px;background:var(--cream);position:relative;transition:background .45s ease;display:flex;flex-direction:column}
 .tier:hover{background:var(--cream-2)}
 .tier.house{background:var(--navy);color:var(--cream)}
-.tier.house:hover{background:var(--navy-deep)}
-.tier-roman{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:18px;letter-spacing:.32em;color:var(--gold-deep);margin-bottom:18px;font-variation-settings:"opsz" 11}
-.tier.house .tier-roman{color:var(--gold)}
-.tier h3{font-family:"Bodoni Moda",serif;font-weight:400;font-size:38px;line-height:1.05;margin-bottom:14px;letter-spacing:-.005em}
+.tier.house:hover{background:var(--navy-2)}
+.tier-roman{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.4em;color:var(--gold-deep);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.tier-roman::before{content:"";display:block;width:36px;height:1px;background:var(--gold-deep)}
+.tier.house .tier-roman{color:var(--gold-light)}
+.tier.house .tier-roman::before{background:var(--gold-light)}
+.tier h3{font-family:"Bodoni Moda",serif;font-weight:400;font-size:42px;line-height:1.04;margin-bottom:14px;letter-spacing:-.012em}
 .tier h3 em{font-style:italic;color:var(--gold-deep)}
-.tier.house h3 em{color:var(--gold)}
-.tier .price{
-  border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:18px 0;margin-bottom:22px;
-  display:flex;justify-content:space-between;align-items:baseline;
-}
-.tier .price b{font-family:"Bodoni Moda",serif;font-weight:400;font-size:38px;letter-spacing:-.02em;line-height:1}
-.tier .price small{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep)}
-.tier ul{list-style:none;margin-bottom:26px}
-.tier li{padding:8px 0;font-size:14px;line-height:1.5;display:flex;gap:12px;border-bottom:1px solid var(--line)}
+.tier.house h3 em{color:var(--gold-light)}
+.tier-tag{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:300;font-size:15px;color:var(--ink-2);margin-bottom:32px;line-height:1.5}
+.tier.house .tier-tag{color:#f0e8d6bb}
+.tier-price{border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:22px 0;margin-bottom:30px;display:flex;justify-content:space-between;align-items:baseline}
+.tier-price b{font-family:"Bodoni Moda",serif;font-weight:300;font-size:48px;letter-spacing:-.025em;line-height:1}
+.tier-price small{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-deep)}
+.tier.house .tier-price small{color:var(--gold-light)}
+.tier ul{list-style:none;margin-bottom:36px;flex:1}
+.tier li{padding:11px 0;font-size:14px;line-height:1.5;display:grid;grid-template-columns:18px 1fr;gap:14px;border-bottom:1px solid var(--line)}
 .tier li:last-child{border-bottom:none}
-.tier li::before{content:"✦";color:var(--gold-deep);font-size:12px;line-height:1.7}
-.tier.house li::before{color:var(--gold)}
-.tier-pay{
-  display:block;text-align:center;padding:14px 18px;
-  background:transparent;color:var(--navy);border:1px solid var(--navy);
-  font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.3em;text-transform:uppercase;
-  transition:background .3s, color .3s;cursor:pointer;
-}
-.tier-pay:hover{background:var(--navy);color:var(--cream)}
+.tier li::before{content:"✦";color:var(--gold-deep);font-size:11px;line-height:1.8}
+.tier.house li::before{color:var(--gold-light)}
+.tier.house li{border-color:#c5a05933}
+.tier-pay{display:block;text-align:center;padding:18px 24px;background:transparent;color:var(--navy);border:1px solid var(--navy);font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.36em;text-transform:uppercase;transition:all .35s ease;position:relative;overflow:hidden}
+.tier-pay::before{content:"";position:absolute;inset:0;background:var(--navy);transform:scaleX(0);transform-origin:right;transition:transform .45s ease}
+.tier-pay:hover::before{transform:scaleX(1);transform-origin:left}
+.tier-pay span{position:relative;z-index:1;transition:color .3s}
+.tier-pay:hover span{color:var(--cream)}
 .tier.house .tier-pay{background:var(--gold);color:var(--navy);border-color:var(--gold)}
-.tier.house .tier-pay:hover{background:var(--cream);color:var(--navy)}
+.tier.house .tier-pay::before{background:var(--cream)}
+.tier.house .tier-pay:hover span{color:var(--navy)}
 
-/* THE PORTRAIT — owner */
-.portrait{padding:120px 0;border-bottom:1px solid var(--gold);background:var(--navy);color:var(--cream)}
-.portrait .section-eyebrow{color:var(--gold)}
-.portrait .section-eyebrow::before,.portrait .section-eyebrow::after{background:var(--gold)}
+/* PORTRAIT — founder */
+.portrait{padding:140px 0;border-bottom:1px solid var(--gold);background:var(--navy);color:var(--cream);position:relative;overflow:hidden}
+.portrait::before{content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,#c5a05922 0%,transparent 70%);pointer-events:none}
+.portrait::after{content:"";position:absolute;bottom:-200px;left:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,#c5a05914 0%,transparent 70%);pointer-events:none}
+.portrait .section-eyebrow{color:var(--gold-light)}
+.portrait .section-eyebrow::before,.portrait .section-eyebrow::after{background:var(--gold-light)}
 .portrait .section-title{color:var(--cream)}
-.portrait .section-title em{color:var(--gold)}
-.port-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:center;margin-top:72px}
-.port-photo{
-  aspect-ratio:4/5;position:relative;overflow:hidden;border:1px solid var(--gold);
-  background:linear-gradient(165deg,#1a2942 0%,var(--navy-deep) 100%);
-}
-.port-photo::before{content:"";position:absolute;inset:10px;border:1px solid var(--gold);opacity:.3;pointer-events:none;z-index:2}
-.port-photo img{width:100%;height:100%;object-fit:cover;filter:sepia(.2) saturate(1.05) brightness(.88)}
-.port-content h3{font-family:"Bodoni Moda",serif;font-weight:400;font-size:clamp(34px,4vw,54px);line-height:1.05;color:var(--cream);margin-bottom:20px;letter-spacing:-.015em}
-.port-content h3 em{font-style:italic;color:var(--gold)}
-.port-content p{font-size:16px;line-height:1.7;margin-bottom:14px;color:#f0e9d9cc;max-width:50ch}
-.port-content .sig{
-  font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:32px;color:var(--gold);margin-top:32px;letter-spacing:-.01em;
-}
-.port-content .sig small{display:block;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:#f0e9d999;margin-top:6px;font-style:normal}
+.portrait .section-title em{color:var(--gold-light)}
+.port-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:96px;align-items:center;margin-top:88px;position:relative;z-index:1}
+.port-photo{aspect-ratio:4/5;position:relative;overflow:hidden;background:linear-gradient(165deg,#1a2942 0%,var(--navy-deep) 100%)}
+.port-photo::before{content:"";position:absolute;inset:14px;border:1px solid var(--gold);opacity:.35;pointer-events:none;z-index:3}
+.port-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(6,16,28,.5));z-index:2}
+.port-photo img{width:100%;height:100%;object-fit:cover;filter:sepia(.3) saturate(.9) brightness(.84);transition:transform 15s ease}
+.port-photo:hover img{transform:scale(1.08)}
+.port-photo .corner{position:absolute;width:22px;height:22px;z-index:4}
+.port-photo .corner.tl{top:14px;left:14px;border-top:1px solid var(--gold);border-left:1px solid var(--gold)}
+.port-photo .corner.tr{top:14px;right:14px;border-top:1px solid var(--gold);border-right:1px solid var(--gold)}
+.port-photo .corner.bl{bottom:14px;left:14px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold)}
+.port-photo .corner.br{bottom:14px;right:14px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold)}
+.port-content h3{font-family:"Bodoni Moda",serif;font-weight:300;font-size:clamp(34px,4vw,58px);line-height:1.04;color:var(--cream);margin-bottom:26px;letter-spacing:-.015em;font-variation-settings:"opsz" 96}
+.port-content h3 em{font-style:italic;color:var(--gold-light)}
+.port-content p{font-size:16px;line-height:1.75;margin-bottom:18px;color:#f0e8d6cc;max-width:52ch;font-weight:300}
+.port-content .sig{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:38px;color:var(--gold-light);margin-top:40px;letter-spacing:-.01em;line-height:1}
+.port-content .sig small{display:block;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:#f0e8d699;margin-top:10px;font-style:normal}
 
 /* TESTIMONY */
-.testimony{padding:120px 0;border-bottom:1px solid var(--gold)}
-.testi-grid{margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--gold)}
-.testi{padding:40px 36px;border-right:1px solid var(--gold);position:relative;display:flex;flex-direction:column}
-.testi:last-child{border-right:none}
-.testi-stars{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.4em;color:var(--gold-deep);margin-bottom:18px}
-.testi blockquote{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:18px;line-height:1.5;color:var(--navy);flex:1}
-.testi blockquote::before{content:"\201C";font-size:3.5em;line-height:0;vertical-align:-.45em;color:var(--gold);font-weight:400}
-.testi-by{margin-top:28px;padding-top:16px;border-top:1px solid var(--gold);font-family:"Bodoni Moda",serif;font-weight:500;font-size:16px;letter-spacing:.02em}
-.testi-by small{display:block;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-deep);margin-top:6px}
+.testimony{padding:140px 0;border-bottom:1px solid var(--gold)}
+.testi-grid{margin-top:80px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gold);border:1px solid var(--gold)}
+.testi{padding:48px 40px;background:var(--cream);position:relative;display:flex;flex-direction:column;transition:background .4s ease}
+.testi:hover{background:var(--cream-2)}
+.testi-stars{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--gold-deep);margin-bottom:24px;display:flex;align-items:center;gap:14px}
+.testi-stars::after{content:"VERIFIED";font-size:9px;letter-spacing:.4em;color:var(--ink-2);padding:3px 9px;border:1px solid var(--ink-2)}
+.testi blockquote{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:300;font-size:19px;line-height:1.55;color:var(--navy);flex:1;font-variation-settings:"opsz" 24}
+.testi blockquote::before{content:"\201C";font-size:4em;line-height:0;vertical-align:-.5em;color:var(--gold);font-weight:300;padding-right:.02em}
+.testi-by{margin-top:32px;padding-top:18px;border-top:1px solid var(--gold);font-family:"Bodoni Moda",serif;font-weight:500;font-size:17px;letter-spacing:.005em}
+.testi-by small{display:block;font-family:"Hanken Grotesk",sans-serif;font-weight:400;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);margin-top:6px}
 
 /* GUARANTEE */
-.guarantee-strip{padding:48px 40px;border:1px solid var(--gold);margin-top:64px;display:grid;grid-template-columns:auto 1fr auto;gap:48px;align-items:center}
-.guarantee-strip .crest{font-family:"Bodoni Moda",serif;font-weight:400;font-size:64px;color:var(--gold);line-height:1;font-variation-settings:"opsz" 96}
-.guarantee-strip h4{font-family:"Bodoni Moda",serif;font-weight:400;font-size:30px;line-height:1.1;color:var(--navy);margin-bottom:6px;letter-spacing:-.01em}
+.guarantee-strip{margin-top:80px;padding:56px 48px;border:1px solid var(--gold);background:var(--cream-2);display:grid;grid-template-columns:auto 1fr auto;gap:56px;align-items:center;position:relative}
+.guarantee-strip::before{content:"";position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--cream-2);padding:0 14px;width:auto}
+.guarantee-strip .crest{font-family:"Bodoni Moda",serif;font-weight:300;font-size:88px;color:var(--gold);line-height:1;font-variation-settings:"opsz" 96;font-style:italic}
+.guarantee-strip h4{font-family:"Bodoni Moda",serif;font-weight:300;font-size:34px;line-height:1.05;color:var(--navy);margin-bottom:8px;letter-spacing:-.015em}
 .guarantee-strip h4 em{font-style:italic;color:var(--gold-deep)}
-.guarantee-strip p{font-family:"Bodoni Moda",serif;font-style:italic;font-size:15px;color:var(--navy);max-width:48ch;line-height:1.5}
-.guarantee-strip .seal{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold-deep);text-align:right}
+.guarantee-strip p{font-family:"Bodoni Moda",serif;font-style:italic;font-size:16px;color:var(--ink-2);max-width:52ch;line-height:1.55}
+.guarantee-strip .seal{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-deep);text-align:right;line-height:1.8}
 
-/* CONCIERGE BOOKING */
-.concierge{padding:120px 0;background:var(--cream-2);border-bottom:1px solid var(--gold);position:relative}
-.steps{display:flex;margin-top:64px;margin-bottom:36px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold)}
-.step{
-  flex:1;padding:22px 18px;text-align:center;border-right:1px solid var(--gold);
-  font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#0e1a2b88;
-  position:relative;
-}
+/* CONCIERGE — booking */
+.concierge{padding:140px 0;border-bottom:1px solid var(--gold);background:var(--cream-2);position:relative;overflow:hidden}
+.steps{display:flex;margin-top:88px;margin-bottom:0;border:1px solid var(--gold);background:var(--cream)}
+.step{flex:1;padding:24px 18px;text-align:center;border-right:1px solid var(--gold);font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:#0c1a2d77;position:relative;transition:all .35s ease}
 .step:last-child{border-right:none}
-.step-num{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:14px;letter-spacing:.32em;color:var(--gold-deep);display:block;margin-bottom:6px}
-.step.active{color:var(--navy)}
-.step.active .step-num{color:var(--navy)}
-.step.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--gold)}
+.step-num{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:14px;letter-spacing:.36em;color:var(--gold-deep);display:block;margin-bottom:8px}
+.step.active{color:var(--navy);background:var(--navy);color:var(--cream)}
+.step.active .step-num{color:var(--gold-light)}
+.step.done{color:var(--gold-deep)}
 .step.done .step-num{color:var(--gold-deep)}
 
-.booking{display:grid;grid-template-columns:1.4fr .8fr;gap:0;border:1px solid var(--gold);background:var(--cream)}
-.booking-form{padding:48px 44px;border-right:1px solid var(--gold)}
+.booking{display:grid;grid-template-columns:1.35fr .85fr;gap:0;border:1px solid var(--gold);border-top:none;background:var(--cream)}
+.booking-form{padding:56px 48px;border-right:1px solid var(--gold)}
 .b-panel{display:none}
-.b-panel.show{display:block;animation:fade .45s ease both}
-.b-panel h3{font-family:"Bodoni Moda",serif;font-weight:400;font-size:34px;line-height:1.1;color:var(--navy);margin-bottom:10px;letter-spacing:-.01em}
+.b-panel.show{display:block;animation:fade .5s ease both}
+.b-panel h3{font-family:"Bodoni Moda",serif;font-weight:300;font-size:38px;line-height:1.04;color:var(--navy);margin-bottom:10px;letter-spacing:-.015em;font-variation-settings:"opsz" 96}
 .b-panel h3 em{font-style:italic;color:var(--gold-deep)}
-.b-panel .lead{font-family:"Bodoni Moda",serif;font-style:italic;font-size:16px;color:var(--navy);margin-bottom:28px;line-height:1.5;max-width:50ch}
-.b-field{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
-.b-field label{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-deep)}
-.b-field input,.b-field select{
-  background:transparent;border:none;border-bottom:1px solid var(--navy);
-  padding:10px 0;font-family:"Bodoni Moda",serif;font-size:20px;color:var(--navy);outline:none;
-  transition:border-color .25s;
-}
-.b-field input:focus,.b-field select:focus{border-bottom-color:var(--gold)}
-.b-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.b-panel .lead{font-family:"Bodoni Moda",serif;font-style:italic;font-size:17px;color:var(--ink-2);margin-bottom:36px;line-height:1.5;max-width:50ch}
+.b-field{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.b-field label{font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.36em;text-transform:uppercase;color:var(--gold-deep)}
+.b-field input,.b-field select{background:transparent;border:none;border-bottom:1px solid var(--navy);padding:12px 0;font-family:"Bodoni Moda",serif;font-size:21px;color:var(--navy);outline:none;transition:border-color .3s, padding .3s;width:100%}
+.b-field input:focus,.b-field select:focus{border-bottom-color:var(--gold);padding-left:4px}
+.b-row{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 .b-choices{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.b-choices label{cursor:pointer;display:block;text-align:center;padding:14px 8px;border:1px solid var(--navy);font-family:"Bodoni Moda",serif;font-size:18px;color:var(--navy);transition:all .2s;background:transparent}
-.b-choices label small{display:block;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);margin-top:4px;font-style:normal}
+.b-choices label{cursor:pointer;display:block;text-align:center;padding:16px 10px;border:1px solid var(--navy);font-family:"Bodoni Moda",serif;font-size:19px;color:var(--navy);transition:all .3s ease;background:transparent}
+.b-choices label small{display:block;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);margin-top:6px;font-style:normal}
 .b-choices label input{display:none}
-.b-choices label:has(input:checked){background:var(--navy);color:var(--cream)}
-.b-choices label:has(input:checked) small{color:var(--gold)}
+.b-choices label:has(input:checked){background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.b-choices label:has(input:checked) small{color:var(--gold-light)}
 .b-choices.three{grid-template-columns:repeat(3,1fr)}
 
 /* CALENDAR */
-.cal{margin-top:8px;border:1px solid var(--gold);padding:18px}
-.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.cal-head h5{font-family:"Bodoni Moda",serif;font-weight:500;font-size:17px;letter-spacing:.02em;color:var(--navy)}
-.cal-head button{background:transparent;border:1px solid var(--gold);color:var(--gold-deep);padding:6px 12px;font-family:"Hanken Grotesk",sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .2s, color .2s}
-.cal-head button:hover{background:var(--gold);color:var(--navy)}
+.cal{margin-top:14px;border:1px solid var(--gold);padding:24px;background:var(--cream-2)}
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.cal-head h5{font-family:"Bodoni Moda",serif;font-weight:500;font-size:19px;letter-spacing:.02em;color:var(--navy);font-variation-settings:"opsz" 28}
+.cal-head h5 em{font-style:italic;color:var(--gold-deep)}
+.cal-head .nav-btns{display:flex;gap:6px}
+.cal-head button{background:transparent;border:1px solid var(--gold-deep);color:var(--gold-deep);padding:8px 14px;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:background .25s, color .25s}
+.cal-head button:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;font-family:"Hanken Grotesk",sans-serif;font-size:13px}
-.cal-grid .dow{padding:6px 0;text-align:center;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep)}
-.cal-grid .day{padding:10px 0;text-align:center;color:var(--navy);cursor:pointer;border:1px solid transparent;transition:all .15s;font-family:"Bodoni Moda",serif;font-size:15px}
-.cal-grid .day.disabled{color:#0e1a2b33;cursor:not-allowed}
-.cal-grid .day.avail:hover{background:var(--cream-2);border-color:var(--gold)}
-.cal-grid .day.picked{background:var(--navy);color:var(--cream)}
+.cal-grid .dow{padding:8px 0;text-align:center;font-weight:500;font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-deep)}
+.cal-grid .day{padding:12px 0;text-align:center;color:var(--navy);cursor:pointer;border:1px solid transparent;transition:all .2s ease;font-family:"Bodoni Moda",serif;font-size:16px}
+.cal-grid .day.disabled{color:#0c1a2d22;cursor:not-allowed}
+.cal-grid .day.avail:hover{background:var(--cream);border-color:var(--gold-deep)}
+.cal-grid .day.picked{background:var(--navy);color:var(--cream);border-color:var(--navy)}
 .cal-grid .day.empty{cursor:default}
 
 .time-slots{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.time-slot{
-  padding:12px;text-align:center;border:1px solid var(--navy);background:transparent;
-  font-family:"Bodoni Moda",serif;font-size:15px;color:var(--navy);cursor:pointer;transition:all .15s;
-}
-.time-slot:hover{background:var(--cream-2)}
+.time-slot{padding:14px;text-align:center;border:1px solid var(--navy);background:transparent;font-family:"Bodoni Moda",serif;font-size:15px;color:var(--navy);cursor:pointer;transition:all .2s ease}
+.time-slot:hover{background:var(--cream)}
 .time-slot.picked{background:var(--gold);color:var(--navy);border-color:var(--gold)}
 
-.b-actions{margin-top:36px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.b-back{background:transparent;border:1px solid var(--navy);color:var(--navy);padding:14px 26px;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.32em;text-transform:uppercase;cursor:pointer;transition:background .25s, color .25s}
+.b-actions{margin-top:44px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.b-back{background:transparent;border:1px solid var(--navy);color:var(--navy);padding:16px 30px;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.36em;text-transform:uppercase;cursor:pointer;transition:all .35s}
 .b-back:hover{background:var(--navy);color:var(--cream)}
-.b-next{background:var(--navy);color:var(--cream);border:1px solid var(--navy);padding:14px 26px;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.32em;text-transform:uppercase;cursor:pointer;transition:background .25s, color .25s}
-.b-next:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.b-next{background:var(--navy);color:var(--cream);border:1px solid var(--navy);padding:16px 30px;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.36em;text-transform:uppercase;cursor:pointer;transition:all .35s;position:relative;overflow:hidden}
+.b-next::before{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .45s}
+.b-next:hover::before{transform:scaleX(1);transform-origin:left}
+.b-next span{position:relative;z-index:1;transition:color .35s}
+.b-next:hover span{color:var(--navy)}
 
 /* PAYMENT */
-.pay-section{padding:8px 0}
-.pay-card{border:1px solid var(--gold);padding:24px;background:var(--cream-2)}
-.pay-head{display:flex;justify-content:space-between;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--gold)}
-.pay-final{margin-top:22px;padding-top:18px;border-top:1px solid var(--gold);display:flex;justify-content:space-between;align-items:baseline}
-.pay-final span{font-family:"Bodoni Moda",serif;font-style:italic;font-size:16px;color:var(--navy)}
-.pay-final b{font-family:"Bodoni Moda",serif;font-weight:400;font-size:48px;color:var(--navy);letter-spacing:-.02em}
+.pay-card{margin-top:6px;padding:28px;border:1px solid var(--gold);background:var(--cream-2)}
+.pay-head{display:flex;justify-content:space-between;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--gold)}
+.pay-final{margin-top:24px;padding-top:18px;border-top:1px solid var(--gold);display:flex;justify-content:space-between;align-items:baseline}
+.pay-final span{font-family:"Bodoni Moda",serif;font-style:italic;font-size:17px;color:var(--ink-2)}
+.pay-final b{font-family:"Bodoni Moda",serif;font-weight:300;font-size:54px;color:var(--navy);letter-spacing:-.025em;line-height:1}
 
 /* SUMMARY */
-.b-summary{padding:48px 36px;background:var(--navy);color:var(--cream);display:flex;flex-direction:column;gap:6px}
-.b-summary h4{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:20px;color:var(--gold);margin-bottom:18px;letter-spacing:.02em}
-.bs-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #c5a05933;font-family:"Hanken Grotesk",sans-serif;font-size:13px}
-.bs-row span{color:#f0e9d9aa;letter-spacing:.04em}
-.bs-row b{font-family:"Bodoni Moda",serif;font-weight:500;color:var(--cream);font-size:15px}
-.bs-disc b{color:var(--gold)}
-.bs-total{margin-top:24px;padding-top:18px;border-top:1px solid var(--gold);display:flex;justify-content:space-between;align-items:baseline}
-.bs-total span{font-family:"Bodoni Moda",serif;font-style:italic;font-size:16px;color:var(--gold)}
-.bs-total b{font-family:"Bodoni Moda",serif;font-weight:400;font-size:48px;color:var(--cream);letter-spacing:-.02em}
-.bs-fine{font-family:"Bodoni Moda",serif;font-style:italic;font-size:13px;color:#f0e9d9aa;margin-top:14px;line-height:1.55}
-.bs-trust{margin-top:18px;display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid #c5a05966;font-family:"Hanken Grotesk",sans-serif;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);width:fit-content}
+.b-summary{padding:56px 44px;background:var(--navy);color:var(--cream);display:flex;flex-direction:column;gap:6px;position:relative}
+.b-summary::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.b-summary h4{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:22px;color:var(--gold-light);margin-bottom:24px;letter-spacing:.02em}
+.bs-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #c5a05922;font-family:"Hanken Grotesk",sans-serif;font-size:13px;gap:16px}
+.bs-row span{color:#f0e8d6aa;letter-spacing:.04em;font-weight:300}
+.bs-row b{font-family:"Bodoni Moda",serif;font-weight:500;color:var(--cream);font-size:16px;text-align:right}
+.bs-disc b{color:var(--gold-light)}
+.bs-total{margin-top:28px;padding-top:20px;border-top:1px solid var(--gold);display:flex;justify-content:space-between;align-items:baseline}
+.bs-total span{font-family:"Bodoni Moda",serif;font-style:italic;font-size:18px;color:var(--gold-light)}
+.bs-total b{font-family:"Bodoni Moda",serif;font-weight:300;font-size:54px;color:var(--cream);letter-spacing:-.025em;line-height:1;font-variation-settings:"opsz" 96}
+.bs-fine{font-family:"Bodoni Moda",serif;font-style:italic;font-size:13px;color:#f0e8d699;margin-top:18px;line-height:1.6}
+.bs-trust{margin-top:22px;display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border:1px solid #c5a05966;font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-light);width:fit-content}
+.bs-trust .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
 
-.thanks{
-  display:none;border:1px solid var(--gold);padding:60px 48px;text-align:center;margin-top:64px;background:var(--cream-2);
-}
-.thanks.show{display:block;animation:fade .6s ease both}
-.thanks .crest{font-family:"Bodoni Moda",serif;font-weight:400;font-size:54px;color:var(--gold);line-height:1;font-variation-settings:"opsz" 96}
-.thanks h3{font-family:"Bodoni Moda",serif;font-weight:400;font-size:clamp(34px,4.5vw,56px);line-height:1.05;color:var(--navy);margin:14px auto 18px;max-width:24ch;letter-spacing:-.015em}
+/* THANKS */
+.thanks{display:none;margin-top:80px;border:1px solid var(--gold);padding:80px 56px;text-align:center;background:var(--cream)}
+.thanks.show{display:block;animation:fade .7s ease both}
+.thanks-crest{font-family:"Bodoni Moda",serif;font-weight:300;font-size:64px;color:var(--gold);line-height:1;font-variation-settings:"opsz" 96}
+.thanks h3{font-family:"Bodoni Moda",serif;font-weight:300;font-size:clamp(38px,4.5vw,64px);line-height:1.04;color:var(--navy);margin:18px auto 22px;max-width:24ch;letter-spacing:-.02em}
 .thanks h3 em{font-style:italic;color:var(--gold-deep)}
-.thanks p{font-family:"Bodoni Moda",serif;font-style:italic;font-size:17px;color:var(--navy);max-width:54ch;margin:0 auto 12px;line-height:1.55}
-.thanks .confnum{display:inline-block;margin-top:24px;padding:10px 22px;border:1px solid var(--gold);font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-deep)}
+.thanks p{font-family:"Bodoni Moda",serif;font-style:italic;font-size:18px;color:var(--ink-2);max-width:56ch;margin:0 auto 14px;line-height:1.55}
+.thanks .confnum{display:inline-block;margin-top:28px;padding:12px 26px;border:1px solid var(--gold);font-family:"Hanken Grotesk",sans-serif;font-weight:500;font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--gold-deep)}
 
 /* FOOTER */
-footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
-.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.foot-mark{font-family:"Bodoni Moda",serif;font-weight:400;font-size:30px;color:var(--cream);margin-bottom:10px;letter-spacing:.04em}
-.foot-mark em{font-style:italic;color:var(--gold)}
-.foot-grid h5{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:14px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
-.foot-grid p,.foot-grid a{font-family:"Hanken Grotesk",sans-serif;font-weight:300;font-size:14px;color:#f0e9d9bb;display:block;margin-bottom:4px;letter-spacing:.02em}
-.foot-grid a:hover{color:var(--gold)}
-.foot-base{border-top:1px solid #c5a05944;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:"Hanken Grotesk",sans-serif;font-weight:400;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#f0e9d977}
+footer{background:var(--navy);color:var(--cream);padding:96px 0 40px;position:relative;overflow:hidden}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:56px;margin-bottom:64px}
+.foot-mark{font-family:"Bodoni Moda",serif;font-weight:300;font-size:36px;color:var(--cream);margin-bottom:14px;letter-spacing:-.005em;font-variation-settings:"opsz" 96}
+.foot-mark em{font-style:italic;color:var(--gold-light)}
+.foot-grid h5{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:400;font-size:14px;letter-spacing:.36em;text-transform:uppercase;color:var(--gold-light);margin-bottom:22px}
+.foot-grid p,.foot-grid a{font-family:"Hanken Grotesk",sans-serif;font-weight:300;font-size:14px;color:#f0e8d6bb;display:block;margin-bottom:6px;letter-spacing:.02em;transition:color .25s}
+.foot-grid a:hover{color:var(--gold-light)}
+.foot-base{border-top:1px solid #c5a05933;padding-top:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:"Hanken Grotesk",sans-serif;font-weight:400;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:#f0e8d677}
+.foot-base a{color:var(--gold-light);transition:color .25s}
+.foot-base a:hover{color:var(--cream)}
 
-@media (max-width:880px){
-  .wrap{padding:0 22px}
-  .topstrip-row{justify-content:center;text-align:center}
-  .mast-row{grid-template-columns:1fr;gap:14px;text-align:center}
-  .mast-nav{flex-wrap:wrap;justify-content:center;gap:14px}
+@media (max-width:980px){
+  .luxe-cursor{display:none}
+  .topstrip-row{justify-content:center;text-align:center;flex-wrap:wrap}
+  .mast-row{grid-template-columns:1fr;gap:18px;text-align:center}
+  .mast-nav{justify-content:center;flex-wrap:wrap;gap:18px}
   .mast-right{justify-content:center}
-  .hero{padding:60px 0 60px}
-  .hero-grid{grid-template-columns:1fr;gap:40px}
-  .hero-numbers{position:static;display:inline-block;margin-top:14px}
-  .creds-grid{grid-template-columns:1fr 1fr;gap:28px}
-  .tiers{grid-template-columns:1fr}
-  .tier{border-right:none;border-bottom:1px solid var(--gold)}
-  .tier:last-child{border-bottom:none}
-  .port-grid{grid-template-columns:1fr;gap:36px}
-  .testi-grid{grid-template-columns:1fr}
-  .testi{border-right:none;border-bottom:1px solid var(--gold)}
-  .testi:last-child{border-bottom:none}
-  .guarantee-strip{grid-template-columns:1fr;gap:18px;padding:32px 24px}
+  .hero{padding:60px 0}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-numbers{position:static;display:inline-block;margin-top:18px}
+  .creds-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .tiers,.testi-grid{grid-template-columns:1fr}
+  .tier,.testi{border-right:none}
+  .port-grid{grid-template-columns:1fr;gap:48px}
+  .guarantee-strip{grid-template-columns:1fr;gap:24px;padding:36px 28px}
   .guarantee-strip .seal{text-align:left}
   .booking{grid-template-columns:1fr}
   .booking-form{border-right:none;border-bottom:1px solid var(--gold);padding:32px 24px}
@@ -373,66 +408,84 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
   .steps{flex-wrap:wrap}
   .step{flex:1 1 50%;border-right:none;border-bottom:1px solid var(--gold)}
   .foot-grid{grid-template-columns:1fr 1fr;gap:28px}
-  .foot-base{flex-direction:column;gap:8px}
+  .foot-base{flex-direction:column;gap:10px}
   .time-slots{grid-template-columns:repeat(2,1fr)}
+  .section{padding:80px 0}
 }
 </style>
 </head>
 <body>
 
+<div class="luxe-cursor" id="cursor" aria-hidden="true"></div>
+<div class="progress" id="progress"></div>
+
 <div class="topstrip">
   <div class="wrap topstrip-row">
-    <span>Franklin, Tennessee · Williamson County · Estd. MMXIX</span>
-    <span><a href="tel:9183816095">+1 (918) 381-6095</a> · <a href="mailto:hello@poophappensfranklin.com">hello@poophappensfranklin.com</a></span>
+    <span>Franklin, Tennessee <span class="sep">·</span> Williamson County <span class="sep">·</span> Estd. MMXIX</span>
+    <span><a href="tel:9183816095">+1 (918) 381-6095</a><span class="sep">·</span><a href="mailto:hello@poophappensfranklin.com">hello@poophappensfranklin.com</a></span>
   </div>
 </div>
 
-<header class="mast">
+<header class="mast" id="mast">
   <div class="wrap mast-row">
     <nav class="mast-nav">
       <a href="#tiers">Memberships</a>
       <a href="#portrait">The Founder</a>
       <a href="#testimony">Testimony</a>
     </nav>
-    <a href="#" class="brand">
-      <span class="brand-mark">✦ Estate Concierge ✦</span>
-      <span class="brand-word">Poop Happens</span>
-      <span class="brand-est">Franklin · Estd. MMXIX</span>
+    <a href="#" class="monogram">
+      <span class="monogram-mark">✦ Estate Concierge ✦</span>
+      <span class="monogram-svg">
+        <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="18"/>
+          <circle cx="20" cy="20" r="14"/>
+          <text x="20" y="26" text-anchor="middle" font-family="Bodoni Moda, serif" font-style="italic" font-size="18" font-weight="500" fill="#0c1a2d">PH</text>
+        </svg>
+      </span>
+      <span class="monogram-word">Poop Happens</span>
+      <span class="monogram-est">Franklin · MMXIX</span>
     </a>
     <div class="mast-right">
-      <span class="phone-line">(918) 381-6095</span>
-      <a href="#concierge" class="mast-cta">Reserve</a>
+      <a href="tel:9183816095" class="phone-line">(918) 381-6095</a>
+      <a href="#concierge" class="mast-cta luxe-hover"><span>Reserve</span></a>
     </div>
   </div>
 </header>
 
 <div class="offerband">
-  <b>Introductory Privilege</b> Members receive 50% off their inaugural visit. <em>Reserve before the season opens.</em>
+  <b>Introductory Privilege</b>Members receive 50% off their inaugural visit. <em>Reserved before the season opens.</em>
 </div>
 
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="hero-eyebrow">A private estate service · since 2019</div>
+      <div class="hero-eyebrow">A private estate service · since MMXIX</div>
       <h1 class="h1">
-        Discretion.<br/>
-        <em>Devotion.</em><br/>
-        A clean lawn.
-        <span class="rule"></span>
+        <span class="line"><span>Discretion.</span></span>
+        <span class="line"><span><em>Devotion.</em></span></span>
+        <span class="line"><span>A clean lawn.</span></span>
+        <span class="h1-rule"></span>
       </h1>
-      <p class="deck">A standing, weekly engagement for the gardens, paddocks, and back patios of Franklin's finest residences. A single quiet visit, the same day each week. The yard, returned to itself before you've finished your second coffee.</p>
+      <p class="deck">A standing, weekly engagement for the gardens, paddocks, and back patios of Franklin's finest residences. A single quiet visit, the same day each week. The yard, returned to itself before you have finished your second coffee. <b>From $19.99 per visit.</b></p>
       <div class="hero-actions">
-        <a href="#concierge" class="btn-gold">Reserve a Standing Visit</a>
-        <a href="#tiers" class="btn-line">View Memberships</a>
+        <a href="#concierge" class="btn-gold luxe-hover"><span>Reserve a Standing →</span></a>
+        <a href="#tiers" class="btn-line luxe-hover">View Memberships</a>
       </div>
     </div>
     <aside class="hero-aside">
-      <div class="hero-numbers"><b>1,412</b><span>Residences served</span></div>
-      <div class="hero-portrait">
+      <div class="hero-numbers">
+        <b>1,412</b>
+        <span>Residences served</span>
+      </div>
+      <div class="hero-portrait luxe-hover">
+        <span class="hero-corner tl"></span>
+        <span class="hero-corner tr"></span>
+        <span class="hero-corner bl"></span>
+        <span class="hero-corner br"></span>
         <img src="../assets/owner-with-dog.png" alt="Ryan, founder of Poop Happens, with a member's dog" />
         <div class="hero-cap">
-          <b>Ryan · Founder</b>
-          <span>A Tuesday call in Westhaven, spring of MMXXVI</span>
+          <b>Ryan, founder.</b>
+          <span>A Tuesday call in Westhaven · MMXXVI</span>
         </div>
       </div>
     </aside>
@@ -441,8 +494,8 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
 
 <div class="marquee">
   <div class="marquee-track">
-    <span>Locally owned &amp; operated</span><span>Since 2019</span><span>Seven years of professional experience</span><span>No contracts</span><span>100% Satisfaction guarantee</span><span>Year-round service</span>
-    <span>Locally owned &amp; operated</span><span>Since 2019</span><span>Seven years of professional experience</span><span>No contracts</span><span>100% Satisfaction guarantee</span><span>Year-round service</span>
+    <span>Locally owned &amp; operated</span><span>Since MMXIX</span><span>Seven years of professional experience</span><span>No contracts</span><span>100% satisfaction guarantee</span><span>Year-round service</span>
+    <span>Locally owned &amp; operated</span><span>Since MMXIX</span><span>Seven years of professional experience</span><span>No contracts</span><span>100% satisfaction guarantee</span><span>Year-round service</span>
   </div>
 </div>
 
@@ -450,60 +503,60 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
   <div class="wrap">
     <div class="creds-grid">
       <div class="cred"><small>Founded</small><b>MMXIX</b><p>Franklin, Tennessee. A single hand-drawn route.</p></div>
-      <div class="cred"><small>Residences</small><b>1,412</b><p>Tended weekly across Williamson Co.</p></div>
-      <div class="cred"><small>Promise</small><b>100%</b><p>Satisfaction guarantee or refund. Plain as that.</p></div>
-      <div class="cred"><small>Contracts</small><b>—</b><p>None. Pause or release any time.</p></div>
+      <div class="cred"><small>Residences</small><b>1,412</b><p>Tended weekly across Williamson County.</p></div>
+      <div class="cred"><small>Standard</small><b>100%</b><p>Satisfaction guarantee or refund. Unchanged since opening.</p></div>
+      <div class="cred"><small>Contracts</small><b>—</b><p>None. Release the standing any time.</p></div>
     </div>
   </div>
 </section>
 
-<section class="services" id="tiers">
+<section class="section" id="tiers">
   <div class="wrap">
     <div class="section-eyebrow">✦ The Memberships ✦</div>
     <h2 class="section-title">Three quiet <em>standings.</em></h2>
     <p class="section-deck">Every membership includes full-yard tending, off-site disposal, gate-secure photograph upon completion, and unconditional weather coverage. The only choice is rhythm.</p>
 
     <div class="tiers">
-      <article class="tier">
+      <article class="tier luxe-hover">
         <div class="tier-roman">I.</div>
         <h3>The <em>Visit</em></h3>
-        <p style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:14px;color:var(--gold-deep);margin-bottom:18px">A single, definitive cleanout.</p>
-        <div class="price"><b>$89</b><small>One-time · within 48 hrs</small></div>
+        <p class="tier-tag">A single, definitive cleanout.</p>
+        <div class="tier-price"><b>$89</b><small>one-time · within 48 hrs</small></div>
         <ul>
           <li>Same-week scheduling</li>
           <li>Up to ½ acre included</li>
-          <li>Before &amp; after photo</li>
+          <li>Before &amp; after photograph</li>
           <li>No follow-up required</li>
         </ul>
-        <a href="#concierge" data-plan="onetime" class="tier-pay">Reserve · $44.50 Today</a>
+        <a href="#concierge" data-plan="onetime" class="tier-pay luxe-hover"><span>Reserve · $44.50 Today</span></a>
       </article>
 
-      <article class="tier house">
+      <article class="tier house luxe-hover">
         <div class="tier-roman">II.</div>
         <h3>The <em>Weekly</em></h3>
-        <p style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:14px;color:var(--gold);margin-bottom:18px">The household standing. Most chosen.</p>
-        <div class="price"><b>$19.99</b><small>Per visit · same weekday weekly</small></div>
+        <p class="tier-tag">The household standing. Most chosen.</p>
+        <div class="tier-price"><b>$19.99</b><small>per visit · weekly</small></div>
         <ul>
           <li>Locked weekday, year-round</li>
           <li>Edge-to-fence inspection</li>
-          <li>Sealed bag, hauled out</li>
+          <li>Sealed bag, hauled off-site</li>
           <li>Skip any week, no charge</li>
         </ul>
-        <a href="#concierge" data-plan="weekly" class="tier-pay">Reserve · $9.99 Today</a>
+        <a href="#concierge" data-plan="weekly" class="tier-pay luxe-hover"><span>Reserve · $9.99 Today</span></a>
       </article>
 
-      <article class="tier">
+      <article class="tier luxe-hover">
         <div class="tier-roman">III.</div>
         <h3>The <em>Fortnight</em></h3>
-        <p style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:14px;color:var(--gold-deep);margin-bottom:18px">For the quieter residence.</p>
-        <div class="price"><b>$29.99</b><small>Per visit · every other week</small></div>
+        <p class="tier-tag">For the quieter residence.</p>
+        <div class="tier-price"><b>$29.99</b><small>per visit · every other week</small></div>
         <ul>
           <li>Every other weekday, locked</li>
           <li>Bonus rinse on visits 2 &amp; 4</li>
           <li>Hand-walked perimeter</li>
           <li>Promote to weekly any time</li>
         </ul>
-        <a href="#concierge" data-plan="fortnight" class="tier-pay">Reserve · $14.99 Today</a>
+        <a href="#concierge" data-plan="fortnight" class="tier-pay luxe-hover"><span>Reserve · $14.99 Today</span></a>
       </article>
     </div>
   </div>
@@ -514,10 +567,13 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
     <div class="section-eyebrow">✦ The Founder ✦</div>
     <h2 class="section-title">A note from <em>Ryan.</em></h2>
     <div class="port-grid">
-      <div class="port-photo"><img src="../assets/owner-with-dog.png" alt="Ryan, founder" /></div>
+      <div class="port-photo luxe-hover">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        <img src="../assets/owner-with-dog.png" alt="Ryan, founder" />
+      </div>
       <div class="port-content">
         <h3>"Keep yards clean, fresh, and safe with reliable, <em>dignified</em> work."</h3>
-        <p>Poop Happens was founded in 2019 with seven years of professional cleaning experience behind it and a single, simple ambition: a service so consistent the household stops noticing it exists. Same weekday, same hand, the same way each time.</p>
+        <p>Poop Happens was founded in 2019 with seven years of professional cleaning experience behind it and a single, simple ambition: a service so consistent the household stops noticing it exists. The same weekday, the same hand, the same way each time.</p>
         <p>We are locally owned and locally operated. We do not subscribe households to anything they cannot release in an afternoon. We hold ourselves to a hundred-percent satisfaction standard — and if a visit is not right, we return.</p>
         <div class="sig">— Ryan<small>Founder &amp; Operator</small></div>
       </div>
@@ -529,20 +585,19 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
   <div class="wrap">
     <div class="section-eyebrow">✦ Testimony ✦</div>
     <h2 class="section-title">From the <em>residences.</em></h2>
-
     <div class="testi-grid">
       <article class="testi">
-        <div class="testi-stars">★★★★★ · Verified</div>
-        <blockquote>Quick response time and very professional service. The pricing is great, and the owner truly cares about quality service and building relationships. Already passed along the name to others.</blockquote>
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>Quick response time and very professional service. The pricing is great, and the owner truly cares about quality service and building relationships. Already passed his name along to others.</blockquote>
         <div class="testi-by">Anthony K.<small>Westhaven · 2 dogs</small></div>
       </article>
       <article class="testi">
-        <div class="testi-stars">★★★★★ · Verified</div>
-        <blockquote>Ryan is a stand-up gentleman and very professional. Easy to schedule, and consistent. I'd recommend the service to anyone — especially anyone squeamish about the work itself.</blockquote>
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>Ryan is a stand-up gentleman and very professional. Easy to schedule, and consistent. I would recommend the service to anyone — especially anyone squeamish about the work itself.</blockquote>
         <div class="testi-by">Simon A.<small>Cool Springs · 1 dog</small></div>
       </article>
       <article class="testi">
-        <div class="testi-stars">★★★★★ · Verified</div>
+        <div class="testi-stars">★★★★★</div>
         <blockquote>Friendly, professional, on time, and did a wonderful job. The kind of service that simply continues to be excellent — week after week. We will be using them for the foreseeable future.</blockquote>
         <div class="testi-by">Shane S.<small>Berry Farms · 1 dog</small></div>
       </article>
@@ -551,10 +606,10 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
     <div class="guarantee-strip">
       <div class="crest">✦</div>
       <div>
-        <h4>The <em>Satisfaction</em> Standing.</h4>
-        <p>If a visit is not right, we return within twenty-four hours at no charge. If it is still not right, we refund it. That is the entire policy. It has not changed since 2019.</p>
+        <h4>The <em>satisfaction</em> standing.</h4>
+        <p>If a visit is not right, we return within twenty-four hours at no charge. If it is still not right, we refund it. That is the entire policy. Unchanged since 2019.</p>
       </div>
-      <div class="seal">— Seal of<br/>the House</div>
+      <div class="seal">— Seal of<br/>the House<br/>MMXIX</div>
     </div>
   </div>
 </section>
@@ -563,7 +618,7 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
   <div class="wrap">
     <div class="section-eyebrow">✦ Reservation ✦</div>
     <h2 class="section-title">Reserve your <em>first visit.</em></h2>
-    <p class="section-deck">Four steps. A weekday, a time, a card on file. The first visit is half-rate. No contract — release the standing at any moment with a single line of reply.</p>
+    <p class="section-deck">Four steps. A weekday, an hour, a card on file. The first visit is half-rate. No contract — release the standing at any moment with a single line of reply.</p>
 
     <div class="steps" id="stepBar">
       <div class="step active" data-step="1"><span class="step-num">I</span>The Residence</div>
@@ -576,8 +631,8 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
       <form class="booking-form" id="bookForm" novalidate>
 
         <div class="b-panel show" data-panel="1">
-          <h3>The <em>residence</em>.</h3>
-          <p class="lead">Forename, surname, address, and a means of reaching you. We verify coverage before any charge.</p>
+          <h3>The <em>residence.</em></h3>
+          <p class="lead">A name, an address, a means of correspondence. We verify the route before any charge is made.</p>
           <div class="b-row">
             <div class="b-field"><label>Forename</label><input id="bFirst" required placeholder="Margaret" /></div>
             <div class="b-field"><label>Surname</label><input id="bLast" required placeholder="Lockwood" /></div>
@@ -591,17 +646,17 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
             <div class="b-field"><label>Town</label><input id="bCity" required value="Franklin" /></div>
             <div class="b-field"><label>ZIP</label><input id="bZip" required maxlength="5" pattern="[0-9]{5}" placeholder="37064" /></div>
           </div>
-          <div class="b-actions"><span></span><button type="button" class="b-next" data-go="2">Continue →</button></div>
+          <div class="b-actions"><span></span><button type="button" class="b-next luxe-hover" data-go="2"><span>Continue → II</span></button></div>
         </div>
 
         <div class="b-panel" data-panel="2">
-          <h3>The <em>household</em>.</h3>
+          <h3>The <em>household.</em></h3>
           <p class="lead">How many hounds, what scale of yard. Both adjust the standing rate gently.</p>
           <div class="b-field">
             <label>Hounds in residence</label>
             <div class="b-choices">
-              <label><input type="radio" name="dogs" value="1" checked /><span>I<small>One hound</small></span></label>
-              <label><input type="radio" name="dogs" value="2" /><span>II<small>Two hounds</small></span></label>
+              <label><input type="radio" name="dogs" value="1" checked /><span>I<small>One</small></span></label>
+              <label><input type="radio" name="dogs" value="2" /><span>II<small>Two</small></span></label>
               <label><input type="radio" name="dogs" value="3" /><span>III<small>Three</small></span></label>
               <label><input type="radio" name="dogs" value="4" /><span>IV+<small>Four or more</small></span></label>
             </div>
@@ -615,16 +670,16 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
               <label><input type="radio" name="yard" value="xl" /><span>XL<small>1+ acre</small></span></label>
             </div>
           </div>
-          <div class="b-field"><label>The hound(s) by name</label><input id="bDogName" placeholder="Biscuit, Bourbon, Maple…" /></div>
+          <div class="b-field"><label>The hound(s) by name <span style="opacity:.5;font-style:italic;font-family:'Bodoni Moda',serif;font-size:11px;letter-spacing:0;text-transform:none">— optional</span></label><input id="bDogName" placeholder="Biscuit, Bourbon, Maple…" /></div>
           <div class="b-actions">
             <button type="button" class="b-back" data-go="1">← Back</button>
-            <button type="button" class="b-next" data-go="3">Continue →</button>
+            <button type="button" class="b-next luxe-hover" data-go="3"><span>Continue → III</span></button>
           </div>
         </div>
 
         <div class="b-panel" data-panel="3">
-          <h3>The <em>day &amp; hour</em>.</h3>
-          <p class="lead">Pick a rhythm, then a date and an hour. We hold this standing for the life of the membership.</p>
+          <h3>The <em>day &amp; hour.</em></h3>
+          <p class="lead">A rhythm, a date, and an hour. We hold this standing for the life of the membership.</p>
           <div class="b-field">
             <label>Rhythm</label>
             <div class="b-choices three">
@@ -633,11 +688,10 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
               <label><input type="radio" name="freq" value="onetime" /><span>One-time<small>from $89</small></span></label>
             </div>
           </div>
-
-          <div class="cal" id="calendar">
+          <div class="cal">
             <div class="cal-head">
-              <h5 id="calTitle">May MMXXVI</h5>
-              <div>
+              <h5 id="calTitle"><em>May</em> MMXXVI</h5>
+              <div class="nav-btns">
                 <button type="button" id="prevMo">‹ Prev</button>
                 <button type="button" id="nextMo">Next ›</button>
               </div>
@@ -654,21 +708,20 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
               <button type="button" class="time-slot" data-time="16:30">04:30 PM</button>
             </div>
           </div>
-          <div class="b-field" style="margin-top:18px"><label>Note for the operator</label><input id="bNotes" placeholder="The east gate sticks. Bourbon is friendly but loud." /></div>
-
+          <div class="b-field" style="margin-top:24px"><label>Note for the operator</label><input id="bNotes" placeholder="The east gate sticks. Bourbon is friendly but loud." /></div>
           <div class="b-actions">
             <button type="button" class="b-back" data-go="2">← Back</button>
-            <button type="button" class="b-next" data-go="4">Continue →</button>
+            <button type="button" class="b-next luxe-hover" data-go="4"><span>Continue → IV</span></button>
           </div>
         </div>
 
         <div class="b-panel" data-panel="4">
           <h3>A <em>card</em> on file.</h3>
-          <p class="lead">We charge once today, at half rate, for the first visit only. Subsequent visits charge the day after each call. Pause or release any time.</p>
+          <p class="lead">We charge once today at half rate for the inaugural visit only. Subsequent visits charge the day after each call. Pause or release any time.</p>
           <div class="pay-card">
             <div class="pay-head">
-              <span>Card details</span>
-              <span>✦ Secured · Stripe · 256-bit TLS</span>
+              <span>✦ Card details</span>
+              <span>Secured · Stripe · 256-bit TLS</span>
             </div>
             <div class="b-field"><label>Card number</label><input id="bCard" placeholder="4242 4242 4242 4242" /></div>
             <div class="b-row">
@@ -683,10 +736,9 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
           </div>
           <div class="b-actions">
             <button type="button" class="b-back" data-go="3">← Back</button>
-            <button type="submit" class="b-next">Reserve — Charge <span id="payAmtBtn">$10.00</span></button>
+            <button type="submit" class="b-next luxe-hover"><span>Reserve — Charge <span id="payAmtBtn">$10.00</span></span></button>
           </div>
         </div>
-
       </form>
 
       <aside class="b-summary">
@@ -694,22 +746,22 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
         <div class="bs-row"><span>Membership</span><b id="bsPlan">Weekly</b></div>
         <div class="bs-row"><span>Hounds</span><b id="bsDogs">One</b></div>
         <div class="bs-row"><span>Grounds</span><b id="bsYard">&lt;¼ acre</b></div>
-        <div class="bs-row"><span>Day &amp; hour</span><b id="bsWhen">Mon · 09:30 AM</b></div>
+        <div class="bs-row"><span>Day &amp; hour</span><b id="bsWhen">— pick a date —</b></div>
         <div class="bs-row"><span>Base rate</span><b id="bsBase">$19.99</b></div>
         <div class="bs-row"><span>Adjustments</span><b id="bsAdj">+$0.00</b></div>
         <div class="bs-row bs-disc"><span>Inaugural — 50% off</span><b id="bsDisc">−$10.00</b></div>
         <div class="bs-total"><span>Charged today</span><b id="bsTotal">$10.00</b></div>
-        <span class="bs-trust">✦ PCI · Stripe · Encrypted</span>
-        <p class="bs-fine">After the inaugural visit, your card is charged at the regular rate the day following each call. No contract; no fee to release the membership.</p>
+        <span class="bs-trust"><span class="dot"></span>PCI · Stripe · Encrypted</span>
+        <p class="bs-fine">After the inaugural visit, your card is charged at the regular rate the day after each call. No contract; no fee to release the membership.</p>
       </aside>
     </div>
 
     <div class="thanks" id="thanks">
-      <div class="crest">✦</div>
+      <div class="thanks-crest">✦</div>
       <h3>The <em>reservation</em> is held.</h3>
       <p>The residence is entered on the route for the day and hour you selected. A confirmation has been sent by correspondence; we will write the morning of the first visit.</p>
-      <p>Your card has been charged at half rate for the inaugural call only. We remain available at <a href="tel:9183816095" style="color:var(--gold-deep);font-style:normal">(918) 381-6095</a> or <a href="mailto:hello@poophappensfranklin.com" style="color:var(--gold-deep);font-style:normal">hello@poophappensfranklin.com</a> for any matter, at any hour.</p>
-      <div class="confnum">Confirmation # PH-<span id="thConf">000000</span> · 50% Off Applied</div>
+      <p>Your card has been charged at half rate for the inaugural call only. We remain available at <a href="tel:9183816095" style="color:var(--gold-deep);text-decoration:underline;text-decoration-color:#c5a05966;text-underline-offset:4px;font-style:normal">(918) 381-6095</a> or <a href="mailto:hello@poophappensfranklin.com" style="color:var(--gold-deep);text-decoration:underline;text-decoration-color:#c5a05966;text-underline-offset:4px;font-style:normal">hello@poophappensfranklin.com</a>, at any hour.</p>
+      <div class="confnum">Confirmation # PH-<span id="thConf">000000</span> · 50% off applied</div>
     </div>
   </div>
 </section>
@@ -719,7 +771,7 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
     <div class="foot-grid">
       <div>
         <div class="foot-mark"><em>Poop</em> Happens</div>
-        <p style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:14px;color:#f0e9d9bb;line-height:1.5">A private, weekly pet-waste concierge. Locally owned and operated since 2019.</p>
+        <p style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:14px;color:#f0e8d6aa;line-height:1.55;max-width:32ch">A private, weekly pet-waste concierge. Locally owned and operated since MMXIX.</p>
       </div>
       <div>
         <h5>Office</h5>
@@ -742,6 +794,7 @@ footer{background:var(--navy);color:var(--cream);padding:80px 0 32px}
     </div>
     <div class="foot-base">
       <span>© Poop Happens MMXXVI · Set in Bodoni Moda &amp; Hanken Grotesk</span>
+      <span><a href="../">← All four takes</a></span>
       <span>When poop happens, we handle it.</span>
     </div>
   </div>
@@ -774,7 +827,7 @@ form.querySelectorAll('[data-go]').forEach(b=>{
     if(target>Number(cur.dataset.panel)){
       const inputs=cur.querySelectorAll('input[required]');
       let ok=true;
-      inputs.forEach(i=>{if(!i.value){ok=false;i.style.borderBottomColor='#9c2222'}});
+      inputs.forEach(i=>{if(!i.value){ok=false;i.style.borderBottomColor='#9c2222'}else{i.style.borderBottomColor=''}});
       if(!ok)return;
     }
     go(target);
@@ -807,8 +860,7 @@ function recalc(){
 recalc();
 
 // CALENDAR
-const monthNames=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const monthRoman=['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
+const monthNames=['January','February','March','April','May','June','July','August','September','October','November','December'];
 let curMo=new Date().getMonth();
 let curYr=new Date().getFullYear();
 const today0=new Date();today0.setHours(0,0,0,0);
@@ -824,7 +876,7 @@ function renderCal(){
   const first=new Date(curYr,curMo,1);
   const startDow=first.getDay();
   const daysInMo=new Date(curYr,curMo+1,0).getDate();
-  document.getElementById('calTitle').textContent=monthNames[curMo]+' '+romanYear(curYr);
+  document.getElementById('calTitle').innerHTML=`<em>${monthNames[curMo]}</em> ${romanYear(curYr)}`;
   for(let i=0;i<startDow;i++){const e=document.createElement('div');e.className='empty';grid.appendChild(e)}
   for(let d=1;d<=daysInMo;d++){
     const el=document.createElement('div');el.className='day';el.textContent=d;
@@ -833,8 +885,7 @@ function renderCal(){
     else{el.classList.add('avail');el.addEventListener('click',()=>{
       grid.querySelectorAll('.day.picked').forEach(x=>x.classList.remove('picked'));
       el.classList.add('picked');
-      state.date=dt;
-      updateWhen();
+      state.date=dt;updateWhen();
     })}
     grid.appendChild(el);
   }
@@ -843,11 +894,10 @@ function renderCal(){
 function updateWhen(){
   const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   if(state.date){
-    const d=state.date;
-    const t=state.time;
+    const d=state.date;const t=state.time;
     let h=Number(t.split(':')[0]),m=t.split(':')[1];
     const ap=h>=12?'PM':'AM';if(h>12)h-=12;
-    document.getElementById('bsWhen').textContent=days[d.getDay()]+' '+monthNames[d.getMonth()]+' '+d.getDate()+' · '+h+':'+m+' '+ap;
+    document.getElementById('bsWhen').textContent=days[d.getDay()]+' '+monthNames[d.getMonth()].slice(0,3)+' '+d.getDate()+' · '+h+':'+m+' '+ap;
   }
 }
 
@@ -856,20 +906,16 @@ document.getElementById('nextMo').addEventListener('click',()=>{curMo++;if(curMo
 document.querySelectorAll('.time-slot').forEach(b=>{
   b.addEventListener('click',()=>{
     document.querySelectorAll('.time-slot').forEach(x=>x.classList.remove('picked'));
-    b.classList.add('picked');
-    state.time=b.dataset.time;
-    updateWhen();
+    b.classList.add('picked');state.time=b.dataset.time;updateWhen();
   });
 });
 renderCal();
 
 document.querySelectorAll('[data-plan]').forEach(a=>{
   a.addEventListener('click',()=>{
-    const v=a.dataset.plan;
-    state.freq=v;
+    const v=a.dataset.plan;state.freq=v;
     const r=form.querySelector(`input[name="freq"][value="${v}"]`);
-    if(r)r.checked=true;
-    recalc();
+    if(r)r.checked=true;recalc();
   });
 });
 
@@ -886,6 +932,30 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     const h=a.getAttribute('href');
     if(h&&h.length>1){e.preventDefault();document.querySelector(h)?.scrollIntoView({behavior:'smooth'})}
   });
+});
+
+// MAST + PROGRESS
+const mast=document.getElementById('mast');
+const pr=document.getElementById('progress');
+function tick(){
+  const y=window.scrollY;
+  mast.classList.toggle('scrolled',y>60);
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  pr.style.width=(h>0?(y/h*100):0)+'%';
+}
+document.addEventListener('scroll',tick,{passive:true});
+tick();
+
+// LUXE CURSOR
+const cursor=document.getElementById('cursor');
+let cx=0,cy=0,tx=0,ty=0;
+document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;cursor.classList.add('active')});
+document.addEventListener('mouseleave',()=>cursor.classList.remove('active'));
+function loop(){cx+=(tx-cx)*.18;cy+=(ty-cy)*.18;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(loop)}
+loop();
+document.querySelectorAll('.luxe-hover').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cursor.classList.add('over'));
+  el.addEventListener('mouseleave',()=>cursor.classList.remove('over'));
 });
 </script>
 </body>

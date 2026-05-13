@@ -3,605 +3,797 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Poop Happens — Dog Poop Removal in Franklin, TN</title>
-<meta name="description" content="A dignified, weekly pet-waste service for the gardens and lawns of Williamson County. From $19.99 a visit. 50% off your initial clean." />
+<title>Poop Happens — A Quiet Weekly Tending of the Yard</title>
+<meta name="description" content="A dignified weekly pet-waste service for the gardens and lawns of Franklin, TN. Half off the first visit. No contracts." />
 <link rel="icon" href="../assets/favicon-1-300x300.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
 <style>
 :root{
-  --paper:#f4ede1;--paper-2:#ece2cf;--ink:#1a1410;
-  --terra:#8b4a2f;--terra-deep:#5a2e1d;--sage:#6d7d5e;--gold:#b08949;
-  --rule:#1a141033;
+  --paper:#f4ede1;
+  --paper-2:#ece2cf;
+  --paper-3:#e0d4ba;
+  --ink:#1a1410;
+  --ink-2:#3a2e1f;
+  --ink-3:#6e5e48;
+  --terra:#8b4a2f;
+  --terra-deep:#5a2e1d;
+  --sage:#6d7d5e;
+  --gold:#b08949;
+  --gold-light:#d3b276;
+  --rule:#1a141022;
+  --rule-2:#1a141014;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--paper);color:var(--ink);font-family:"Lora",Georgia,serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--terra);color:var(--paper)}
+html{scroll-behavior:smooth}
+html,body{background:var(--paper);color:var(--ink);font-family:"Lora",Georgia,serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
 body{
   background-image:
-    radial-gradient(circle at 15% 10%, #00000008 0%, transparent 30%),
-    radial-gradient(circle at 85% 85%, #00000008 0%, transparent 30%),
-    repeating-linear-gradient(0deg, #00000003 0 1px, transparent 1px 4px);
+    radial-gradient(ellipse 60% 40% at 20% 10%, #b0894914 0%, transparent 60%),
+    radial-gradient(ellipse 50% 30% at 80% 80%, #8b4a2f0d 0%, transparent 60%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.8' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/></svg>");
   overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
-.wrap{max-width:1240px;margin:0 auto;padding:0 36px}
+button{font-family:inherit;cursor:pointer}
+
+/* SCROLL PROGRESS */
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--terra);width:0;z-index:300;transition:width .12s linear}
+
+.wrap{max-width:1280px;margin:0 auto;padding:0 44px}
+@media (max-width:760px){.wrap{padding:0 24px}}
 
 /* TOP BAR */
-.topbar{background:var(--ink);color:var(--paper);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
-.topbar-row{display:flex;justify-content:space-between;align-items:center;height:36px;padding:0 24px}
-.topbar a{color:var(--gold)}
+.topbar{
+  background:var(--ink);color:var(--paper);font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+}
+.topbar-row{display:flex;justify-content:space-between;align-items:center;height:38px;padding:0 44px}
+.topbar a{color:var(--gold);transition:color .25s}
+.topbar a:hover{color:var(--paper)}
+.topbar .sep{margin:0 14px;color:#f4ede155}
 
-/* MASTHEAD */
-.mast{border-bottom:1px solid var(--ink);padding:18px 0 14px;font-family:"Fraunces",serif}
-.mast-row{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.mast-brand{display:flex;align-items:center;gap:18px}
-.mast-brand img{height:64px;width:auto}
-.mast-wordmark{font-family:"Fraunces",serif;font-size:30px;font-weight:900;font-style:italic;letter-spacing:-.02em;font-variation-settings:"opsz" 144;line-height:1}
-.mast-wordmark small{display:block;font-family:"Lora",serif;font-style:normal;font-weight:400;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--terra);margin-top:4px}
-.mast-nav{display:flex;gap:22px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-family:"Lora",serif;font-weight:500}
-.mast-nav a{position:relative;padding-bottom:3px;cursor:pointer}
-.mast-nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
-.mast-nav a:hover::after{transform:scaleX(1)}
-.mast-cta{background:var(--terra);color:var(--paper);padding:12px 22px;font-family:"Lora",serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;transition:background .25s}
-.mast-cta:hover{background:var(--ink)}
+/* MASTHEAD — sticky */
+.mast{
+  background:var(--paper);border-bottom:1px solid var(--ink);position:sticky;top:0;z-index:40;
+  transition:padding .35s ease, box-shadow .35s ease;padding:22px 0;
+}
+.mast.scrolled{padding:12px 0;box-shadow:0 1px 0 var(--rule),0 12px 32px -16px rgba(26,20,16,.18)}
+.mast-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:36px}
+.mast-nav{display:flex;gap:34px;font-family:"Lora",serif;font-weight:500;font-size:11px;letter-spacing:.28em;text-transform:uppercase}
+.mast-nav a{position:relative;padding-bottom:6px}
+.mast-nav a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;background:var(--terra);transition:left .35s ease,right .35s ease}
+.mast-nav a:hover::after{left:0;right:0}
+.mast-brand{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1}
+.mast-mark{font-family:"Lora",serif;font-weight:500;font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:var(--terra);margin-bottom:6px}
+.mast-word{font-family:"Fraunces",serif;font-weight:400;font-size:34px;letter-spacing:-.01em;font-variation-settings:"opsz" 144;line-height:1}
+.mast-word em{font-style:italic;font-weight:300;color:var(--terra)}
+.mast-est{font-family:"Lora",serif;font-style:italic;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-3);margin-top:5px}
+.mast-right{display:flex;align-items:center;justify-content:flex-end;gap:18px}
+.phone-link{font-family:"Fraunces",serif;font-style:italic;font-weight:400;font-size:16px;color:var(--terra);padding-right:18px;border-right:1px solid var(--rule);transition:color .25s}
+.phone-link:hover{color:var(--ink)}
+.cta-mast{
+  padding:13px 26px;background:var(--ink);color:var(--paper);
+  font-family:"Lora",serif;font-weight:500;font-size:10px;letter-spacing:.32em;text-transform:uppercase;
+  transition:background .3s, color .3s, transform .3s;
+}
+.cta-mast:hover{background:var(--terra);transform:translateY(-1px)}
 
-/* OFFER BAR */
+/* OFFER BAND */
 .offer{
-  background:var(--terra);color:var(--paper);text-align:center;padding:10px 24px;
-  font-family:"Fraunces",serif;font-style:italic;font-size:15px;letter-spacing:.04em;
+  background:var(--paper-2);border-bottom:1px solid var(--rule);padding:11px 0;text-align:center;
+  font-family:"Fraunces",serif;font-style:italic;font-size:14px;color:var(--ink);
 }
-.offer strong{font-family:"Lora",serif;font-style:normal;font-weight:600;letter-spacing:.15em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:2px 8px;margin-right:8px;font-size:11px}
+.offer b{font-family:"Lora",serif;font-style:normal;font-weight:600;font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--paper);background:var(--terra);padding:3px 10px;margin-right:14px;border-radius:2px}
 
-/* HERO */
-.hero{
-  padding:72px 0 64px;display:grid;grid-template-columns:1.4fr .95fr;gap:60px;align-items:center;position:relative;
+/* HERO — cinematic */
+.hero{padding:88px 0 80px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center;position:relative}
+.hero-issue{
+  position:absolute;left:0;top:0;
+  font-family:"Lora",serif;font-style:italic;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--terra);
+  display:flex;align-items:center;gap:14px;
 }
-.hero::before{content:"NO. 24";position:absolute;right:0;top:36px;font-family:"Fraunces",serif;font-style:italic;font-size:160px;color:#00000007;font-weight:900;pointer-events:none;letter-spacing:-.04em}
-.eyebrow{font-family:"Lora",serif;font-weight:500;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);margin-bottom:18px;display:flex;align-items:center;gap:14px;animation:rise .7s .05s ease both}
-.eyebrow::before{content:"";display:block;width:46px;height:1px;background:var(--terra)}
-.hero h1{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(60px,10vw,156px);line-height:.86;letter-spacing:-.045em;font-variation-settings:"opsz" 144,"SOFT" 50;animation:rise .8s .15s ease both}
+.hero-issue::before,.hero-issue::after{content:"";display:block;width:34px;height:1px;background:var(--terra)}
+.hero-content{padding-top:72px}
+.hero h1{
+  font-family:"Fraunces",serif;font-weight:300;
+  font-size:clamp(64px,10.5vw,180px);
+  line-height:.86;letter-spacing:-.045em;
+  font-variation-settings:"opsz" 144,"SOFT" 50;
+  color:var(--ink);
+}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .line span{display:inline-block;animation:rise 1.1s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 .line:nth-child(1) span{animation-delay:.2s}
+.hero h1 .line:nth-child(2) span{animation-delay:.35s}
 .hero h1 em{font-style:italic;color:var(--terra);font-weight:400;font-variation-settings:"opsz" 144,"SOFT" 100}
-.hero .deck{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(20px,2.2vw,28px);line-height:1.3;margin-top:32px;max-width:38ch;color:var(--ink);animation:rise .9s .3s ease both}
-.hero-ctas{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;animation:rise .9s .4s ease both}
+.hero-deck{
+  font-family:"Fraunces",serif;font-style:italic;font-weight:300;
+  font-size:clamp(20px,2.1vw,26px);line-height:1.4;color:var(--ink-2);
+  margin-top:38px;max-width:42ch;
+  animation:fade 1s .55s ease both;
+}
+.hero-deck b{color:var(--ink);font-weight:400;font-style:normal;font-family:"Lora",serif;background:linear-gradient(180deg,transparent 55%,#b0894944 55%);padding:0 2px}
+
+.hero-meta{margin-top:48px;display:grid;grid-template-columns:repeat(3,auto);gap:0;font-family:"Lora",serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);animation:fade 1s .7s ease both}
+.hero-meta div{padding-right:28px;border-right:1px solid var(--rule);margin-right:28px}
+.hero-meta div:last-child{border-right:none;padding-right:0;margin-right:0}
+.hero-meta b{display:block;font-family:"Fraunces",serif;font-weight:400;font-style:italic;font-size:22px;color:var(--ink);letter-spacing:-.01em;text-transform:none;margin-top:6px}
+
+.hero-actions{margin-top:48px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;animation:fade 1s .85s ease both}
 .btn{
-  display:inline-flex;align-items:center;gap:10px;padding:18px 30px;
-  font-family:"Lora",serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;
-  transition:transform .25s, background .25s, color .25s;cursor:pointer;border:none;
+  display:inline-flex;align-items:center;gap:12px;padding:20px 36px;
+  font-family:"Lora",serif;font-weight:500;font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  transition:all .3s ease;cursor:pointer;border:none;position:relative;overflow:hidden;
 }
-.btn-pri{background:var(--ink);color:var(--paper)}
-.btn-pri:hover{background:var(--terra);transform:translateY(-2px)}
-.btn-sec{background:transparent;color:var(--ink);border:1px solid var(--ink)}
-.btn-sec:hover{background:var(--ink);color:var(--paper)}
-.hero-side{position:relative;animation:rise 1s .4s ease both}
-.hero-photo{
-  aspect-ratio:3/4;
-  background:linear-gradient(160deg,#5a2e1d 0%,#1a1410 100%);
-  border:1px solid var(--ink);position:relative;overflow:hidden;
-}
-.hero-photo img{width:100%;height:100%;object-fit:cover;filter:sepia(.18) contrast(1.03) saturate(.95)}
-.hero-photo::after{
-  content:"FIG. 01 — RYAN AND CLIENT, NEAR BOYD MILL";
-  position:absolute;bottom:14px;left:14px;right:14px;color:#f4ede1;font-family:"Lora",serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border-top:1px solid #f4ede1aa;padding-top:8px;z-index:2;
-}
-.hero-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(26,20,16,.7) 0%,transparent 40%);z-index:1}
-.hero-caption{font-family:"Fraunces",serif;font-style:italic;font-size:13px;color:var(--terra);margin-top:12px;line-height:1.5}
-@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary::before{content:"";position:absolute;inset:0;background:var(--terra);transform:scaleX(0);transform-origin:right;transition:transform .45s ease}
+.btn-primary:hover::before{transform:scaleX(1);transform-origin:left}
+.btn-primary span{position:relative;z-index:1;display:inline-flex;align-items:center;gap:12px}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-secondary{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn-secondary:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
 
-/* PULL QUOTE BAR */
-.pull{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:40px 0;margin:32px 0 0;display:grid;grid-template-columns:160px 1fr 160px;gap:40px;align-items:center}
-.pull-tag{font-family:"Lora",serif;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--terra)}
-.pull q{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(22px,3vw,36px);line-height:1.25;display:block;quotes:"\201C""\201D"}
-.pull q::before{content:open-quote;color:var(--terra);font-size:1.4em;line-height:0;vertical-align:-0.4em;padding-right:.08em}
-.pull q::after{content:close-quote;color:var(--terra);font-size:1.4em;line-height:0;vertical-align:-0.4em;padding-left:.04em}
-.pull-cite{font-family:"Lora",serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;text-align:right}
+/* HERO PHOTO — duotone editorial frame */
+.hero-aside{position:relative;animation:fade 1s .4s ease both}
+.hero-frame{position:relative;aspect-ratio:3/4;overflow:hidden;border:1px solid var(--ink)}
+.hero-frame::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(155deg,var(--terra-deep) 0%,var(--ink) 100%);
+  mix-blend-mode:multiply;z-index:2;opacity:.65;
+}
+.hero-frame::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,#b0894988 0%,transparent 50%,#6d7d5e44 100%);
+  mix-blend-mode:soft-light;z-index:3;
+}
+.hero-frame img{width:100%;height:100%;object-fit:cover;filter:sepia(.35) saturate(.9) contrast(1.05);transition:transform 12s ease}
+.hero-frame:hover img{transform:scale(1.04)}
+.hero-frame .frame-tag{
+  position:absolute;left:18px;top:18px;z-index:4;
+  font-family:"Lora",serif;font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--paper);
+  padding:6px 10px;border:1px solid #f4ede177;background:rgba(26,20,16,.4);backdrop-filter:blur(8px);
+}
+.hero-frame .frame-cap{
+  position:absolute;bottom:24px;left:24px;right:24px;z-index:4;color:var(--paper);
+}
+.hero-frame .frame-cap b{display:block;font-family:"Fraunces",serif;font-style:italic;font-weight:400;font-size:24px;color:var(--gold-light);letter-spacing:.01em;margin-bottom:6px}
+.hero-frame .frame-cap span{font-family:"Lora",serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.85}
 
-/* THE TRUCK STRIP */
-.truck-strip{padding:60px 0;border-bottom:1px solid var(--ink);display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
-.truck-photo{position:relative;aspect-ratio:2/1;background:var(--paper-2);border:1px solid var(--ink);overflow:hidden}
-.truck-photo img{width:100%;height:100%;object-fit:contain;padding:24px;filter:contrast(1.05)}
-.truck-prose h3{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(36px,5vw,60px);line-height:.95;letter-spacing:-.02em;margin-bottom:24px}
-.truck-prose h3 em{font-style:italic;color:var(--terra)}
-.truck-prose p{font-family:"Lora",serif;font-size:17px;line-height:1.7;margin-bottom:14px}
-.truck-prose ul{margin-top:18px;list-style:none;border-top:1px solid var(--rule);padding-top:14px}
-.truck-prose li{padding:8px 0;font-size:15px;display:flex;justify-content:space-between;border-bottom:1px dotted var(--rule)}
-.truck-prose li em{font-style:italic;color:var(--terra);font-family:"Fraunces",serif;font-size:14px}
+.hero-stat-card{
+  position:absolute;right:-16px;bottom:-32px;z-index:5;
+  background:var(--paper);border:1px solid var(--ink);padding:18px 26px;
+  font-family:"Lora",serif;text-align:right;
+  box-shadow:8px 8px 0 var(--terra);
+}
+.hero-stat-card b{display:block;font-family:"Fraunces",serif;font-weight:400;font-size:42px;color:var(--terra);line-height:1;letter-spacing:-.02em}
+.hero-stat-card span{font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;display:block}
+
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes rise{from{transform:translateY(110%)}to{transform:translateY(0)}}
+
+/* SUB-RULE NOTE */
+.editor-note{
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:38px 0;margin-top:40px;
+  display:grid;grid-template-columns:200px 1fr 200px;gap:48px;align-items:center;
+}
+.editor-note-tag{font-family:"Lora",serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--terra)}
+.editor-note q{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(22px,3vw,32px);line-height:1.3;display:block;color:var(--ink)}
+.editor-note q::before{content:"\201C";font-size:1.6em;color:var(--terra);line-height:0;vertical-align:-.45em;padding-right:.08em;font-weight:400}
+.editor-note q::after{content:"\201D";font-size:1.6em;color:var(--terra);line-height:0;vertical-align:-.45em;padding-left:.04em;font-weight:400}
+.editor-note-cite{font-family:"Lora",serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;text-align:right;color:var(--ink-3)}
+
+/* TRUCK / PROCESS STRIP */
+.process{padding:120px 0;border-bottom:1px solid var(--ink);position:relative}
+.process::before{
+  content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);
+  height:1px;background:linear-gradient(90deg,transparent,var(--rule),transparent);
+}
+.process-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:80px;align-items:center;position:relative}
+.process-photo{position:relative;border:1px solid var(--ink);background:var(--paper-2);aspect-ratio:5/4;overflow:hidden}
+.process-photo::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 30%,rgba(26,20,16,.15) 100%);z-index:2;pointer-events:none}
+.process-photo img{width:100%;height:100%;object-fit:contain;padding:36px;filter:contrast(1.05) saturate(1.05)}
+.process-photo .photo-label{
+  position:absolute;top:14px;left:14px;z-index:3;
+  font-family:"Lora",serif;font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--ink);
+  padding:6px 10px;border:1px solid var(--ink);background:var(--paper);
+}
+.process-content .section-eyebrow{font-family:"Lora",serif;font-style:italic;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.process-content .section-eyebrow::before{content:"";display:block;width:36px;height:1px;background:var(--terra)}
+.process-content h2{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(36px,5vw,68px);line-height:.95;letter-spacing:-.02em;margin-bottom:28px}
+.process-content h2 em{font-style:italic;color:var(--terra);font-weight:400}
+.process-content > p{font-size:17px;line-height:1.7;color:var(--ink-2);max-width:48ch;margin-bottom:32px}
+
+.process-spec{margin-top:36px;border-top:1px solid var(--rule)}
+.process-spec dl{display:grid;grid-template-columns:auto 1fr;gap:0}
+.process-spec dt,.process-spec dd{padding:16px 0;border-bottom:1px solid var(--rule);font-family:"Lora",serif;font-size:14px}
+.process-spec dt{color:var(--ink-3);font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;padding-right:28px;align-self:center}
+.process-spec dd{text-align:right;color:var(--ink);font-style:italic;font-family:"Fraunces",serif;font-size:18px;letter-spacing:-.005em}
 
 /* SECTIONS */
-.section{padding:88px 0;border-bottom:1px solid var(--ink)}
-.section-head{display:grid;grid-template-columns:1fr 2fr;gap:48px;margin-bottom:56px;align-items:end}
-.section-num{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(68px,10vw,140px);line-height:.85;color:var(--terra);letter-spacing:-.04em}
-.section-num small{font-size:.22em;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);font-style:normal;font-weight:500;display:block;margin-bottom:14px}
-.section-title{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(36px,5vw,68px);line-height:.95;letter-spacing:-.025em}
-.section-title em{font-style:italic;color:var(--terra)}
+.section{padding:120px 0;border-bottom:1px solid var(--ink);position:relative}
+.section-head{display:grid;grid-template-columns:auto 1fr;gap:60px;margin-bottom:72px;align-items:end;padding-bottom:24px;border-bottom:1px solid var(--rule)}
+.section-num{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(82px,12vw,180px);line-height:.82;color:var(--terra);letter-spacing:-.05em}
+.section-num-row{display:flex;flex-direction:column;gap:12px}
+.section-cat{font-family:"Lora",serif;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--ink-3)}
+.section-title{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(42px,6vw,82px);line-height:.95;letter-spacing:-.025em;text-align:right;align-self:end}
+.section-title em{font-style:italic;color:var(--terra);font-weight:400}
 
-/* SERVICE COLUMNS */
-.columns{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;column-gap:64px}
-.col{position:relative}
-.col-rule{position:absolute;top:-12px;left:-32px;width:1px;height:calc(100% + 24px);background:var(--rule)}
-.col:first-child .col-rule{display:none}
-.col h3{font-family:"Fraunces",serif;font-weight:500;font-size:28px;line-height:1.05;letter-spacing:-.015em;margin-bottom:6px}
-.col h3 em{font-style:italic;color:var(--terra);font-weight:400}
-.col .price{font-family:"Fraunces",serif;font-style:italic;font-size:15px;color:var(--terra);margin-bottom:18px;border-bottom:1px solid var(--rule);padding-bottom:12px}
-.col p{margin-bottom:14px;font-size:16px}
-.col p:first-of-type::first-letter{font-family:"Fraunces",serif;font-weight:300;font-size:62px;float:left;line-height:.85;margin:6px 8px 0 0;color:var(--terra)}
-.col ul{list-style:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--rule)}
-.col li{font-size:14px;padding:6px 0;display:flex;gap:10px;font-family:"Lora",serif}
-.col li::before{content:"§";color:var(--terra);font-family:"Fraunces",serif;font-style:italic}
-.col .col-pay{margin-top:22px;display:inline-flex;align-items:center;gap:10px;font-family:"Lora",serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;padding:12px 18px;border:1px solid var(--ink);color:var(--ink);cursor:pointer;transition:background .25s, color .25s}
-.col .col-pay:hover{background:var(--ink);color:var(--paper)}
+/* PLANS — three columns with editorial spine */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.plan{padding:48px 36px;border-right:1px solid var(--rule);position:relative;background:var(--paper);transition:background .4s ease;display:flex;flex-direction:column}
+.plan:last-child{border-right:none}
+.plan:hover{background:var(--paper-2)}
+.plan.featured{background:var(--ink);color:var(--paper)}
+.plan.featured:hover{background:#221b14}
+.plan-roman{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:16px;letter-spacing:.32em;color:var(--terra);margin-bottom:18px}
+.plan.featured .plan-roman{color:var(--gold-light)}
+.plan-name{font-family:"Fraunces",serif;font-weight:400;font-size:42px;line-height:1.04;letter-spacing:-.015em;margin-bottom:8px}
+.plan-name em{font-style:italic;color:var(--terra);font-weight:300}
+.plan.featured .plan-name em{color:var(--gold-light)}
+.plan-tagline{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:16px;line-height:1.4;margin-bottom:24px;color:var(--ink-2)}
+.plan.featured .plan-tagline{color:#f4ede1bb}
+.plan-price{
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:22px 0;margin-bottom:26px;
+  display:flex;justify-content:space-between;align-items:baseline;
+}
+.plan.featured .plan-price{border-color:var(--gold)}
+.plan-price b{font-family:"Fraunces",serif;font-weight:300;font-size:48px;line-height:1;letter-spacing:-.025em}
+.plan-price small{font-family:"Lora",serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.plan.featured .plan-price small{color:#f4ede1aa}
+.plan ul{list-style:none;flex:1;margin-bottom:32px}
+.plan li{padding:10px 0;font-size:14px;line-height:1.5;display:grid;grid-template-columns:18px 1fr;gap:12px;border-bottom:1px dashed var(--rule)}
+.plan.featured li{border-color:#f4ede122}
+.plan li:last-child{border-bottom:none}
+.plan li::before{content:"§";color:var(--terra);font-family:"Fraunces",serif;font-style:italic;font-size:16px;line-height:1.4}
+.plan.featured li::before{color:var(--gold-light)}
+.plan-pay{
+  display:block;text-align:center;padding:18px 22px;
+  font-family:"Lora",serif;font-weight:500;font-size:10px;letter-spacing:.34em;text-transform:uppercase;
+  border:1px solid var(--ink);background:transparent;color:var(--ink);
+  transition:all .3s ease;
+}
+.plan-pay:hover{background:var(--ink);color:var(--paper)}
+.plan.featured .plan-pay{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.plan.featured .plan-pay:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 
-/* COVERAGE STRIP — kinds of properties */
-.kinds{padding:60px 0;border-bottom:1px solid var(--ink);background:var(--paper-2)}
-.kinds-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
-.kind{padding:32px 24px;border-right:1px solid var(--rule);position:relative}
-.kind:last-child{border-right:none}
-.kind-num{font-family:"Fraunces",serif;font-style:italic;font-size:14px;color:var(--terra);margin-bottom:18px;letter-spacing:.04em}
-.kind h4{font-family:"Fraunces",serif;font-weight:500;font-size:24px;line-height:1.1;margin-bottom:8px;letter-spacing:-.01em}
-.kind h4 em{font-style:italic;color:var(--terra);font-weight:400}
-.kind p{font-family:"Lora",serif;font-size:14px;line-height:1.5;color:#3a2e1f}
+/* KINDS / PROPERTY TYPES — overlap card grid */
+.kinds{padding:120px 0;border-bottom:1px solid var(--ink);background:var(--paper-2)}
+.kinds-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink);margin-top:60px}
+.kind-card{background:var(--paper);padding:38px 28px;position:relative;transition:background .35s ease;overflow:hidden}
+.kind-card:hover{background:var(--paper-3)}
+.kind-card .kc-num{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:36px;color:var(--ink-3);line-height:1;letter-spacing:-.02em;margin-bottom:24px}
+.kind-card h4{font-family:"Fraunces",serif;font-weight:400;font-size:26px;line-height:1.1;letter-spacing:-.01em;margin-bottom:10px}
+.kind-card h4 em{font-style:italic;color:var(--terra)}
+.kind-card p{font-size:14px;line-height:1.55;color:var(--ink-2)}
 
-/* DISPATCHES */
-.dispatches{display:grid;grid-template-columns:repeat(2,1fr);gap:48px 80px}
-.dispatch{padding:24px 0;border-top:1px solid var(--ink)}
-.dispatch-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;font-family:"Lora",serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra)}
-.dispatch blockquote{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:21px;line-height:1.4;color:var(--ink)}
-.dispatch blockquote::before{content:"\201C";font-size:1.6em;color:var(--terra);line-height:0;vertical-align:-.45em;padding-right:.06em}
-.dispatch-by{margin-top:18px;font-family:"Lora",serif;font-weight:500;font-size:13px;letter-spacing:.05em;display:flex;justify-content:space-between}
-.dispatch-by span:last-child{color:var(--sage);font-style:italic;font-family:"Fraunces",serif;letter-spacing:0;text-transform:none}
-.guarantee-band{margin-top:48px;border:1px solid var(--ink);padding:24px 32px;display:flex;justify-content:space-between;align-items:center;gap:32px;background:var(--paper)}
-.guarantee-band b{font-family:"Fraunces",serif;font-weight:300;font-style:italic;font-size:32px;color:var(--terra)}
-.guarantee-band p{font-family:"Lora",serif;font-size:14px;max-width:42ch}
+/* DISPATCHES — letters layout */
+.dispatch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--ink);margin-top:60px}
+.dispatch{padding:48px 44px;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);position:relative}
+.dispatch:nth-child(2n){border-right:none}
+.dispatch:nth-last-child(-n+2){border-bottom:none}
+.dispatch-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--rule);font-family:"Lora",serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--terra)}
+.dispatch-stars{color:var(--gold);letter-spacing:.2em;font-size:13px}
+.dispatch blockquote{
+  font-family:"Fraunces",serif;font-style:italic;font-weight:300;
+  font-size:clamp(19px,1.8vw,24px);line-height:1.45;color:var(--ink);margin-bottom:28px;
+}
+.dispatch blockquote::before{content:"\201C";font-size:3em;color:var(--terra);line-height:0;vertical-align:-.42em;padding-right:.04em;font-weight:300}
+.dispatch-author{display:flex;justify-content:space-between;align-items:baseline;padding-top:18px;border-top:1px solid var(--rule)}
+.dispatch-author b{font-family:"Fraunces",serif;font-weight:500;font-size:18px;letter-spacing:-.005em}
+.dispatch-author span{font-family:"Fraunces",serif;font-style:italic;font-size:14px;color:var(--ink-3)}
 
-/* ONBOARDING */
-.onboard{background:var(--ink);color:var(--paper);padding:96px 0;border-bottom:none;position:relative;overflow:hidden}
-.onboard::before{content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,#b0894933 0%,transparent 70%);pointer-events:none}
-.onboard .section-num{color:var(--gold)}
-.onboard .section-num small{color:var(--paper)}
-.onboard .section-title em{color:var(--gold)}
-.onboard-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:60px;align-items:start}
+.guarantee-band{
+  margin-top:60px;border:1px solid var(--ink);background:var(--paper);
+  display:grid;grid-template-columns:auto 1fr auto;gap:48px;align-items:center;padding:36px 44px;
+  position:relative;overflow:hidden;
+}
+.guarantee-band::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--terra)}
+.gb-crest{font-family:"Fraunces",serif;font-weight:300;font-size:72px;color:var(--terra);line-height:1;font-variation-settings:"opsz" 144;font-style:italic}
+.gb-content h4{font-family:"Fraunces",serif;font-weight:300;font-size:32px;line-height:1.05;letter-spacing:-.015em;margin-bottom:6px}
+.gb-content h4 em{font-style:italic;color:var(--terra)}
+.gb-content p{font-family:"Fraunces",serif;font-style:italic;font-size:15px;color:var(--ink-2);max-width:50ch;line-height:1.5}
+.gb-seal{font-family:"Lora",serif;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-3);text-align:right;line-height:1.7}
 
-.steps{display:flex;gap:0;margin-bottom:32px;border:1px solid var(--gold)}
-.step-pill{flex:1;padding:14px 12px;text-align:center;font-family:"Lora",serif;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:#f4ede199;border-right:1px solid var(--gold);position:relative;font-weight:500}
-.step-pill:last-child{border-right:none}
-.step-pill.active{background:var(--gold);color:var(--ink);font-weight:700}
-.step-pill.done{background:var(--terra);color:var(--paper)}
+/* RESERVE — dark inverted */
+.reserve{background:var(--ink);color:var(--paper);padding:140px 0;border-bottom:none;position:relative;overflow:hidden}
+.reserve::before{
+  content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,#b0894922 0%,transparent 70%);pointer-events:none;
+}
+.reserve::after{
+  content:"";position:absolute;bottom:-200px;left:-200px;width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,#8b4a2f22 0%,transparent 70%);pointer-events:none;
+}
+.reserve .section-num{color:var(--gold)}
+.reserve .section-cat{color:#f4ede1aa}
+.reserve .section-title em{color:var(--gold)}
+.reserve .section-head{border-bottom-color:#f4ede122}
+
+.reserve-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:64px;align-items:start;position:relative;z-index:1}
+
+.steps{display:flex;gap:0;margin-bottom:40px;border:1px solid var(--gold)}
+.step{flex:1;padding:18px 14px;text-align:center;font-family:"Lora",serif;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#f4ede166;border-right:1px solid var(--gold);position:relative}
+.step:last-child{border-right:none}
+.step-num{display:block;font-family:"Fraunces",serif;font-style:italic;font-size:14px;color:var(--gold);margin-bottom:6px;letter-spacing:.18em}
+.step.active{background:var(--gold);color:var(--ink)}
+.step.active .step-num{color:var(--ink)}
+.step.done{background:rgba(176,137,73,.18);color:var(--paper)}
+.step.done .step-num{color:var(--gold)}
 
 .panel{display:none}
-.panel.show{display:block;animation:rise .5s ease both}
-.panel h3{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:34px;color:var(--gold);margin-bottom:8px;letter-spacing:-.01em}
-.panel p.lead{font-family:"Fraunces",serif;font-style:italic;font-size:16px;color:#f4ede1cc;margin-bottom:28px}
+.panel.show{display:block;animation:fade .55s ease both}
+.panel h3{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(32px,3vw,42px);color:var(--gold);margin-bottom:8px;letter-spacing:-.015em}
+.panel p.lead{font-family:"Fraunces",serif;font-style:italic;font-size:17px;color:#f4ede1bb;margin-bottom:32px;max-width:46ch;line-height:1.55}
 
-.field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
-.field label{font-family:"Lora",serif;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
-.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid var(--paper);color:var(--paper);font-family:"Fraunces",serif;font-style:italic;font-size:22px;padding:6px 0;outline:none;transition:border-color .25s;width:100%}
-.field input:focus,.field select:focus{border-bottom-color:var(--gold)}
-.field input::placeholder{color:#f4ede166;font-style:italic}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.field label{font-family:"Lora",serif;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.field input,.field select,.field textarea{
+  background:transparent;border:none;border-bottom:1px solid #f4ede155;
+  color:var(--paper);font-family:"Fraunces",serif;font-style:italic;font-size:22px;
+  padding:10px 0;outline:none;transition:border-color .3s ease, padding .3s ease;width:100%;
+}
+.field input:focus,.field select:focus{border-bottom-color:var(--gold);padding-left:4px}
+.field input::placeholder{color:#f4ede144;font-style:italic}
+.field select{font-family:"Fraunces",serif}
+.field select option{background:var(--ink);color:var(--paper)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 
-.choice-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
-.choice-grid label{display:block;border:1px solid #f4ede155;padding:14px 12px;text-align:center;cursor:pointer;font-family:"Fraunces",serif;font-style:italic;font-size:18px;color:var(--paper);transition:all .2s}
+.choice-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.choice-grid label{cursor:pointer;display:block;padding:16px 10px;border:1px solid #f4ede133;text-align:center;color:var(--paper);transition:all .25s ease;background:transparent;font-family:"Fraunces",serif;font-style:italic;font-size:19px}
+.choice-grid label small{display:block;font-family:"Lora",serif;font-style:normal;font-weight:500;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#f4ede177;margin-top:6px}
 .choice-grid input{display:none}
-.choice-grid input:checked + span{display:block}
 .choice-grid label:has(input:checked){background:var(--gold);color:var(--ink);border-color:var(--gold)}
-.choice-grid label small{display:block;font-family:"Lora",serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-top:4px;font-style:normal}
 .choice-grid label:has(input:checked) small{color:var(--ink)}
+.choice-grid.three{grid-template-columns:repeat(3,1fr)}
 
-.step-actions{margin-top:32px;display:flex;gap:14px;justify-content:flex-end}
-.step-actions .back{background:transparent;color:#f4ede199;border:1px solid #f4ede155}
-.step-actions .next{background:var(--gold);color:var(--ink)}
-.step-actions .next:hover{background:var(--paper)}
-
-/* CARD */
-.card-form{margin-top:10px;border:1px solid var(--gold);padding:24px;background:rgba(0,0,0,.25)}
+.card-form{margin-top:14px;padding:28px;border:1px solid var(--gold);background:rgba(0,0,0,.25)}
 .card-form .field input{font-family:"Lora",serif;font-style:normal;font-size:18px;letter-spacing:.04em}
-.brand-pay{display:flex;align-items:center;justify-content:space-between;margin-top:6px;font-family:"Lora",serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding-bottom:14px;border-bottom:1px dashed #f4ede155}
-.brand-pay svg{width:18px;height:18px;fill:currentColor}
+.card-pay-head{display:flex;justify-content:space-between;align-items:center;font-family:"Lora",serif;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:14px;border-bottom:1px dashed #f4ede133}
+.card-pay-head svg{width:14px;height:14px;fill:currentColor;display:inline-block;vertical-align:-2px;margin-right:6px}
 
-/* SUMMARY ASIDE */
-.summary{background:rgba(244,237,225,.04);border:1px solid #f4ede122;padding:32px}
-.summary h4{font-family:"Lora",serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
-.summary-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dashed #f4ede122;font-family:"Fraunces",serif;font-style:italic;font-size:16px}
-.summary-row span:first-child{color:#f4ede1aa}
-.summary-row span:last-child{color:var(--paper);font-style:normal;font-weight:500;font-family:"Lora",serif;font-size:15px}
-.summary-total{margin-top:18px;padding-top:18px;border-top:1px solid var(--gold);display:flex;justify-content:space-between;align-items:baseline}
-.summary-total span:first-child{font-family:"Fraunces",serif;font-style:italic;font-size:18px;color:var(--gold)}
-.summary-total span:last-child{font-family:"Fraunces",serif;font-weight:300;font-size:48px;color:var(--paper);letter-spacing:-.02em}
-.summary-fine{margin-top:14px;font-family:"Fraunces",serif;font-style:italic;font-size:13px;color:#f4ede1aa;line-height:1.5}
-.summary-discount{color:var(--gold);font-family:"Lora",serif;font-size:11px;font-style:normal;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+.step-actions{margin-top:36px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.btn-back{background:transparent;color:#f4ede1cc;border:1px solid #f4ede133;padding:18px 28px;font-family:"Lora",serif;font-weight:500;font-size:10px;letter-spacing:.34em;text-transform:uppercase;cursor:pointer;transition:all .3s ease}
+.btn-back:hover{background:#f4ede111;color:var(--paper);border-color:#f4ede166}
+.btn-next{background:var(--gold);color:var(--ink);border:1px solid var(--gold);padding:18px 28px;font-family:"Lora",serif;font-weight:500;font-size:10px;letter-spacing:.34em;text-transform:uppercase;cursor:pointer;transition:all .3s ease}
+.btn-next:hover{background:var(--paper);border-color:var(--paper)}
 
-.thanks{display:none}
-.thanks.show{display:block;animation:rise .6s ease both;padding:48px;border:1px solid var(--gold);background:rgba(176,137,73,.08)}
-.thanks h3{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:42px;color:var(--gold);margin-bottom:18px;letter-spacing:-.01em}
-.thanks p{font-family:"Lora",serif;font-size:16px;line-height:1.6;margin-bottom:14px;color:#f4ede1dd}
-.thanks .receipt{margin-top:24px;padding-top:24px;border-top:1px solid #f4ede133;font-family:"Lora",serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#f4ede1aa}
+.summary{
+  background:rgba(244,237,225,.04);border:1px solid #f4ede122;padding:36px;
+  position:sticky;top:120px;
+}
+.summary h4{font-family:"Lora",serif;font-size:10px;letter-spacing:.36em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.sum-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dashed #f4ede122;font-size:14px}
+.sum-row span:first-child{color:#f4ede1aa;font-family:"Lora",serif}
+.sum-row span:last-child{color:var(--paper);font-family:"Fraunces",serif;font-style:italic;font-size:17px;letter-spacing:-.005em}
+.sum-disc span:last-child{color:var(--gold)}
+.sum-total{margin-top:24px;padding-top:18px;border-top:1px solid var(--gold);display:flex;justify-content:space-between;align-items:baseline}
+.sum-total span:first-child{font-family:"Fraunces",serif;font-style:italic;font-size:18px;color:var(--gold)}
+.sum-total span:last-child{font-family:"Fraunces",serif;font-weight:300;font-size:54px;color:var(--paper);letter-spacing:-.025em;line-height:1}
+.sum-fine{margin-top:18px;font-family:"Fraunces",serif;font-style:italic;font-size:13px;color:#f4ede1aa;line-height:1.55}
+.sum-badge{margin-top:18px;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--gold);font-family:"Lora",serif;font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.sum-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+.thanks{display:none;border:1px solid var(--gold);padding:56px 48px;background:rgba(176,137,73,.06);max-width:760px}
+.thanks.show{display:block;animation:fade .6s ease both}
+.thanks h3{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(36px,4vw,52px);color:var(--gold);margin-bottom:20px;letter-spacing:-.015em;line-height:1}
+.thanks p{font-family:"Lora",serif;font-size:16px;line-height:1.7;margin-bottom:14px;color:#f4ede1dd}
+.thanks .receipt{margin-top:28px;padding:14px 20px;background:rgba(0,0,0,.3);border:1px dashed var(--gold);display:inline-block;font-family:"Lora",serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
 
 /* COLOPHON */
-.colophon{padding:60px 0 40px;background:var(--paper-2);border-top:1px solid var(--ink)}
-.colo-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
-.colo-grid h5{font-family:"Lora",serif;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;font-weight:500}
-.colo-grid p,.colo-grid a{font-family:"Fraunces",serif;font-size:15px;line-height:1.5;color:var(--ink);display:block;margin-bottom:4px}
-.colo-brand img{height:64px;margin-bottom:14px}
-.colo-base{margin-top:48px;padding-top:18px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;font-family:"Lora",serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.colophon{padding:80px 0 36px;background:var(--paper-2);border-top:1px solid var(--ink)}
+.colo-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px}
+.colo-brand{display:flex;flex-direction:column;gap:14px}
+.colo-brand img{height:56px;width:auto}
+.colo-brand p{font-family:"Fraunces",serif;font-style:italic;font-size:15px;line-height:1.55;color:var(--ink-2);max-width:30ch}
+.colo-grid h5{font-family:"Lora",serif;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--terra);margin-bottom:18px;font-weight:500}
+.colo-grid p,.colo-grid a{font-family:"Fraunces",serif;font-size:15px;line-height:1.6;color:var(--ink);display:block;margin-bottom:4px;transition:color .25s}
+.colo-grid a:hover{color:var(--terra)}
+.colo-base{margin-top:64px;padding-top:24px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:"Lora",serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
 
-@media (max-width:880px){
-  .wrap{padding:0 22px}
-  .topbar-row{flex-direction:column;gap:4px;height:auto;padding:10px}
-  .hero{grid-template-columns:1fr;padding:48px 0 36px;gap:36px}
-  .hero::before{display:none}
-  .mast-row{flex-direction:column;align-items:flex-start;gap:14px}
-  .mast-nav{flex-wrap:wrap;gap:14px}
-  .pull{grid-template-columns:1fr;gap:18px;padding:28px 0}
-  .pull-cite{text-align:left}
-  .truck-strip{grid-template-columns:1fr;gap:36px;padding:48px 0}
-  .section{padding:60px 0}
-  .section-head{grid-template-columns:1fr;gap:18px}
-  .columns{grid-template-columns:1fr;gap:36px}
-  .col-rule{display:none}
-  .kinds-grid{grid-template-columns:1fr 1fr}
-  .dispatches{grid-template-columns:1fr;gap:24px}
-  .guarantee-band{flex-direction:column;align-items:flex-start;gap:12px}
-  .onboard-grid{grid-template-columns:1fr;gap:30px}
+@media (max-width:980px){
+  .hero{padding:60px 0}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-content{padding-top:48px}
+  .hero-stat-card{position:static;display:inline-block;margin-top:18px;box-shadow:6px 6px 0 var(--terra)}
+  .editor-note{grid-template-columns:1fr;gap:18px;padding:28px 0}
+  .editor-note-cite{text-align:left}
+  .process{padding:80px 0}
+  .process-grid{grid-template-columns:1fr;gap:48px}
+  .section{padding:80px 0}
+  .section-head{grid-template-columns:1fr;gap:20px;margin-bottom:48px}
+  .section-title{text-align:left}
+  .plans,.kinds-grid,.dispatch-grid{grid-template-columns:1fr}
+  .plan{border-right:none;border-bottom:1px solid var(--rule)}
+  .plan:last-child{border-bottom:none}
+  .kind-card,.dispatch{border-right:none}
+  .dispatch{border-bottom:1px solid var(--ink)}
+  .dispatch:last-child{border-bottom:none}
+  .guarantee-band{grid-template-columns:1fr;gap:18px;padding:32px 28px}
+  .gb-seal{text-align:left}
+  .reserve{padding:80px 0}
+  .reserve-grid{grid-template-columns:1fr;gap:36px}
+  .summary{position:static}
   .field-row{grid-template-columns:1fr}
   .choice-grid{grid-template-columns:repeat(2,1fr)}
-  .colo-grid{grid-template-columns:1fr 1fr;gap:28px}
-  .colo-base{flex-direction:column;gap:8px}
+  .choice-grid.three{grid-template-columns:repeat(3,1fr)}
+  .colo-grid{grid-template-columns:1fr 1fr}
+  .topbar-row{flex-wrap:wrap;height:auto;padding:8px 24px;gap:6px}
+  .mast-row{grid-template-columns:1fr;gap:14px;text-align:center}
+  .mast-nav{justify-content:center;flex-wrap:wrap;gap:18px}
+  .mast-right{justify-content:center}
 }
 </style>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 
 <div class="topbar">
   <div class="topbar-row">
-    <span>Franklin, TN &amp; surrounding areas · Open 24 hrs</span>
-    <span>Call to schedule: <a href="tel:9183816095">(918) 381-6095</a></span>
+    <span>Franklin, TN <span class="sep">·</span> Williamson County <span class="sep">·</span> Open 24 hrs</span>
+    <span><a href="tel:9183816095">(918) 381-6095</a><span class="sep">·</span><a href="mailto:hello@poophappensfranklin.com">hello@poophappensfranklin.com</a></span>
   </div>
 </div>
 
-<header class="mast">
-  <div class="wrap">
-    <div class="mast-row">
-      <a href="#" class="mast-brand">
-        <img src="../assets/logo.png" alt="Poop Happens logo" />
-        <span class="mast-wordmark"><em>Poop</em> Happens<small>The Sunday Yard · Issue No. 24</small></span>
-      </a>
-      <nav class="mast-nav">
-        <a href="#service">The Service</a>
-        <a href="#who">Who We Serve</a>
-        <a href="#dispatches">Dispatches</a>
-        <a href="#onboard">Reserve &amp; Pay</a>
-      </nav>
-      <a href="#onboard" class="mast-cta">Book Now</a>
+<header class="mast" id="mast">
+  <div class="wrap mast-row">
+    <nav class="mast-nav">
+      <a href="#process">The Service</a>
+      <a href="#plans">Plans</a>
+      <a href="#dispatches">Dispatches</a>
+    </nav>
+    <a href="#" class="mast-brand">
+      <span class="mast-mark">— Since MMXIX —</span>
+      <span class="mast-word"><em>Poop</em> Happens</span>
+      <span class="mast-est">A weekly tending of the yard</span>
+    </a>
+    <div class="mast-right">
+      <a href="tel:9183816095" class="phone-link">(918) 381-6095</a>
+      <a href="#reserve" class="cta-mast">Reserve</a>
     </div>
   </div>
 </header>
 
-<div class="offer">
-  <strong>Spring</strong>Take 50% off your initial clean when you reserve your first weekly visit.
-</div>
+<div class="offer"><b>Introductory</b>Half off your inaugural visit. <em>Reserved by the next business morning.</em></div>
 
-<main class="wrap">
+<main>
 
   <section class="hero">
-    <div>
-      <div class="eyebrow">A weekly tending of the yard, since 2019</div>
-      <h1>Tended,<br />not <em>tolerated.</em></h1>
-      <p class="deck">A quiet, dignified pet-waste service for the gardens, lawns, and back patios of Franklin. Friday morning arrives, the yard does too — clean, walkable, ready to be lived in again.</p>
-      <div class="hero-ctas">
-        <a href="#onboard" class="btn btn-pri">Reserve a First Visit → 50% Off</a>
-        <a href="tel:9183816095" class="btn btn-sec">Call (918) 381-6095</a>
+    <div class="wrap hero-grid">
+      <div class="hero-content">
+        <div class="hero-issue">Issue No. XXIV · Spring</div>
+        <h1>
+          <span class="line"><span>Tended,</span></span>
+          <span class="line"><span>not <em>tolerated.</em></span></span>
+        </h1>
+        <p class="hero-deck">A quiet, dignified pet-waste service for the gardens, lawns, and back patios of Franklin. Friday morning arrives, the yard does too — clean, walkable, ready to be lived in again. <b>From $19.99 a visit.</b></p>
+        <div class="hero-meta">
+          <div><span>Since</span><b>2019</b></div>
+          <div><span>Households tended</span><b>1,412</b></div>
+          <div><span>Avg time on site</span><b>17 min</b></div>
+        </div>
+        <div class="hero-actions">
+          <a href="#reserve" class="btn btn-primary"><span>Reserve a First Visit <span aria-hidden="true">→</span></span></a>
+          <a href="tel:9183816095" class="btn btn-secondary">Call (918) 381-6095</a>
+        </div>
+      </div>
+      <aside class="hero-aside">
+        <div class="hero-frame">
+          <span class="frame-tag">Fig. I · Tuesday call</span>
+          <img src="../assets/owner-with-dog.png" alt="Ryan, founder of Poop Happens, with a client's dog" />
+          <div class="frame-cap">
+            <b>Ryan, founder.</b>
+            <span>Westhaven, spring of MMXXVI</span>
+          </div>
+        </div>
+        <div class="hero-stat-card">
+          <b>50%</b>
+          <span>Off the first call</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <aside class="editor-note">
+      <div class="editor-note-tag">Editor's Note</div>
+      <q>The lawn is the most patient surface in the American home. A weekly visit is the least we can offer it in return.</q>
+      <div class="editor-note-cite">— Vol. III, p. 4</div>
+    </aside>
+  </div>
+
+  <section class="process" id="process">
+    <div class="wrap process-grid">
+      <div class="process-photo">
+        <span class="photo-label">Fig. II · The Fleet</span>
+        <img src="../assets/truck-1.png" alt="The Poop Happens service truck" />
+      </div>
+      <div class="process-content">
+        <div class="section-eyebrow">A standing engagement</div>
+        <h2>One <em>truck.</em><br/>One route.<br/>The <em>same day</em><br/>each week.</h2>
+        <p>Locally owned and operated since 2019, with seven years of cleaning experience between the technicians who run our weekly routes. The truck arrives on the same weekday, year-round — light rain or snow, holiday or not. We do not move the day.</p>
+        <div class="process-spec">
+          <dl>
+            <dt>Service days</dt><dd>Mon · Tue · Wed · Thu · Fri</dd>
+            <dt>Coverage</dt><dd>Williamson Co. &amp; south Davidson</dd>
+            <dt>Weather policy</dt><dd>Light rain or snow, year-round</dd>
+            <dt>Contracts</dt><dd>None. Pause or release any time.</dd>
+            <dt>Guarantee</dt><dd>100% — or your money back</dd>
+          </dl>
+        </div>
       </div>
     </div>
-    <div class="hero-side">
-      <div class="hero-photo">
-        <img src="../assets/owner-with-dog.png" alt="Ryan, owner of Poop Happens, with a happy dog client" />
+  </section>
+
+  <section class="section" id="plans">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-num">01</div>
+        <div style="display:contents">
+          <div class="section-num-row" style="grid-column:1;margin-top:24px"><span class="section-cat">— The Service —</span></div>
+          <h2 class="section-title">Three quiet<br/><em>standings.</em></h2>
+        </div>
       </div>
-      <p class="hero-caption">Ryan, founder, on a Tuesday call in Westhaven. The dog's name, naturally, was Biscuit.</p>
+      <div class="plans">
+        <article class="plan">
+          <div class="plan-roman">I.</div>
+          <h3 class="plan-name">The <em>Weekly</em></h3>
+          <p class="plan-tagline">The household standard. Most chosen.</p>
+          <div class="plan-price"><b>$19.99</b><small>per visit · weekly</small></div>
+          <ul>
+            <li>Full-yard inspection, edge to edge</li>
+            <li>Sealed, double-bagged, hauled out</li>
+            <li>Gate-secure photo upon completion</li>
+            <li>Skip a week — no charge</li>
+          </ul>
+          <a href="#reserve" data-plan="weekly" class="plan-pay">Reserve · $9.99 Today</a>
+        </article>
+        <article class="plan featured">
+          <div class="plan-roman">II.</div>
+          <h3 class="plan-name">The <em>Fortnight</em></h3>
+          <p class="plan-tagline">For the quieter household.</p>
+          <div class="plan-price"><b>$29.99</b><small>per visit · every other week</small></div>
+          <ul>
+            <li>Bi-weekly cadence, locked weekday</li>
+            <li>Bonus rinse on visits 2 &amp; 4</li>
+            <li>Hand-walked perimeter check</li>
+            <li>Promote to weekly any time</li>
+          </ul>
+          <a href="#reserve" data-plan="fortnight" class="plan-pay">Reserve · $14.99 Today</a>
+        </article>
+        <article class="plan">
+          <div class="plan-roman">III.</div>
+          <h3 class="plan-name">The <em>One-Time</em></h3>
+          <p class="plan-tagline">A definitive spring cleanout.</p>
+          <div class="plan-price"><b>$89</b><small>one-time · within 48 hrs</small></div>
+          <ul>
+            <li>Same-week scheduling</li>
+            <li>Before &amp; after photo</li>
+            <li>Up to ½ acre included</li>
+            <li>No follow-up required</li>
+          </ul>
+          <a href="#reserve" data-plan="onetime" class="plan-pay">Reserve · $44.50 Today</a>
+        </article>
+      </div>
     </div>
   </section>
 
-  <aside class="pull">
-    <div class="pull-tag">Editor's Note</div>
-    <q>The lawn is the most patient surface in the American home. A weekly visit is the least we can offer it in return.</q>
-    <div class="pull-cite">— Vol. III, p. 4</div>
-  </aside>
-
-  <section class="truck-strip">
-    <div class="truck-photo">
-      <img src="../assets/truck-1.png" alt="The Poop Happens service truck" />
-    </div>
-    <div class="truck-prose">
-      <h3>One <em>truck</em>, one route,<br />the same <em>day each week.</em></h3>
-      <p>Locally owned and operated since 2019, with seven years of cleaning experience between the two technicians who run our weekly routes. The truck arrives on the same weekday, every week, year-round.</p>
-      <ul>
-        <li><span>Service days</span><em>Mon · Tue · Wed · Thu · Fri</em></li>
-        <li><span>Coverage radius</span><em>Williamson Co. &amp; south Davidson</em></li>
-        <li><span>Time on site</span><em>Avg. seventeen minutes</em></li>
-        <li><span>Weather policy</span><em>Light rain or snow, year-round</em></li>
-        <li><span>Contracts</span><em>None. Pause or cancel anytime.</em></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section" id="service">
-    <div class="section-head">
-      <div class="section-num">01<small>The Service</small></div>
-      <h2 class="section-title">Three quiet plans, <em>each one tended</em> by hand.</h2>
-    </div>
-    <div class="columns">
-      <article class="col">
-        <span class="col-rule"></span>
-        <h3>The <em>Weekly</em></h3>
-        <p class="price">From $19.99 / visit · Same day, every week.</p>
-        <p>The household standard. Most of the homes we tend choose this rhythm: a single weekday on the calendar, a soft knock at the gate, and twenty quiet minutes that return the yard to its better self.</p>
-        <ul>
-          <li>Full-yard inspection, edge to edge.</li>
-          <li>Sealed, double-bagged, hauled out by us.</li>
-          <li>Gate-secure photo on completion.</li>
-        </ul>
-        <a href="#onboard" data-plan="weekly" class="col-pay">Reserve · pay $9.99 today →</a>
-      </article>
-      <article class="col">
-        <span class="col-rule"></span>
-        <h3>The <em>Fortnight</em></h3>
-        <p class="price">From $29.99 / visit · Every other Friday.</p>
-        <p>For the quieter household — one dog, modest acreage, a yard that holds its composure longer. We come every other week, the same day, the same hand, and we leave it as if we had been twice.</p>
-        <ul>
-          <li>Bi-weekly cadence, locked on a weekday.</li>
-          <li>Bonus rinse on visits two and four.</li>
-          <li>Hand-walked perimeter check.</li>
-        </ul>
-        <a href="#onboard" data-plan="fortnight" class="col-pay">Reserve · pay $14.99 today →</a>
-      </article>
-      <article class="col">
-        <span class="col-rule"></span>
-        <h3>The <em>One-Time</em></h3>
-        <p class="price">From $89 / visit · Within forty-eight hours.</p>
-        <p>For the yard that has, perhaps, gotten ahead of you. A spring cleanout. A move-in. A sister-in-law visiting from out of state. We arrive once, we fix it once, and we leave you the option of more.</p>
-        <ul>
-          <li>Same-week scheduling, season permitting.</li>
-          <li>Photo before, photo after.</li>
-          <li>No contract, no follow-up unless you wish.</li>
-        </ul>
-        <a href="#onboard" data-plan="onetime" class="col-pay">Reserve · pay $44.50 today →</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0;padding-bottom:0;border-bottom:none">
-    <div class="kinds" style="margin:0 -36px">
-      <div class="wrap">
-        <h3 style="font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:36px;text-align:center;margin-bottom:32px;color:var(--terra)">— Property kinds we tend —</h3>
-        <div class="kinds-grid">
-          <div class="kind">
-            <div class="kind-num">i.</div>
-            <h4>Residential <em>homes</em></h4>
-            <p>The household yard, from a tidy quarter-acre in Cool Springs to a wide back-paddock in Leiper's Fork.</p>
-          </div>
-          <div class="kind">
-            <div class="kind-num">ii.</div>
-            <h4>HOA <em>communities</em></h4>
-            <p>Bulk pricing for shared dog runs and common-area lawns. Property-specific plans, contracts optional.</p>
-          </div>
-          <div class="kind">
-            <div class="kind-num">iii.</div>
-            <h4><em>Apartments</em></h4>
-            <p>Pet-relief stations and resident-only dog parks. Daily, twice-weekly, or weekly tending available.</p>
-          </div>
-          <div class="kind">
-            <div class="kind-num">iv.</div>
-            <h4>Public <em>dog parks</em></h4>
-            <p>Municipal and private. Scheduled maintenance, before-and-after photo logs, weather-aware routing.</p>
-          </div>
+  <section class="kinds">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-num">02</div>
+        <div style="display:contents">
+          <div class="section-num-row" style="grid-column:1;margin-top:24px"><span class="section-cat">— Property kinds —</span></div>
+          <h2 class="section-title">From backyards to<br/><em>dog parks.</em></h2>
+        </div>
+      </div>
+      <div class="kinds-grid">
+        <div class="kind-card">
+          <div class="kc-num">i.</div>
+          <h4>Residential <em>homes</em></h4>
+          <p>From a tidy quarter-acre in Cool Springs to a wide back-paddock in Leiper's Fork.</p>
+        </div>
+        <div class="kind-card">
+          <div class="kc-num">ii.</div>
+          <h4>HOA <em>communities</em></h4>
+          <p>Bulk pricing, property-specific plans. Common dog runs &amp; shared lawns.</p>
+        </div>
+        <div class="kind-card">
+          <div class="kc-num">iii.</div>
+          <h4><em>Apartments</em></h4>
+          <p>Pet-relief stations and on-site dog parks. Daily or weekly sweeps.</p>
+        </div>
+        <div class="kind-card">
+          <div class="kc-num">iv.</div>
+          <h4>Public <em>dog parks</em></h4>
+          <p>Municipal &amp; private. Scheduled maintenance with weather-aware routing.</p>
         </div>
       </div>
     </div>
   </section>
 
   <section class="section" id="dispatches">
-    <div class="section-head">
-      <div class="section-num">02<small>Dispatches</small></div>
-      <h2 class="section-title">Letters from <em>the households</em> we tend.</h2>
-    </div>
-    <div class="dispatches">
-      <article class="dispatch">
-        <div class="dispatch-head"><span>Letter 14</span><span>Williamson Co.</span></div>
-        <blockquote>The pricing is great, the response is quick, and the owner truly cares about quality work. I have already passed his name along to a few neighbors. Keep it up.</blockquote>
-        <p class="dispatch-by"><span>Anthony K.</span><span>Two dogs, one quarter-acre</span></p>
-      </article>
-      <article class="dispatch">
-        <div class="dispatch-head"><span>Letter 15</span><span>Cool Springs</span></div>
-        <blockquote>Ryan is a stand-up guy and very easy to schedule. Consistent every week. I would happily recommend this to anyone — especially anyone with a strong gag reflex.</blockquote>
-        <p class="dispatch-by"><span>Simon A.</span><span>One schnauzer, side yard</span></p>
-      </article>
-      <article class="dispatch">
-        <div class="dispatch-head"><span>Letter 16</span><span>Berry Farms</span></div>
-        <blockquote>Friendly, professional, and they showed up on time. The yard looks the way I keep meaning to keep it. We will be using them for the foreseeable future.</blockquote>
-        <p class="dispatch-by"><span>Shane S.</span><span>One lab, half acre</span></p>
-      </article>
-      <article class="dispatch">
-        <div class="dispatch-head"><span>Letter 17</span><span>Berry Farms HOA</span></div>
-        <blockquote>The board wrote to thank Ryan after his first month maintaining the dog area. The board does not, as a general rule, write to thank anyone for anything. We think this counts as journalism.</blockquote>
-        <p class="dispatch-by"><span>Property Manager</span><span>42-unit community</span></p>
-      </article>
-    </div>
-    <div class="guarantee-band">
-      <b>100% Satisfaction Guarantee, <em>or your money back.</em></b>
-      <p>If a visit isn't right, we'll return within twenty-four hours at no charge. If it still isn't right, we'll refund it. That is the entire policy.</p>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-num">03</div>
+        <div style="display:contents">
+          <div class="section-num-row" style="grid-column:1;margin-top:24px"><span class="section-cat">— Dispatches —</span></div>
+          <h2 class="section-title">Letters from<br/><em>the households.</em></h2>
+        </div>
+      </div>
+      <div class="dispatch-grid">
+        <article class="dispatch">
+          <div class="dispatch-head"><span>Letter 14 · Westhaven</span><span class="dispatch-stars">★★★★★</span></div>
+          <blockquote>The pricing is great, the response is quick, and the owner truly cares about quality work. I have already passed his name along to a few neighbors. Keep it up.</blockquote>
+          <div class="dispatch-author"><b>Anthony K.</b><span>Two dogs, one quarter-acre</span></div>
+        </article>
+        <article class="dispatch">
+          <div class="dispatch-head"><span>Letter 15 · Cool Springs</span><span class="dispatch-stars">★★★★★</span></div>
+          <blockquote>Ryan is a stand-up gentleman and very easy to schedule. Consistent every week. I would happily recommend this to anyone — especially anyone with a strong gag reflex.</blockquote>
+          <div class="dispatch-author"><b>Simon A.</b><span>One schnauzer, side yard</span></div>
+        </article>
+        <article class="dispatch">
+          <div class="dispatch-head"><span>Letter 16 · Berry Farms</span><span class="dispatch-stars">★★★★★</span></div>
+          <blockquote>Friendly, professional, and they showed up on time. The yard looks the way I keep meaning to keep it. We will be using them for the foreseeable future.</blockquote>
+          <div class="dispatch-author"><b>Shane S.</b><span>One lab, half acre</span></div>
+        </article>
+        <article class="dispatch">
+          <div class="dispatch-head"><span>Letter 17 · Berry Farms HOA</span><span class="dispatch-stars">★★★★★</span></div>
+          <blockquote>The board wrote to thank Ryan after his first month maintaining the dog area. The board does not, as a general rule, write to thank anyone for anything.</blockquote>
+          <div class="dispatch-author"><b>Property Manager</b><span>42-unit community</span></div>
+        </article>
+      </div>
+      <div class="guarantee-band">
+        <div class="gb-crest">§</div>
+        <div class="gb-content">
+          <h4>The <em>satisfaction</em> standing.</h4>
+          <p>If a visit isn't right, we return within twenty-four hours at no charge. If it still isn't right, we refund it. That is the entire policy.</p>
+        </div>
+        <div class="gb-seal">— Seal of<br/>the House<br/>Est. MMXIX</div>
+      </div>
     </div>
   </section>
 
-  <section class="section onboard" id="onboard">
-    <div class="section-head">
-      <div class="section-num">03<small>Reserve &amp; Pay</small></div>
-      <h2 class="section-title">A first visit, <em>at half price.</em></h2>
-    </div>
-    <div class="onboard-grid">
-      <div>
-        <div class="steps" id="stepBar">
-          <div class="step-pill active" data-step="1">i. Address</div>
-          <div class="step-pill" data-step="2">ii. Household</div>
-          <div class="step-pill" data-step="3">iii. Cadence</div>
-          <div class="step-pill" data-step="4">iv. Payment</div>
-        </div>
-
-        <form id="onForm" autocomplete="off" novalidate>
-
-          <div class="panel show" data-panel="1">
-            <h3>Where shall we come?</h3>
-            <p class="lead">A street address, a ZIP, the gate code if there is one. We confirm coverage before charging anything.</p>
-            <div class="field">
-              <label for="oName">First &amp; last name</label>
-              <input id="oName" type="text" required placeholder="e.g. Margaret L." />
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="oEmail">Email</label>
-                <input id="oEmail" type="email" required placeholder="your@household.com" />
-              </div>
-              <div class="field">
-                <label for="oPhone">Phone</label>
-                <input id="oPhone" type="tel" required placeholder="(615) ___-____" />
-              </div>
-            </div>
-            <div class="field">
-              <label for="oAddr">Street address</label>
-              <input id="oAddr" type="text" required placeholder="1234 Boyd Mill Ave" />
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="oCity">City</label>
-                <input id="oCity" type="text" required placeholder="Franklin" value="Franklin" />
-              </div>
-              <div class="field">
-                <label for="oZip">ZIP</label>
-                <input id="oZip" type="text" required maxlength="5" pattern="[0-9]{5}" placeholder="37064" />
-              </div>
-            </div>
-            <div class="step-actions">
-              <button type="button" class="btn next" data-go="2">Continue → ii.</button>
-            </div>
-          </div>
-
-          <div class="panel" data-panel="2">
-            <h3>Tell us about the household.</h3>
-            <p class="lead">How many hounds in residence? It changes the rate gently.</p>
-            <div class="field">
-              <label>Dogs in residence</label>
-              <div class="choice-grid" data-group="dogs">
-                <label><input type="radio" name="dogs" value="1" checked /><span>One<small>· $0 add</small></span></label>
-                <label><input type="radio" name="dogs" value="2" /><span>Two<small>· +$5</small></span></label>
-                <label><input type="radio" name="dogs" value="3" /><span>Three<small>· +$10</small></span></label>
-                <label><input type="radio" name="dogs" value="4" /><span>Four+<small>· +$15</small></span></label>
-              </div>
-            </div>
-            <div class="field">
-              <label>Yard size</label>
-              <div class="choice-grid" data-group="yard">
-                <label><input type="radio" name="yard" value="small" checked /><span>&lt; ¼ acre<small>· base</small></span></label>
-                <label><input type="radio" name="yard" value="medium" /><span>¼ — ½<small>· +$8</small></span></label>
-                <label><input type="radio" name="yard" value="large" /><span>½ — 1<small>· +$15</small></span></label>
-                <label><input type="radio" name="yard" value="xl" /><span>1+ acre<small>· +$28</small></span></label>
-              </div>
-            </div>
-            <div class="field">
-              <label for="oDog">Dog's name (optional)</label>
-              <input id="oDog" type="text" placeholder="e.g. Biscuit, Bourbon, Maple" />
-            </div>
-            <div class="step-actions">
-              <button type="button" class="btn back" data-go="1">← Back</button>
-              <button type="button" class="btn next" data-go="3">Continue → iii.</button>
-            </div>
-          </div>
-
-          <div class="panel" data-panel="3">
-            <h3>How often shall we come?</h3>
-            <p class="lead">The weekly is the household standard. The fortnight suits the quieter yard.</p>
-            <div class="field">
-              <label>Cadence</label>
-              <div class="choice-grid" data-group="freq">
-                <label><input type="radio" name="freq" value="weekly" checked /><span>Weekly<small>· from $19.99</small></span></label>
-                <label><input type="radio" name="freq" value="fortnight" /><span>Fortnight<small>· from $29.99</small></span></label>
-                <label><input type="radio" name="freq" value="onetime" /><span>One-time<small>· from $89</small></span></label>
-              </div>
-            </div>
-            <div class="field">
-              <label for="oDay">Preferred weekday</label>
-              <select id="oDay">
-                <option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="oNotes">Anything we should know? (gate code, dog quirks)</label>
-              <input id="oNotes" type="text" placeholder="The side gate sticks. Biscuit is friendly but loud." />
-            </div>
-            <div class="step-actions">
-              <button type="button" class="btn back" data-go="2">← Back</button>
-              <button type="button" class="btn next" data-go="4">Continue → iv.</button>
-            </div>
-          </div>
-
-          <div class="panel" data-panel="4">
-            <h3>Hold the first visit with a card.</h3>
-            <p class="lead">We charge your card the day after each visit. 50% off applies to the first one. No contract — pause or cancel anytime by reply email.</p>
-            <div class="card-form">
-              <div class="brand-pay">
-                <span>Card details</span>
-                <span style="display:flex;align-items:center;gap:6px">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l3 6 6 .9-4.5 4.3 1.1 6.2L12 15.6 6.4 18.4l1.1-6.2L3 7.9 9 7z"/></svg>
-                  Secured by Stripe
-                </span>
-              </div>
-              <div class="field">
-                <label for="oCard">Card number</label>
-                <input id="oCard" type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" />
-              </div>
-              <div class="field-row">
-                <div class="field">
-                  <label for="oExp">Expiry</label>
-                  <input id="oExp" type="text" placeholder="MM / YY" />
-                </div>
-                <div class="field">
-                  <label for="oCvc">CVC</label>
-                  <input id="oCvc" type="text" placeholder="123" />
-                </div>
-              </div>
-              <div class="field">
-                <label for="oZipCard">Billing ZIP</label>
-                <input id="oZipCard" type="text" placeholder="37064" maxlength="5" />
-              </div>
-            </div>
-            <div class="step-actions">
-              <button type="button" class="btn back" data-go="3">← Back</button>
-              <button type="submit" class="btn next">Pay <span id="payAmt">$9.99</span> &amp; reserve</button>
-            </div>
-          </div>
-
-        </form>
-
-        <div class="thanks" id="thanks">
-          <h3>Thank you. The yard is on the list.</h3>
-          <p>We've placed you on the route for the weekday you chose and we'll write tonight with the visit window. Your card has been charged for the first half-price visit only. No subscription, no contract.</p>
-          <p>Should anything come up, write <a href="mailto:hello@poophappensfranklin.com" style="color:var(--gold)">hello@poophappensfranklin.com</a> or call <a href="tel:9183816095" style="color:var(--gold)">(918) 381-6095</a> — we keep the same hours as the post.</p>
-          <div class="receipt">Receipt · Confirmation #PH-<span id="conf">000000</span> · 50% off applied</div>
+  <section class="reserve" id="reserve">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-num">04</div>
+        <div style="display:contents">
+          <div class="section-num-row" style="grid-column:1;margin-top:24px"><span class="section-cat">— To Reserve —</span></div>
+          <h2 class="section-title">A first visit,<br/><em>at half rate.</em></h2>
         </div>
       </div>
+      <div class="reserve-grid">
+        <div>
+          <div class="steps" id="stepBar">
+            <div class="step active" data-step="1"><span class="step-num">I</span>The Residence</div>
+            <div class="step" data-step="2"><span class="step-num">II</span>The Household</div>
+            <div class="step" data-step="3"><span class="step-num">III</span>The Cadence</div>
+            <div class="step" data-step="4"><span class="step-num">IV</span>The Card</div>
+          </div>
 
-      <aside class="summary" id="summary">
-        <h4>Order summary</h4>
-        <div class="summary-row"><span>Plan</span><span id="sumPlan">Weekly</span></div>
-        <div class="summary-row"><span>Dogs</span><span id="sumDogs">1</span></div>
-        <div class="summary-row"><span>Yard</span><span id="sumYard">&lt; ¼ acre</span></div>
-        <div class="summary-row"><span>Base rate</span><span id="sumBase">$19.99 / wk</span></div>
-        <div class="summary-row"><span>Adjustments</span><span id="sumAdj">+$0.00</span></div>
-        <div class="summary-row"><span>First visit (50% off) <span class="summary-discount">applied</span></span><span id="sumDisc">−$9.99</span></div>
-        <div class="summary-total">
-          <span>Charged today</span>
-          <span id="sumTotal">$9.99</span>
+          <form id="bookForm" novalidate>
+
+            <div class="panel show" data-panel="1">
+              <h3>The <em>residence.</em></h3>
+              <p class="lead">A name, an address, a means of correspondence. We verify the route before any charge.</p>
+              <div class="field">
+                <label for="bName">First &amp; last name</label>
+                <input id="bName" required placeholder="Margaret Lockwood" />
+              </div>
+              <div class="field-row">
+                <div class="field"><label for="bEmail">Correspondence</label><input id="bEmail" type="email" required placeholder="your@residence.com" /></div>
+                <div class="field"><label for="bPhone">Telephone</label><input id="bPhone" type="tel" required placeholder="(615) 555-0100" /></div>
+              </div>
+              <div class="field"><label for="bAddr">Street address</label><input id="bAddr" required placeholder="1234 Boyd Mill Avenue" /></div>
+              <div class="field-row">
+                <div class="field"><label for="bCity">Town</label><input id="bCity" required value="Franklin" /></div>
+                <div class="field"><label for="bZip">ZIP</label><input id="bZip" required maxlength="5" pattern="[0-9]{5}" placeholder="37064" /></div>
+              </div>
+              <div class="step-actions">
+                <span></span>
+                <button type="button" class="btn-next" data-go="2">Continue → II</button>
+              </div>
+            </div>
+
+            <div class="panel" data-panel="2">
+              <h3>The <em>household.</em></h3>
+              <p class="lead">How many hounds, and the scale of the yard. Both adjust the rate gently.</p>
+              <div class="field">
+                <label>Hounds in residence</label>
+                <div class="choice-grid">
+                  <label><input type="radio" name="dogs" value="1" checked /><span>One<small>· base</small></span></label>
+                  <label><input type="radio" name="dogs" value="2" /><span>Two<small>· +$5</small></span></label>
+                  <label><input type="radio" name="dogs" value="3" /><span>Three<small>· +$10</small></span></label>
+                  <label><input type="radio" name="dogs" value="4" /><span>Four+<small>· +$15</small></span></label>
+                </div>
+              </div>
+              <div class="field">
+                <label>Yard size</label>
+                <div class="choice-grid">
+                  <label><input type="radio" name="yard" value="small" checked /><span>S<small>&lt;¼ acre</small></span></label>
+                  <label><input type="radio" name="yard" value="medium" /><span>M<small>¼ — ½</small></span></label>
+                  <label><input type="radio" name="yard" value="large" /><span>L<small>½ — 1</small></span></label>
+                  <label><input type="radio" name="yard" value="xl" /><span>XL<small>1+ acre</small></span></label>
+                </div>
+              </div>
+              <div class="field"><label for="bDog">The hound(s) by name <span style="opacity:.6;font-family:'Fraunces',serif;font-style:italic;font-size:11px;letter-spacing:0;text-transform:none">— optional</span></label><input id="bDog" placeholder="Biscuit, Bourbon, Maple…" /></div>
+              <div class="step-actions">
+                <button type="button" class="btn-back" data-go="1">← Back</button>
+                <button type="button" class="btn-next" data-go="3">Continue → III</button>
+              </div>
+            </div>
+
+            <div class="panel" data-panel="3">
+              <h3>The <em>cadence.</em></h3>
+              <p class="lead">A rhythm and a weekday. We hold the standing for the life of the membership.</p>
+              <div class="field">
+                <label>Rhythm</label>
+                <div class="choice-grid three">
+                  <label><input type="radio" name="freq" value="weekly" checked /><span>Weekly<small>from $19.99</small></span></label>
+                  <label><input type="radio" name="freq" value="fortnight" /><span>Fortnight<small>from $29.99</small></span></label>
+                  <label><input type="radio" name="freq" value="onetime" /><span>One-time<small>from $89</small></span></label>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field"><label for="bDay">Preferred weekday</label><select id="bDay"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select></div>
+                <div class="field"><label for="bFirst">First visit</label><select id="bFirst"><option>This week</option><option>Next week</option><option>In two weeks</option></select></div>
+              </div>
+              <div class="field"><label for="bNotes">Note for the operator <span style="opacity:.6;font-family:'Fraunces',serif;font-style:italic;font-size:11px;letter-spacing:0;text-transform:none">— gate code, dog quirks</span></label><input id="bNotes" placeholder="The side gate sticks. Biscuit is friendly but loud." /></div>
+              <div class="step-actions">
+                <button type="button" class="btn-back" data-go="2">← Back</button>
+                <button type="button" class="btn-next" data-go="4">Continue → IV</button>
+              </div>
+            </div>
+
+            <div class="panel" data-panel="4">
+              <h3>The <em>card.</em></h3>
+              <p class="lead">Charged once today at half rate for the first visit only. Regular rate after each visit. Pause any time.</p>
+              <div class="card-form">
+                <div class="card-pay-head">
+                  <span><svg viewBox="0 0 24 24"><path d="M12 1l3 6 6 .9-4.5 4.3 1.1 6.2L12 15.6 6.4 18.4l1.1-6.2L3 7.9 9 7z"/></svg>Card details</span>
+                  <span>Secured · Stripe · 256-bit</span>
+                </div>
+                <div class="field"><label for="bCard">Card number</label><input id="bCard" placeholder="4242 4242 4242 4242" /></div>
+                <div class="field-row">
+                  <div class="field"><label for="bExp">Expiry · MM / YY</label><input id="bExp" placeholder="04 / 28" /></div>
+                  <div class="field"><label for="bCvc">CVC</label><input id="bCvc" placeholder="123" /></div>
+                </div>
+                <div class="field"><label for="bZipCard">Billing ZIP</label><input id="bZipCard" maxlength="5" placeholder="37064" /></div>
+              </div>
+              <div class="step-actions">
+                <button type="button" class="btn-back" data-go="3">← Back</button>
+                <button type="submit" class="btn-next">Reserve — Charge <span id="payAmt">$10.00</span></button>
+              </div>
+            </div>
+
+          </form>
+
+          <div class="thanks" id="thanks">
+            <h3>The <em>reservation</em> is held.</h3>
+            <p>The residence is entered on the route for the day you selected. A confirmation has been sent by correspondence; we will write the morning of the first visit.</p>
+            <p>Your card has been charged at half rate for the inaugural visit only. For any matter at any hour, write <a href="mailto:hello@poophappensfranklin.com" style="color:var(--gold);text-decoration:underline;text-decoration-color:#b0894966;text-underline-offset:4px">hello@poophappensfranklin.com</a> or call <a href="tel:9183816095" style="color:var(--gold);text-decoration:underline;text-decoration-color:#b0894966;text-underline-offset:4px">(918) 381-6095</a>.</p>
+            <div class="receipt">Confirmation # PH-<span id="conf">000000</span> · 50% off applied</div>
+          </div>
         </div>
-        <p class="summary-fine">After the first visit, we charge your card the day after each visit at the regular rate. Skip any week — no charge. No contracts.</p>
-      </aside>
+
+        <aside class="summary" id="summaryBox">
+          <h4>Reservation summary</h4>
+          <div class="sum-row"><span>Membership</span><span id="sumPlan">Weekly</span></div>
+          <div class="sum-row"><span>Hounds</span><span id="sumDogs">One</span></div>
+          <div class="sum-row"><span>Yard</span><span id="sumYard">&lt;¼ acre</span></div>
+          <div class="sum-row"><span>Day</span><span id="sumDay">Monday</span></div>
+          <div class="sum-row"><span>Base rate</span><span id="sumBase">$19.99</span></div>
+          <div class="sum-row"><span>Adjustments</span><span id="sumAdj">+$0.00</span></div>
+          <div class="sum-row sum-disc"><span>Inaugural · 50% off</span><span id="sumDisc">−$10.00</span></div>
+          <div class="sum-total"><span>Charged today</span><span id="sumTotal">$10.00</span></div>
+          <span class="sum-badge"><span class="dot"></span>PCI · Stripe · Encrypted</span>
+          <p class="sum-fine">After the first visit, your card is charged at the regular rate the day after each call. No contract; release the standing any time.</p>
+        </aside>
+      </div>
     </div>
   </section>
 
@@ -611,13 +803,13 @@ img{max-width:100%;display:block}
   <div class="wrap">
     <div class="colo-grid">
       <div class="colo-brand">
-        <img src="../assets/logo.png" alt="Poop Happens logo" />
+        <img src="../assets/logo.png" alt="Poop Happens" />
         <p>A weekly pet-waste service kept small, run by hand, serving Franklin since 2019.</p>
       </div>
       <div>
         <h5>Office</h5>
         <p>Franklin, Tennessee</p>
-        <p>&amp; Williamson County</p>
+        <p>Williamson County</p>
         <p>Monday — Saturday</p>
       </div>
       <div>
@@ -627,53 +819,49 @@ img{max-width:100%;display:block}
         <p>Open 24 hrs for messages</p>
       </div>
       <div>
-        <h5>Notes</h5>
-        <p>Locally owned &amp; operated</p>
-        <p>Since 2019 · No contracts</p>
+        <h5>The Standing</h5>
+        <p>Locally owned</p>
+        <p>No contracts, ever</p>
         <p>100% satisfaction guarantee</p>
       </div>
     </div>
     <div class="colo-base">
       <span>© Poop Happens, MMXXVI · Set in Fraunces &amp; Lora</span>
+      <span><a href="../">← All four takes</a></span>
       <span>When poop happens, we handle it.</span>
     </div>
   </div>
 </footer>
 
 <script>
-const form=document.getElementById('onForm');
-const panels=form.querySelectorAll('.panel');
-const pills=document.querySelectorAll('#stepBar .step-pill');
 const state={dogs:1,yard:'small',freq:'weekly'};
 const baseByFreq={weekly:19.99,fortnight:29.99,onetime:89};
 const dogAdd={1:0,2:5,3:10,4:15};
 const yardAdd={small:0,medium:8,large:15,xl:28};
-const yardLabel={small:'< ¼ acre',medium:'¼ — ½ acre',large:'½ — 1 acre',xl:'1+ acre'};
+const yardLabel={small:'<¼ acre',medium:'¼ — ½ acre',large:'½ — 1 acre',xl:'1+ acre'};
+const dogLabel={1:'One',2:'Two',3:'Three',4:'Four+'};
 const freqLabel={weekly:'Weekly',fortnight:'Fortnight',onetime:'One-time'};
-const freqUnit={weekly:' / wk',fortnight:' / 2 wk',onetime:' one-time'};
+
+const form=document.getElementById('bookForm');
+const panels=form.querySelectorAll('.panel');
+const stepEls=document.querySelectorAll('#stepBar .step');
 
 function go(n){
   panels.forEach(p=>p.classList.remove('show'));
   form.querySelector(`[data-panel="${n}"]`).classList.add('show');
-  pills.forEach(p=>{
-    const s=Number(p.dataset.step);
-    p.classList.toggle('active',s===n);
-    p.classList.toggle('done',s<n);
-  });
-  document.getElementById('onboard').scrollIntoView({behavior:'smooth',block:'start'});
+  stepEls.forEach(s=>{const k=Number(s.dataset.step);s.classList.toggle('active',k===n);s.classList.toggle('done',k<n)});
+  document.getElementById('reserve').scrollIntoView({behavior:'smooth',block:'start'});
 }
+
 form.querySelectorAll('[data-go]').forEach(b=>{
   b.addEventListener('click',()=>{
     const target=Number(b.dataset.go);
-    if(target>1){
-      const cur=form.querySelector('.panel.show');
+    const cur=form.querySelector('.panel.show');
+    if(target>Number(cur.dataset.panel)){
       const inputs=cur.querySelectorAll('input[required]');
       let ok=true;
-      inputs.forEach(i=>{if(!i.value)ok=false});
-      if(!ok && target>Number(cur.dataset.panel)){
-        inputs.forEach(i=>{if(!i.value)i.style.borderBottomColor='#d62828'});
-        return;
-      }
+      inputs.forEach(i=>{if(!i.value){ok=false;i.style.borderBottomColor='#d62828'}else{i.style.borderBottomColor=''}});
+      if(!ok)return;
     }
     go(target);
   });
@@ -687,15 +875,17 @@ form.addEventListener('change',e=>{
   recalc();
 });
 
+document.getElementById('bDay').addEventListener('change',e=>{document.getElementById('sumDay').textContent=e.target.value});
+
 function recalc(){
   const base=baseByFreq[state.freq];
   const adj=dogAdd[state.dogs]+yardAdd[state.yard];
-  const reg=base+adj;
-  const today=reg/2;
+  const reg=+(base+adj).toFixed(2);
+  const today=+(reg/2).toFixed(2);
   document.getElementById('sumPlan').textContent=freqLabel[state.freq];
-  document.getElementById('sumDogs').textContent=state.dogs+(state.dogs==4?'+':'');
+  document.getElementById('sumDogs').textContent=dogLabel[state.dogs];
   document.getElementById('sumYard').textContent=yardLabel[state.yard];
-  document.getElementById('sumBase').textContent='$'+base.toFixed(2)+freqUnit[state.freq];
+  document.getElementById('sumBase').textContent='$'+base.toFixed(2);
   document.getElementById('sumAdj').textContent='+$'+adj.toFixed(2);
   document.getElementById('sumDisc').textContent='−$'+today.toFixed(2);
   document.getElementById('sumTotal').textContent='$'+today.toFixed(2);
@@ -704,32 +894,42 @@ function recalc(){
 recalc();
 
 document.querySelectorAll('[data-plan]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const p=a.dataset.plan;
-    const radio=form.querySelector(`input[name="freq"][value="${p==='fortnight'?'fortnight':p}"]`);
-    if(radio){radio.checked=true;state.freq=radio.value;recalc()}
+  a.addEventListener('click',()=>{
+    const v=a.dataset.plan;
+    state.freq=v;
+    const r=form.querySelector(`input[name="freq"][value="${v}"]`);
+    if(r)r.checked=true;
+    recalc();
   });
 });
 
-form.addEventListener('submit',function(e){
+form.addEventListener('submit',e=>{
   e.preventDefault();
-  document.getElementById('onForm').style.display='none';
-  document.getElementById('summary').style.display='none';
+  document.getElementById('bookForm').style.display='none';
+  document.getElementById('summaryBox').style.display='none';
+  document.getElementById('stepBar').style.display='none';
   document.getElementById('thanks').classList.add('show');
   document.getElementById('conf').textContent=String(Math.floor(100000+Math.random()*900000));
-  document.querySelector('.steps').style.display='none';
 });
 
-document.querySelectorAll('.mast-nav a,.mast-cta,.hero-ctas a').forEach(a=>{
-  a.addEventListener('click',function(e){
-    const h=this.getAttribute('href');
-    if(h&&h.startsWith('#')){
-      e.preventDefault();
-      const el=document.querySelector(h);
-      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-    }
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const h=a.getAttribute('href');
+    if(h&&h.length>1){e.preventDefault();document.querySelector(h)?.scrollIntoView({behavior:'smooth'})}
   });
 });
+
+// MAST + PROGRESS
+const mast=document.getElementById('mast');
+const pr=document.getElementById('progress');
+function tick(){
+  const y=window.scrollY;
+  mast.classList.toggle('scrolled',y>60);
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  pr.style.width=(h>0?(y/h*100):0)+'%';
+}
+document.addEventListener('scroll',tick,{passive:true});
+tick();
 </script>
 </body>
 </html>
